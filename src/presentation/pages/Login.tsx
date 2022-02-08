@@ -1,9 +1,14 @@
-const LoginPage = () => {
+import LoginForm from '@components/LoginForm/LoginForm';
+import { LoginTemplateBlock, WhiteBox } from './style';
+
+const Login = () => {
   return (
-    <>
-      <h1>Login</h1>
-    </>
+    <LoginTemplateBlock>
+      <WhiteBox>
+        <LoginForm />
+      </WhiteBox>
+    </LoginTemplateBlock>
   );
 };
 
-export default LoginPage;
+export default Login;
