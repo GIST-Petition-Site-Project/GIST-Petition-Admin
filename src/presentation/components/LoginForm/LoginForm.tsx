@@ -4,7 +4,7 @@ const LoginForm = (): JSX.Element => {
   return (
     <>
       <VLoginForm />
-      <VACInput name="VLoginForm" />
+      {/* <VACInput name="VLoginForm" /> */}
     </>
   );
 };

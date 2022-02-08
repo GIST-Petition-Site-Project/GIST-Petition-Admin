@@ -1,10 +1,13 @@
 import LoginForm from '@components/LoginForm/LoginForm';
+import { LoginTemplateBlock, WhiteBox } from './style';
 
 const Login = () => {
   return (
-    <>
-      <LoginForm />
-    </>
+    <LoginTemplateBlock>
+      <WhiteBox>
+        <LoginForm />
+      </WhiteBox>
+    </LoginTemplateBlock>
   );
 };
 
