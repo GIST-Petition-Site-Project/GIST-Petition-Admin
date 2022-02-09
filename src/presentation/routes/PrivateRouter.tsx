@@ -1,12 +1,14 @@
+import { useAppSelect } from '@hooks/store.hooks';
 import { Outlet, Navigate } from 'react-router-dom';
 
-const auth = false;
 const AuthRoute = () => {
-  return auth ? <Outlet /> : <Navigate to="/login" />;
+  const isAuthorized = useAppSelect((select) => select.auth.isAuthorized);
+  return isAuthorized ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const UnauthRoute = () => {
-  return !auth ? <Outlet /> : <Navigate to="/" />;
+  const isAuthorized = useAppSelect((select) => select.auth.isAuthorized);
+  return !isAuthorized ? <Outlet /> : <Navigate to="/" />;
 };
 
 export { AuthRoute, UnauthRoute };
