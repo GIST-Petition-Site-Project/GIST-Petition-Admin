@@ -2,9 +2,18 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { VAC } from 'react-vac';
 import VLoginForm from './VLoginForm';
 import postLogin from '@api/postLogin';
+import { getUsersMe } from '@api/getUsersMe';
+import { setLogin } from '@stores/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '@hooks/store.hooks';
+
 const LoginForm = (): JSX.Element => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const vLoginFormProps = {
     username,
     password,
@@ -16,9 +25,15 @@ const LoginForm = (): JSX.Element => {
         setPassword(event.target.value);
       }
     },
-    handleSubmit: (event: FormEvent<HTMLFormElement>) => {
+    handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      postLogin(username, password);
+      await postLogin(username, password);
+      const response = await getUsersMe();
+      if (response?.data?.userRole === 'ADMIN') {
+        dispatch(setLogin());
+        navigate('/');
+        console.log('WELCOME ADMIN');
+      }
     },
   };
   return (
