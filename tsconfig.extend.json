@@ -10,6 +10,7 @@
       "@api/*": ["src/infrastructure/api/*"],
       "@utils/*": ["src/application/utils/*"],
       "@hooks/*": ["src/application/hooks/*"],
+      "@stores/*": ["src/application/stores/*"],
       "@styles/*": ["src/styles/*"]
     }
   }
