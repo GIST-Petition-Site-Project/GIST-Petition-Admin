@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { VAC } from 'react-vac';
+// import { VAC } from 'react-vac';
 import VLoginForm from './VLoginForm';
 import postLogin from '@api/postLogin';
 import { getUsersMe } from '@api/getUsersMe';
@@ -39,7 +39,7 @@ const LoginForm = (): JSX.Element => {
   return (
     <>
       <VLoginForm {...vLoginFormProps} />
-      <VAC name="VLoginForm" data={vLoginFormProps} />
+      {/* <VAC name="VLoginForm" data={vLoginFormProps} /> */}
     </>
   );
 };
