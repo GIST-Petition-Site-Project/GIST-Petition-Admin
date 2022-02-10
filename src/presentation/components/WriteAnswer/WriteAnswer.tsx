@@ -31,7 +31,7 @@ const WriteAnswer = (): JSX.Element => {
   };
   return (
     <>
-      <VAC name="VWriteAnswer" data={vWriteAnswerProps} />
+      {/* <VAC name="VWriteAnswer" data={vWriteAnswerProps} /> */}
       <VWriteAnswer {...vWriteAnswerProps} />
     </>
   );

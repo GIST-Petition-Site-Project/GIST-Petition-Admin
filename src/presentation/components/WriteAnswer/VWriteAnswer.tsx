@@ -8,13 +8,13 @@ interface vWriteAnswerProps {
 }
 
 const Writer = styled.textarea`
-  width: 45vw;
+  width: 90vw;
   height: 70vh;
 `;
 
 const VWriteAnswer = ({ petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (
-    <form onSubmit={handleSubmit || handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>Title {petition?.title}</div>
       <div>Description {petition?.description}</div>
       <Writer value={answer} onChange={handleChange}></Writer>
