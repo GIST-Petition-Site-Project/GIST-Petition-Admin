@@ -1,5 +1,5 @@
 // import React from 'react';
-import { GlobalStyle } from './styles/globalStyle';
+import { GlobalStyle } from '@styles/globalStyle';
 import MainRouter from '@routes/MainRouter';
 import { Provider } from 'react-redux';
 import { persistor, store } from '@stores/store';
