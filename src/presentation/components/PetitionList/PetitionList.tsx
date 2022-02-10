@@ -7,7 +7,7 @@ const PetitionList = (): JSX.Element => {
   const [petitions, setPetitions] = useState<Array<Petition>>([]);
   const fetchPetitions = async () => {
     const response = await getPetitions();
-    setPetitions(response[1]?.content);
+    setPetitions(response?.data?.content);
   };
   useEffect(() => {
     fetchPetitions();
@@ -19,7 +19,7 @@ const PetitionList = (): JSX.Element => {
 
   return (
     <>
-      <VAC name="VPetitionList" data={vPetitionListProps} />
+      {/* <VAC name="VPetitionList" data={vPetitionListProps} /> */}
       <VPetitionList {...vPetitionListProps} />
     </>
   );
