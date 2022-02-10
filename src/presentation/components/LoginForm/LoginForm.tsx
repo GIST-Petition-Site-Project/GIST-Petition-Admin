@@ -2,8 +2,8 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 // import { VAC } from 'react-vac';
 import VLoginForm from './VLoginForm';
 import postLogin from '@api/postLogin';
-import { getUsersMe } from '@api/getUsersMe';
-import { setLogin } from '@stores/authSlice';
+import getUsersMe from '@api/getUsersMe';
+import { setLogin, setUserRole } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@hooks/store.hooks';
 
@@ -29,10 +29,10 @@ const LoginForm = (): JSX.Element => {
       event.preventDefault();
       await postLogin(username, password);
       const response = await getUsersMe();
-      if (response?.data?.userRole === 'ADMIN') {
+      if (response?.data?.userRole === 'ADMIN' || response?.data?.userRole === 'MANAGER') {
         dispatch(setLogin());
+        dispatch(setUserRole(response.data.userRole));
         navigate('/');
-        console.log('WELCOME ADMIN');
       }
     },
   };

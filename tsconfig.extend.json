@@ -5,13 +5,13 @@
       "@app": ["src/App.tsx"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/presentation/pages/*"],
+      "@styles/*": ["src/presentation/styles/*"],
       "@components/*": ["src/presentation/components/*"],
       "@routes/*": ["src/presentation/routes/*"],
       "@api/*": ["src/infrastructure/api/*"],
       "@utils/*": ["src/application/utils/*"],
       "@hooks/*": ["src/application/hooks/*"],
-      "@stores/*": ["src/application/stores/*"],
-      "@styles/*": ["src/styles/*"]
+      "@stores/*": ["src/application/stores/*"]
     }
   }
 }
