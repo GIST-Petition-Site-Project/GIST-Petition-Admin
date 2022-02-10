@@ -1,4 +1,4 @@
-import NavBar from '@components/Navigation/NavBar';
+import NavBar from '@components/Navigation';
 import { useAppSelect } from '@hooks/store.hooks';
 import palette from '@styles/palette';
 import styled from 'styled-components';

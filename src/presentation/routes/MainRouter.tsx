@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthRoute, UnauthRoute, AdminRoute, ManagerRoute } from './PrivateRouter';
-import NavBar from '@components/Navigation/NavBar';
+import NavBar from '@components/Navigation';
 import Login from '@pages/Login';
 import Home from '@pages/Home';
 import Role from '@pages/Role';
 import Answer from '@pages/Answer';
-import WriteAnswer from '@components/WriteAnswer/WriteAnswer';
+import WriteAnswer from '@components/WriteAnswer';
 
 const MainRouter = (): JSX.Element => {
   return (

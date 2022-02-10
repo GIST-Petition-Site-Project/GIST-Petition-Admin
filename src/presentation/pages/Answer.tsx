@@ -1,5 +1,5 @@
-import PetitionList from '@components/PetitionList/PetitionList';
-import WriteAnswer from '@components/WriteAnswer/WriteAnswer';
+import PetitionList from '@components/PetitionList';
+import WriteAnswer from '@components/WriteAnswer';
 
 const Answer = (): JSX.Element => {
   return (

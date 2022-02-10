@@ -1,4 +1,4 @@
-import UserList from '@components/UserList/UserList';
+import UserList from '@components/UserList';
 
 const Role = (): JSX.Element => {
   return (
