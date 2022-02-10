@@ -61,7 +61,6 @@ const ModifyPetition = (): JSX.Element => {
   return (
     <>
       <VModifyPetition {...vModifyPetitionProps} />
-      <div>test</div>
       <VChangeHighlight {...vChangeHighlightProps} />
       {/* <VAC name="VModifyPetition" data={vModifyPetitionProps} /> */}
     </>
