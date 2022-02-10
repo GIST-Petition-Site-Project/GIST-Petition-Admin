@@ -24,6 +24,7 @@ const Home = (): JSX.Element => {
         {role === 'ADMIN' ? <a href="/role">유저 역할 변경</a> : null}
         {role === 'ADMIN' ? <div>청원 변경 이력 보기</div> : null}
         {role === 'MANAGER' ? <a href="/answer">답변 달기</a> : null}
+        {role === 'MANAGER' ? <a href="/modify">청원 수정</a> : null}
         <div>대시보드</div>
       </ContentsGrid>
     </>

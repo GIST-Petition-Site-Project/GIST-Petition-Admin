@@ -6,6 +6,7 @@ import Home from '@pages/Home';
 import Role from '@pages/Role';
 import Answer from '@pages/Answer';
 import WriteAnswer from '@components/WriteAnswer';
+import Modify from '@pages/Modify';
 
 const MainRouter = (): JSX.Element => {
   return (
@@ -25,6 +26,9 @@ const MainRouter = (): JSX.Element => {
           <Route path="/answer" element={<ManagerRoute />}>
             <Route index element={<Answer />} />
             <Route path=":petitionId" element={<WriteAnswer />} />
+          </Route>
+          <Route path="/modify" element={<ManagerRoute />}>
+            <Route index element={<Modify />} />
           </Route>
         </Routes>
       </BrowserRouter>
