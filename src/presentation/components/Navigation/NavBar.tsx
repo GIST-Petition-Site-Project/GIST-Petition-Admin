@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelect } from '@hooks/store.hooks';
 import { setLogout } from '@stores/authSlice';
-import { useEffect, useState } from 'react';
 import { VAC } from 'react-vac';
 import VNavBar from './VNavBar';
 
@@ -17,7 +16,7 @@ const NavBar = (): JSX.Element => {
 
   return (
     <>
-      <VAC name="NavBar" data={vNavBarProps} />
+      {/* <VAC name="NavBar" data={vNavBarProps} /> */}
       <VNavBar {...vNavBarProps} />
     </>
   );

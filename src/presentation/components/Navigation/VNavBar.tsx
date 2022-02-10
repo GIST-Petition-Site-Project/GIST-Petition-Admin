@@ -1,20 +1,19 @@
 import logo from '@assets/img/new_logo.svg';
 import styled from 'styled-components';
-interface vNavBarProps {
-  role: string;
-  handleClick: any;
-}
+import palette from '@styles/palette';
 
 const NavBarBlock = styled.div`
-  background-color: black;
+  background-color: ${palette.gray[1]};
   color: white;
   /* display: flex; */
-  height: 50px;
+  height: 8vh;
   position: relative;
+  border-bottom: ${palette.gray[0]} 2px solid;
 `;
 
 const Logo = styled.img`
   position: absolute;
+  left: 20px;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -24,7 +23,7 @@ const Menu = styled.div`
   align-items: center;
   /* margin: 5px; */
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -33,6 +32,10 @@ const Menu = styled.div`
 const Role = styled.p`
   margin-right: 5px;
 `;
+interface vNavBarProps {
+  role: string;
+  handleClick: any;
+}
 
 const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
   // const role = 'ADMIN';
