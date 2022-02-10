@@ -1,19 +1,26 @@
 interface vUserListProps {
   users: Array<User>;
+  each: any;
 }
-const VUserList = ({ users }: vUserListProps): JSX.Element => {
+
+const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
+  const roles = ['USER', 'MANAGER', 'ADMIN'];
   return (
-    <>
-      <div></div>
-      {users.map((user) => {
+    <ul>
+      {users?.map((user) => {
+        const { id, username, userRole, handleChange } = each(user);
         return (
-          <div>
-            <p>{user.username}</p>
-            <p>{user.userRole}</p>
-          </div>
+          <li key={id}>
+            <p>{username}</p>
+            <select onChange={handleChange} value={userRole}>
+              {roles.map((role) => {
+                return <option key={id + role}>{role}</option>;
+              })}
+            </select>
+          </li>
         );
       })}
-    </>
+    </ul>
   );
 };
 

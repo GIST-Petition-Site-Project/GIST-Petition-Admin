@@ -1,5 +1,6 @@
 import getUsers from '@api/getUsers';
-import { useEffect, useState } from 'react';
+import putUserRole from '@api/putUserRole';
+import { ChangeEvent, useEffect, useState } from 'react';
 import VAC from 'react-vac';
 import VUserList from './VUserList';
 
@@ -8,7 +9,14 @@ const UserList = (): JSX.Element => {
   const fetchUsers = async () => {
     const response = await getUsers();
     if (response.data) {
-      setUsers(response.data);
+      const refinedUsers = response.data.map((el: any) => {
+        return {
+          username: el.username,
+          userRole: el.userRole,
+          id: el.id,
+        };
+      });
+      setUsers(refinedUsers);
     }
   };
 
@@ -18,6 +26,13 @@ const UserList = (): JSX.Element => {
 
   const vUserListProps = {
     users,
+    each: (user: User) => ({
+      ...user,
+      handleChange: async (event: ChangeEvent<HTMLSelectElement>) => {
+        await putUserRole(user.id, event.target.value);
+        await fetchUsers();
+      },
+    }),
   };
 
   return (
