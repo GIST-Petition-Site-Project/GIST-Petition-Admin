@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 interface vWriteAnswerProps {
   petition: Petition | undefined;
+  answer: string;
+  handleChange: any;
+  handleSubmit: any;
 }
 
 const Writer = styled.textarea`
@@ -9,13 +12,14 @@ const Writer = styled.textarea`
   height: 70vh;
 `;
 
-const VWriteAnswer = ({ petition }: vWriteAnswerProps): JSX.Element => {
-  console.log(petition);
+const VWriteAnswer = ({ petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (
-    <>
-      <div>{petition?.title}</div>
-      <Writer value={petition?.description}></Writer>
-    </>
+    <form onSubmit={handleSubmit || handleSubmit}>
+      <div>Title {petition?.title}</div>
+      <div>Description {petition?.description}</div>
+      <Writer value={answer} onChange={handleChange}></Writer>
+      <button type="submit">답변 등록</button>
+    </form>
   );
 };
 
