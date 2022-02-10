@@ -1,6 +1,7 @@
+import postLogout from '@api/postLogout';
 import { useAppDispatch, useAppSelect } from '@hooks/store.hooks';
 import { setLogout, setUserRole } from '@stores/authSlice';
-import { VAC } from 'react-vac';
+// import { VAC } from 'react-vac';
 import VNavBar from './VNavBar';
 
 const NavBar = (): JSX.Element => {
@@ -10,6 +11,7 @@ const NavBar = (): JSX.Element => {
   const vNavBarProps = {
     role,
     handleClick: () => {
+      postLogout();
       dispatch(setLogout());
       dispatch(setUserRole(''));
     },
