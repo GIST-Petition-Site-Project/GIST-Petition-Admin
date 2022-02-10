@@ -1,9 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthRoute, UnauthRoute, AdminRoute } from './PrivateRouter';
+import { AuthRoute, UnauthRoute, AdminRoute, ManagerRoute } from './PrivateRouter';
 import NavBar from '@components/Navigation/NavBar';
 import Login from '@pages/Login';
 import Home from '@pages/Home';
 import Role from '@pages/Role';
+import Answer from '@pages/Answer';
+import WriteAnswer from '@components/WriteAnswer/WriteAnswer';
 
 const MainRouter = (): JSX.Element => {
   return (
@@ -19,6 +21,10 @@ const MainRouter = (): JSX.Element => {
           </Route>
           <Route path="/role" element={<AdminRoute />}>
             <Route index element={<Role />} />
+          </Route>
+          <Route path="/answer" element={<ManagerRoute />}>
+            <Route index element={<Answer />} />
+            <Route path=":petitionId" element={<WriteAnswer />} />
           </Route>
         </Routes>
       </BrowserRouter>
