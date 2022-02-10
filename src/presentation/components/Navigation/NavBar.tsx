@@ -9,9 +9,8 @@ const NavBar = (): JSX.Element => {
   };
   return (
     <>
-      {' '}
-      <h1>{{ role }}님 환영합니다</h1>
-      <button onClick={handleClick}></button>
+      <p>{role}님 환영합니다</p>
+      <button onClick={handleClick}>Logout</button>
     </>
   );
 };
