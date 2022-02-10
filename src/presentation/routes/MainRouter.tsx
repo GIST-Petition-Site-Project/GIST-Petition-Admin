@@ -7,6 +7,7 @@ import Role from '@pages/Role';
 import Answer from '@pages/Answer';
 import WriteAnswer from '@components/WriteAnswer';
 import Modify from '@pages/Modify';
+import ModifyPetition from '@components/ModifyPetition';
 
 const MainRouter = (): JSX.Element => {
   return (
@@ -29,6 +30,7 @@ const MainRouter = (): JSX.Element => {
           </Route>
           <Route path="/modify" element={<ManagerRoute />}>
             <Route index element={<Modify />} />
+            <Route path=":petitionId" element={<ModifyPetition />} />
           </Route>
         </Routes>
       </BrowserRouter>

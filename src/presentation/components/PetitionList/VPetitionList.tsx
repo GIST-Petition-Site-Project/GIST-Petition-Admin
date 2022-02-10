@@ -15,7 +15,7 @@ const VPetitionList = ({ petitions }: vPetitionListProps): JSX.Element => {
         return (
           <PetitionItem key={id}>
             <div>{categoryName}</div>
-            <a href={`/answer/${id}`}>{title}</a>
+            <a href={`${location.pathname}/${id}`}>{title}</a>
             <div>{agreements}</div>
             <div>{createdAt}</div>
           </PetitionItem>
