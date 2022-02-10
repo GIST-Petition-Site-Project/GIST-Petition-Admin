@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelect } from '@hooks/store.hooks';
-import { setLogout } from '@stores/authSlice';
+import { setLogout, setUserRole } from '@stores/authSlice';
 import { VAC } from 'react-vac';
 import VNavBar from './VNavBar';
 
@@ -11,6 +11,7 @@ const NavBar = (): JSX.Element => {
     role,
     handleClick: () => {
       dispatch(setLogout());
+      dispatch(setUserRole(''));
     },
   };
 
