@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 interface vModifyPeitionProps {
   petition: Petition | undefined;
   title: string;
@@ -14,7 +13,7 @@ const TitleEditer = styled.textarea`
 `;
 const DescriptionEditer = styled.textarea`
   width: 90vw;
-  height: 80vh;
+  height: 50vh;
 `;
 
 const VModifyPetition = ({
