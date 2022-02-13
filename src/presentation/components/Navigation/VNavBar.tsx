@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import palette from '@styles/palette';
 
 const NavBarBlock = styled.div`
-  background-color: ${palette.gray[1]};
+  background-color: #252525;
   color: white;
   /* display: flex; */
   height: 8vh;
   position: relative;
-  border-bottom: ${palette.gray[0]} 2px solid;
+  border-bottom: #444 1px solid;
 `;
 
 const Logo = styled.img`
