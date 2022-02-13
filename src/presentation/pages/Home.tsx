@@ -1,5 +1,5 @@
 import NavBar from '@components/Navigation';
-import { useAppSelect } from '@hooks/store.hooks';
+import { useAppSelect } from '@hooks/useStore';
 import palette from '@styles/palette';
 import styled from 'styled-components';
 

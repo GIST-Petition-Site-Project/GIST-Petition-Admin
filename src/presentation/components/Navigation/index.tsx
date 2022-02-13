@@ -1,5 +1,5 @@
 import postLogout from '@api/postLogout';
-import { useAppDispatch, useAppSelect } from '@hooks/store.hooks';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { setLogout, setUserRole } from '@stores/authSlice';
 // import { VAC } from 'react-vac';
 import VNavBar from './VNavBar';

@@ -5,7 +5,8 @@ import postLogin from '@api/postLogin';
 import getUsersMe from '@api/getUsersMe';
 import { setLogin, setUserRole } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@hooks/store.hooks';
+import { useAppDispatch } from '@hooks/useStore';
+import { useToast } from '@hooks/useToast';
 
 const LoginForm = (): JSX.Element => {
   const [username, setUsername] = useState('');
@@ -13,6 +14,7 @@ const LoginForm = (): JSX.Element => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { fireToast } = useToast();
 
   const vLoginFormProps = {
     username,
@@ -32,6 +34,7 @@ const LoginForm = (): JSX.Element => {
       if (response?.data?.userRole === 'ADMIN' || response?.data?.userRole === 'MANAGER') {
         dispatch(setLogin());
         dispatch(setUserRole(response.data.userRole));
+        fireToast({ message: '환영합니다.', type: 'warning', duration: 2000 });
         navigate('/');
       }
     },

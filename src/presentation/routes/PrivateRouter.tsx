@@ -1,4 +1,4 @@
-import { useAppSelect } from '@hooks/store.hooks';
+import { useAppSelect } from '@hooks/useStore';
 import { Outlet, Navigate } from 'react-router-dom';
 
 const AuthRoute = () => {
