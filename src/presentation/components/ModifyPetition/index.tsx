@@ -6,10 +6,28 @@ import VAC from 'react-vac';
 import VModifyPetition from './VModifyPetition';
 import { Change, diffChars, diffWords } from 'diff';
 import VChangeHighlight from './VChangeHighlight';
+import styled from 'styled-components';
+
+const Category = [
+  '전체',
+  '기숙사',
+  '시설운영',
+  '진로/취업',
+  '학적/교과/장학',
+  '학생지원/행사/동아리',
+  '기획/예산/홍보',
+  '대외협력',
+  '권익소통',
+  '기타',
+];
+
+const FlexWrap = styled.div`
+  display: flex;
+`;
 
 const ModifyPetition = (): JSX.Element => {
   const { petitionId } = useParams();
-  const [petition, setPetition] = useState<Petition | undefined>();
+  // const [petition, setPetition] = useState<Petition | undefined>();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   const [originalDescription, setOriginalDescription] = useState('');
@@ -18,11 +36,14 @@ const ModifyPetition = (): JSX.Element => {
 
   const fetchPetition = async () => {
     const response = await getPetitionById(petitionId);
-    setPetition(response?.data || undefined);
+    // setPetition(response?.data || undefined);
     setTitle(response?.data?.title || '');
     setDescription(response?.data?.description || '');
     setOriginalDescription(response?.data?.description || '');
-    setCategoryId(response?.data?.categoryId || 0);
+    if (response?.data?.categoryName) {
+      const id = Category.indexOf(response?.data?.categoryName);
+      setCategoryId(id);
+    }
     console.log(response?.data?.description);
   };
 
@@ -36,7 +57,7 @@ const ModifyPetition = (): JSX.Element => {
 
   const navigate = useNavigate();
   const vModifyPetitionProps = {
-    petition,
+    // petition,
     title,
     description,
     handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -59,11 +80,11 @@ const ModifyPetition = (): JSX.Element => {
   };
 
   return (
-    <>
+    <FlexWrap>
       <VModifyPetition {...vModifyPetitionProps} />
       <VChangeHighlight {...vChangeHighlightProps} />
       {/* <VAC name="VModifyPetition" data={vModifyPetitionProps} /> */}
-    </>
+    </FlexWrap>
   );
 };
 
