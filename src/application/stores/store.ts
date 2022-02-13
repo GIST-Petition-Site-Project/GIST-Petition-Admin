@@ -2,14 +2,17 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './authSlice';
+import toastReducer from './toastSlice';
 
 const reducers = combineReducers({
   auth: authReducer,
+  toast: toastReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['auth'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
