@@ -14,7 +14,7 @@ const LoginForm = (): JSX.Element => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { fireToast } = useToast();
+  const toast = useToast();
 
   const vLoginFormProps = {
     username,
@@ -34,7 +34,7 @@ const LoginForm = (): JSX.Element => {
       if (response?.data?.userRole === 'ADMIN' || response?.data?.userRole === 'MANAGER') {
         dispatch(setLogin());
         dispatch(setUserRole(response.data.userRole));
-        fireToast({ message: '환영합니다.', type: 'warning', duration: 2000 });
+        toast({ message: '환영합니다.', type: 'success' });
         navigate('/');
       }
     },

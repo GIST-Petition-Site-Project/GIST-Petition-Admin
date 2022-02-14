@@ -12,7 +12,7 @@ import ModifyPetition from '@components/ModifyPetition';
 const MainRouter = (): JSX.Element => {
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthRoute />}>

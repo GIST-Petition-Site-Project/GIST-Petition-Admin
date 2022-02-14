@@ -8,8 +8,8 @@ const UserList = (): JSX.Element => {
   const [users, setUsers] = useState<Array<User>>([]);
   const fetchUsers = async () => {
     const response = await getUsers();
-    if (response.data) {
-      const refinedUsers = response.data.map((el: any) => {
+    if (response?.data?.content) {
+      const refinedUsers = response?.data?.content.map((el: any) => {
         return {
           username: el.username,
           userRole: el.userRole,
@@ -38,7 +38,7 @@ const UserList = (): JSX.Element => {
   return (
     <>
       <VUserList {...vUserListProps} />
-      <VAC name="VUserList" data={vUserListProps} />
+      {/* <VAC name="VUserList" data={vUserListProps} /> */}
     </>
   );
 };

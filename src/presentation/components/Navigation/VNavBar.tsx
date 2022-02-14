@@ -6,7 +6,7 @@ const NavBarBlock = styled.div`
   background-color: #252525;
   color: white;
   /* display: flex; */
-  height: 8vh;
+  height: 5vh;
   position: relative;
   border-bottom: #444 1px solid;
 `;

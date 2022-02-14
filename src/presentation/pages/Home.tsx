@@ -5,7 +5,7 @@ import palette from '@styles/palette';
 import styled from 'styled-components';
 
 const ContentsGrid = styled.div`
-  height: 92vh;
+  height: 95vh;
   background-color: #252525;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
