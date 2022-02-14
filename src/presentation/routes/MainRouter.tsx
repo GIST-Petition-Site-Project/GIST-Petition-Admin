@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthRoute, UnauthRoute, AdminRoute, ManagerRoute } from './PrivateRouter';
-import NavBar from '@components/Navigation';
+import NavBar from '@components/NavBar';
 import Login from '@pages/Login';
 import Home from '@pages/Home';
 import Role from '@pages/Role';

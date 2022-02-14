@@ -1,7 +1,5 @@
-import getAnswer from '@api/getAnswer';
-import getPetitionById from '@api/getPetitionById';
-import postAnswer from '@api/postAnswer';
-import putAnswer from '@api/putAnswer';
+import { getPetitionById } from '@api/petitionAPI';
+import { getAnswer, postAnswer, putAnswer } from '@api/answerAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 // import VAC from 'react-vac';

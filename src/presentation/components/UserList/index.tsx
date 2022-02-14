@@ -1,7 +1,5 @@
-import getUsers from '@api/getUsers';
-import putUserRole from '@api/putUserRole';
+import { getUsers, putUserRole } from '@api/userAPI';
 import { ChangeEvent, useEffect, useState } from 'react';
-import VAC from 'react-vac';
 import VUserList from './VUserList';
 
 const UserList = (): JSX.Element => {
@@ -38,7 +36,6 @@ const UserList = (): JSX.Element => {
   return (
     <>
       <VUserList {...vUserListProps} />
-      {/* <VAC name="VUserList" data={vUserListProps} /> */}
     </>
   );
 };

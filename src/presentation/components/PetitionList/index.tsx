@@ -1,6 +1,5 @@
-import getPetitions from '@api/getPetitions';
+import { getPetitions } from '@api/petitionAPI';
 import { useEffect, useState } from 'react';
-import VAC from 'react-vac';
 import VPetitionList from './VPetitionList';
 
 const PetitionList = (): JSX.Element => {
@@ -19,7 +18,6 @@ const PetitionList = (): JSX.Element => {
 
   return (
     <>
-      {/* <VAC name="VPetitionList" data={vPetitionListProps} /> */}
       <VPetitionList {...vPetitionListProps} />
     </>
   );

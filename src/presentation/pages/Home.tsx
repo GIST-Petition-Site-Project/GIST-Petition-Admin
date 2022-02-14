@@ -1,4 +1,3 @@
-import NavBar from '@components/Navigation';
 import { useAppSelect } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
 import palette from '@styles/palette';

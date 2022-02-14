@@ -1,4 +1,4 @@
-import postLogout from '@api/postLogout';
+import { postLogout } from '@api/userAPI';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
 import { setLogout, setUserRole } from '@stores/authSlice';

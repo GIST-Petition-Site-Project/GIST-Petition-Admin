@@ -9,14 +9,14 @@ const config: AxiosRequestConfig = {
 
 const API = axios.create(config);
 
-API.interceptors.response.use(
-  (response) => {
-    // console.log(response);
-    return response;
-  },
-  (error) => {
-    console.log(error);
-  },
-);
+// API.interceptors.response.use(
+//   (response) => {
+//     // console.log(response);
+//     return response;
+//   },
+//   (error) => {
+//     console.log(error);
+//   },
+// );
 
 export default API;

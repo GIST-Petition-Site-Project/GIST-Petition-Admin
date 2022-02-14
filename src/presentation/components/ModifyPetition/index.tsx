@@ -1,8 +1,6 @@
-import getPetitionById from '@api/getPetitionById';
-import putPetition from '@api/putPetition';
+import { getPetitionById, putPetition } from '@api/petitionAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import VAC from 'react-vac';
 import VModifyPetition from './VModifyPetition';
 import { Change, diffChars, diffWords } from 'diff';
 import VChangeHighlight from './VChangeHighlight';

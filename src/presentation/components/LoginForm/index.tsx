@@ -1,8 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 // import { VAC } from 'react-vac';
 import VLoginForm from './VLoginForm';
-import postLogin from '@api/postLogin';
-import getUsersMe from '@api/getUsersMe';
+import { postLogin, getUsersMe } from '@api/userAPI';
 import { setLogin, setUserRole } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@hooks/useStore';
@@ -34,7 +33,7 @@ const LoginForm = (): JSX.Element => {
       if (response?.data?.userRole === 'ADMIN' || response?.data?.userRole === 'MANAGER') {
         dispatch(setLogin());
         dispatch(setUserRole(response.data.userRole));
-        toast({ message: '환영합니다.', type: 'success' });
+        toast({ message: `${response.data.userRole} 환영합니다.`, type: 'success' });
         navigate('/');
       }
     },
