@@ -18,7 +18,6 @@ const AdminRoute = () => {
 
 const ManagerRoute = () => {
   const role = useAppSelect((select) => select.auth.role);
-  // const role = 'MANAGER';
   return role === 'MANAGER' ? <Outlet /> : <Navigate to="/" />;
 };
 

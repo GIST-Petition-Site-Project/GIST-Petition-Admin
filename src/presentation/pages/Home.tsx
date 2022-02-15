@@ -1,4 +1,4 @@
-import { useAppSelect } from '@hooks/useStore';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
 import palette from '@styles/palette';
 import styled from 'styled-components';
@@ -23,6 +23,7 @@ const Home = (): JSX.Element => {
   const toast = useToast();
   const fireToast = () => {
     toast({ message: 'clicked', type: 'success' });
+    console.log(role);
   };
 
   return (

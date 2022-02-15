@@ -9,6 +9,8 @@ const NavBarBlock = styled.div`
   height: 5vh;
   position: relative;
   border-bottom: #444 1px solid;
+  /* -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); */
 `;
 
 const Logo = styled.img`
