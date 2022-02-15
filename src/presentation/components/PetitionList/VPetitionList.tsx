@@ -50,16 +50,17 @@ const VPetitionList = ({ petitions }: vPetitionListProps): JSX.Element => {
     <StUl>
       <StLine />
       {petitions.map((petition) => {
-        const { id, categoryName, title, agreements, createdAt } = petition;
+        ('');
+        const { id, categoryName, title, createdAt } = petition;
         return (
-          <>
-            <PetitionItem key={id}>
+          <div key={'petition_item_' + id}>
+            <PetitionItem>
               <PetitionDescription>{categoryName}</PetitionDescription>
               <PetitionTitle href={`${location.pathname}/${id}`}>{title}</PetitionTitle>
               <PetitionDescription>{getDayTime(createdAt)}</PetitionDescription>
             </PetitionItem>
             <StLine />
-          </>
+          </div>
         );
       })}
     </StUl>

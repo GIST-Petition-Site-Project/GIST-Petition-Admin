@@ -46,8 +46,8 @@ const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
       {users?.map((user) => {
         const { id, username, userRole, handleChange } = each(user);
         return (
-          <>
-            <Useritem key={id}>
+          <div key={'user_item_' + id}>
+            <Useritem>
               <StP>{username}</StP>
               <StSelect onChange={handleChange} value={userRole}>
                 {roles.map((role) => {
@@ -56,7 +56,7 @@ const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
               </StSelect>
             </Useritem>
             <StLine />
-          </>
+          </div>
         );
       })}
     </StUl>
