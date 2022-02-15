@@ -1,4 +1,3 @@
-import { Wrapper, Title } from '@components/common';
 import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 
@@ -42,28 +41,25 @@ const StSelect = styled.select`
 const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
   const roles = ['USER', 'MANAGER', 'ADMIN'];
   return (
-    <Wrapper>
-      <Title>사용자 역할 변경</Title>
-      <StUl>
-        <StLine />
-        {users?.map((user) => {
-          const { id, username, userRole, handleChange } = each(user);
-          return (
-            <>
-              <Useritem key={id}>
-                <StP>{username}</StP>
-                <StSelect onChange={handleChange} value={userRole}>
-                  {roles.map((role) => {
-                    return <option key={id + role}>{role}</option>;
-                  })}
-                </StSelect>
-              </Useritem>
-              <StLine />
-            </>
-          );
-        })}
-      </StUl>
-    </Wrapper>
+    <StUl>
+      <StLine />
+      {users?.map((user) => {
+        const { id, username, userRole, handleChange } = each(user);
+        return (
+          <>
+            <Useritem key={id}>
+              <StP>{username}</StP>
+              <StSelect onChange={handleChange} value={userRole}>
+                {roles.map((role) => {
+                  return <option key={id + role}>{role}</option>;
+                })}
+              </StSelect>
+            </Useritem>
+            <StLine />
+          </>
+        );
+      })}
+    </StUl>
   );
 };
 

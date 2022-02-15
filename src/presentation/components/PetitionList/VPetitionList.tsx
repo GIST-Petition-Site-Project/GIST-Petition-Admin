@@ -1,27 +1,68 @@
+import { getDayTime } from '@utils/getTime';
 import styled from 'styled-components';
 
 interface vPetitionListProps {
   petitions: Array<Petition>;
 }
 
-const PetitionItem = styled.div`
-  display: flex;
+const StUl = styled.ul`
+  line-height: 50px;
 `;
+
+const PetitionItem = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  &:hover {
+    background-color: #222;
+  }
+`;
+const PetitionDescription = styled.div`
+  /* line-height: 1em; */
+`;
+const PetitionTitle = styled.a`
+  line-height: 1.5em;
+  text-decoration: none;
+  :link {
+    color: white;
+  }
+  :visited {
+    color: white;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const StLine = styled.hr`
+  margin: 0;
+  color: white;
+  border-color: white;
+  background-color: white;
+  opacity: 0.1;
+`;
+
 const VPetitionList = ({ petitions }: vPetitionListProps): JSX.Element => {
   return (
-    <ul>
+    <StUl>
+      <StLine />
       {petitions.map((petition) => {
         const { id, categoryName, title, agreements, createdAt } = petition;
         return (
-          <PetitionItem key={id}>
-            <div>{categoryName}</div>
-            <a href={`${location.pathname}/${id}`}>{title}</a>
-            <div>{agreements}</div>
-            <div>{createdAt}</div>
-          </PetitionItem>
+          <>
+            <PetitionItem key={id}>
+              <PetitionDescription>{categoryName}</PetitionDescription>
+              <PetitionTitle href={`${location.pathname}/${id}`}>{title}</PetitionTitle>
+              <PetitionDescription>{getDayTime(createdAt)}</PetitionDescription>
+            </PetitionItem>
+            <StLine />
+          </>
         );
       })}
-    </ul>
+    </StUl>
   );
 };
 

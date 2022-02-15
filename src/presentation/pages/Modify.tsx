@@ -1,11 +1,12 @@
+import { Title, Wrapper } from '@components/common';
 import PetitionList from '@components/PetitionList';
 
 const Modify = (): JSX.Element => {
   return (
-    <>
-      <div>청원 수정</div>
+    <Wrapper>
+      <Title>청원 수정</Title>
       <PetitionList />
-    </>
+    </Wrapper>
   );
 };
 

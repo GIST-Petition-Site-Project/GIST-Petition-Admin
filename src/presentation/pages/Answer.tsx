@@ -1,12 +1,13 @@
 import PetitionList from '@components/PetitionList';
 import WriteAnswer from '@components/WriteAnswer';
+import { Wrapper, Title } from '@components/common';
 
 const Answer = (): JSX.Element => {
   return (
-    <>
-      <div>답변 등록</div>
+    <Wrapper>
+      <Title>답변 등록</Title>
       <PetitionList />
-    </>
+    </Wrapper>
   );
 };
 export default Answer;
