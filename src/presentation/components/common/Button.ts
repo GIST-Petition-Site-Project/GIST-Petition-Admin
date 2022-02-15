@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import palette from '@styles/palette';
+import PALETTE from '@styles/palette';
 interface ButtonProps {
   full?: boolean;
   primary?: boolean;
@@ -14,9 +14,9 @@ const SButton = styled.button<ButtonProps>`
   outline: none;
   cursor: pointer;
 
-  background: ${palette.gray[0]};
+  background: ${PALETTE.GRAY[0]};
   &:hover {
-    background: ${palette.gray[0]};
+    background: ${PALETTE.GRAY[0]};
   }
   ${(props) =>
     props?.full &&
@@ -29,9 +29,9 @@ const SButton = styled.button<ButtonProps>`
   ${(props) =>
     props?.primary &&
     css`
-      backgorund: ${palette.primary};
+      backgorund: ${PALETTE.PRIMARY_RED};
       &:hover {
-        background: ${palette.primary};
+        background: ${PALETTE.PRIMARY_RED};
       }
     `}
 `;

@@ -1,4 +1,4 @@
-import palette from '@styles/palette';
+import PALETTE from '@styles/palette';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ interface IWrapper {
 }
 
 const Wrapper = styled.div<IWrapper>`
-  color: ${(props) => (props.color === 'warning' ? palette.primary : 'white')};
+  color: ${(props) => (props.color === 'warning' ? PALETTE.PRIMARY_RED : 'white')};
   background-color: black;
   padding-bottom: 4px;
   position: relative;
@@ -43,7 +43,7 @@ const Message = styled.div`
 `;
 
 const Line = styled.div<ILine>`
-  background-color: ${(props) => (props.type === 'warning' ? palette.primary : 'white')};
+  background-color: ${(props) => (props.type === 'warning' ? PALETTE.PRIMARY_RED : 'white')};
   animation: ${(props) => props.duration}s linear timer;
   position: absolute;
   bottom: 0;

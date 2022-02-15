@@ -36,7 +36,7 @@ const SInput = styled.input`
 const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFormProps): JSX.Element => {
   return (
     <LoginFormBlock>
-      <h3>관리자 로그인</h3>
+      <h3>지스트 청원 관리자</h3>
       <form onSubmit={handleSubmit}>
         <SInput
           autoComplete="username"

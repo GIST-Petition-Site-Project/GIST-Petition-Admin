@@ -1,5 +1,5 @@
 import LoginForm from '@components/LoginForm';
-import palette from '@styles/palette';
+import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 
 const LoginTemplateBlock = styled.div`
@@ -8,7 +8,7 @@ const LoginTemplateBlock = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background: ${palette.gray[3]};
+  background: ${PALETTE.BACKGROUND};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ const WhiteBox = styled.div`
   padding: 2rem;
   width: 360px;
   background: white;
-  border-radius: 2px;
+  /* border-radius: 2px; */
 `;
 
 const Login = () => {
