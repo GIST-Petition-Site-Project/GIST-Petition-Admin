@@ -3,19 +3,20 @@ import styled from 'styled-components';
 import palette from '@styles/palette';
 
 const NavBarBlock = styled.div`
-  background-color: #252525;
   color: white;
-  /* display: flex; */
-  height: 5vh;
-  position: relative;
+  height: 50px;
+  position: sticky;
+  top: 0px;
   border-bottom: #444 1px solid;
-  /* -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px); */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Logo = styled.img`
   position: absolute;
-  left: 20px;
+  left: 5%;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -23,16 +24,27 @@ const Logo = styled.img`
 const Menu = styled.div`
   display: flex;
   align-items: center;
-  /* margin: 5px; */
+  justify-content: space-between;
+  width: 135px;
   position: absolute;
-  right: 20px;
+  right: 5%;
   top: 0;
   bottom: 0;
   margin: auto;
 `;
 
 const Role = styled.p`
-  margin-right: 5px;
+  font-size: 15px;
+`;
+
+const LogoutBtn = styled.button`
+  cursor: pointer;
+  /* padding: 0 5px 0 5px; */
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 15px;
 `;
 interface vNavBarProps {
   role: string;
@@ -45,8 +57,8 @@ const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
     <NavBarBlock>
       <Logo src={logo} alt="logo" />
       <Menu>
-        <Role style={{ margin: '5px' }}>{role}</Role>
-        <button onClick={handleClick}>Logout</button>
+        <Role>{role}</Role>
+        <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn>
       </Menu>
     </NavBarBlock>
   );
