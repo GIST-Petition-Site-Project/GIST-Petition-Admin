@@ -15,8 +15,7 @@ const API = axios.create(config);
 //     return response;
 //   },
 //   (error) => {
-//     console.log(error);
+//     return error;
 //   },
 // );
-
 export default API;

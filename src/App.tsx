@@ -9,11 +9,11 @@ import { useEffect } from 'react';
 import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 
-const Background = styled.div`
-  background-color: ${PALETTE.BACKGROUND};
-  width: 100%;
-  height: 100%;
-`;
+// const Background = styled.div`
+//   background-color: ${PALETTE.BACKGROUND};
+//   width: 100%;
+//   height: 100%;
+// `;
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -30,11 +30,11 @@ const App = (): JSX.Element => {
   }, []);
 
   return (
-    <Background>
+    <>
       <GlobalStyle />
       <Toast />
       <MainRouter />
-    </Background>
+    </>
   );
 };
 export default App;

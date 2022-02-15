@@ -4,6 +4,11 @@ import PALETTE from './palette';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset};
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   body {
     background-color: ${PALETTE.BACKGROUND};
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,

@@ -6,15 +6,15 @@ interface vPetitionListProps {
 }
 
 const StUl = styled.ul`
-  line-height: 50px;
+  line-height: 1em;
 `;
 
 const PetitionItem = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  /* line-height: 50px; */
+  grid-template-columns: 1fr 6fr 1fr;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: white;
   &:hover {
     background-color: #222;
@@ -22,10 +22,14 @@ const PetitionItem = styled.div`
 `;
 const PetitionDescription = styled.div`
   /* line-height: 1em; */
+  text-align: center;
 `;
 const PetitionTitle = styled.a`
+  padding-left: 1em;
   line-height: 1.5em;
+  padding: 0.5em;
   text-decoration: none;
+  text-align: left;
   :link {
     color: white;
   }

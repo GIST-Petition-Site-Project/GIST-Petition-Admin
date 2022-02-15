@@ -1,6 +1,7 @@
 import logo from '@assets/img/new_logo.svg';
 import styled from 'styled-components';
 import palette from '@styles/palette';
+import PALETTE from '@styles/palette';
 
 const NavBarBlock = styled.div`
   color: white;
@@ -25,7 +26,6 @@ const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 135px;
   position: absolute;
   right: 5%;
   top: 0;
@@ -39,12 +39,18 @@ const Role = styled.p`
 
 const LogoutBtn = styled.button`
   cursor: pointer;
-  /* padding: 0 5px 0 5px; */
+  font-family: Pretendard;
+  padding: 6px;
+  margin-left: 20px;
   background-color: transparent;
   color: white;
-  border: 1px solid white;
-  border-radius: 10px;
+  border: 0px;
+  border-radius: 40px;
   font-size: 15px;
+  transition: background-color 0.4s;
+  :hover {
+    background-color: ${PALETTE.PRIMARY_RED};
+  }
 `;
 interface vNavBarProps {
   role: string;
@@ -55,7 +61,9 @@ const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
   // const role = 'ADMIN';
   return (
     <NavBarBlock>
-      <Logo src={logo} alt="logo" />
+      <a href="/">
+        <Logo src={logo} alt="logo" />
+      </a>
       <Menu>
         <Role>{role}</Role>
         <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn>

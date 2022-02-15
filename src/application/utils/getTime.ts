@@ -15,3 +15,9 @@ export const getDay = (str: string) => {
   const date = new Date(replacedStr);
   return date.toLocaleString('sv-SE').substring(5, 10);
 };
+
+export const getDate = (str: string) => {
+  const replacedStr = str.replace('T', ' ');
+  const date = new Date(replacedStr);
+  return date.toLocaleString();
+};
