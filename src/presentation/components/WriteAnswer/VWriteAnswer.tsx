@@ -10,9 +10,6 @@ interface vWriteAnswerProps {
 }
 
 const Writer = styled.textarea`
-  /* -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; */
   background-color: ${PALETTE.BACKGROUND};
   font-family: Pretendard;
   font-size: 16px;
@@ -32,7 +29,7 @@ const PetitionWrapper = styled.div`
   align-items: center;
 `;
 
-const WriterWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -83,10 +80,10 @@ const VWriteAnswer = ({ petition, answer, handleChange, handleSubmit }: vWriteAn
           <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || '')}</PetitionDate>
         </PetitionWrapper>
         <StLine />
-        <WriterWrapper>
+        <TitleWrapper>
           <Title>{petition?.answered ? '답변 수정' : '답변 작성'}</Title>
           <StButton type="submit">답변 등록</StButton>
-        </WriterWrapper>
+        </TitleWrapper>
         <Writer value={answer} onChange={handleChange}></Writer>
         <BottomPadder />
       </form>

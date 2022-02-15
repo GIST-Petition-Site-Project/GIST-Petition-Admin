@@ -1,41 +1,84 @@
+import PALETTE from '@styles/palette';
 import { Change } from 'diff';
 import styled from 'styled-components';
 
 interface vChangeHighlightProps {
-  changes: Array<Change>;
+  titleChanges: Array<Change>;
+  descChanges: Array<Change>;
 }
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+
+const TitleWrapper = styled.div`
+  background-color: ${PALETTE.BACKGROUND};
+  border: 1px solid rgb(118, 118, 118);
+  font-family: Pretendard;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  height: 10vh;
+  padding: 1em;
+  margin-bottom: 1em;
+  outline-color: #444;
+  :focus {
+    background-color: #222;
+  }
 `;
 
-const TitileWrapper = styled.div`
-  height: 8vh;
-  width: 50vw;
+const DescriptionWrapper = styled.div`
   white-space: pre-line;
+  border: 1px solid rgb(118, 118, 118);
+  background-color: ${PALETTE.BACKGROUND};
+  font-family: Pretendard;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  height: 60vh;
+  padding: 1em;
+  outline-color: #444;
+  line-height: 1.5em;
+  :focus {
+    background-color: #222;
+  }
 `;
 
-const DiscriptionWrapper = styled.div`
-  width: 50vw;
-  height: 50vh;
-  white-space: pre-line;
+const AddedSpan = styled.span`
+  background-color: ${PALETTE.GREEN};
+`;
+const RemovedSpan = styled.span`
+  background-color: ${PALETTE.PRIMARY_RED};
+  text-decoration: line-through;
+`;
+const UnchangedSpan = styled.span`
+  color: gray;
 `;
 
-const VChangeHighlight = ({ changes }: vChangeHighlightProps): JSX.Element => {
+const VChangeHighlight = ({ titleChanges, descChanges }: vChangeHighlightProps): JSX.Element => {
   return (
-    <Wrapper>
-      <TitileWrapper></TitileWrapper>
-      <DiscriptionWrapper>
-        {changes.map((part, idx) => {
-          const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-          return (
-            <span key={part.value + idx} style={{ color: color }}>
-              {part.value}
-            </span>
-          );
+    <>
+      <TitleWrapper>
+        {titleChanges.map((part, idx) => {
+          const key = part.value + idx;
+          if (part.added) {
+            return <AddedSpan key={key}>{part.value}</AddedSpan>;
+          } else if (part.removed) {
+            return <RemovedSpan key={key}>{part.value}</RemovedSpan>;
+          } else {
+            return <UnchangedSpan key={key}>{part.value}</UnchangedSpan>;
+          }
         })}
-      </DiscriptionWrapper>
-    </Wrapper>
+      </TitleWrapper>
+      <DescriptionWrapper>
+        {descChanges.map((part, idx) => {
+          const key = part.value + idx;
+          if (part.added) {
+            return <AddedSpan key={key}>{part.value}</AddedSpan>;
+          } else if (part.removed) {
+            return <RemovedSpan key={key}>{part.value}</RemovedSpan>;
+          } else {
+            return <UnchangedSpan key={key}>{part.value}</UnchangedSpan>;
+          }
+        })}
+      </DescriptionWrapper>
+    </>
   );
 };
 

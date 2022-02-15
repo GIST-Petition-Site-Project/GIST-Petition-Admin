@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PALETTE from '@styles/palette';
 
 export const Title = styled.h1`
@@ -25,14 +25,18 @@ export const StLine = styled.hr`
   opacity: 0.1;
 `;
 
-export const StButton = styled.button`
+interface ButtonProps {
+  green?: boolean;
+}
+
+export const StButton = styled.button<ButtonProps>`
   background-color: ${PALETTE.BACKGROUND};
   border-radius: 40px;
   border: 1px solid white;
   font-family: Pretendard;
   font-size: 14px;
   padding: 12px 24px;
-  margin: auto 0;
+  margin: auto;
   color: white;
   transition: background-color 0.4s, border 0.4s;
   --webkit-transition: background-color 0.4s, border 0.4s;
@@ -40,6 +44,14 @@ export const StButton = styled.button`
     background-color: ${PALETTE.PRIMARY_RED};
     border: 1px solid ${PALETTE.PRIMARY_RED};
   }
+  ${(props) =>
+    props?.green &&
+    css`
+      :hover {
+        background-color: ${PALETTE.GREEN};
+        border: 1px solid ${PALETTE.GREEN};
+      }
+    `}
 `;
 
 export const BottomPadder = styled.div`

@@ -1,35 +1,56 @@
+import { StButton, Title, Wrapper } from '@components/common';
+import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 interface vModifyPeitionProps {
   // petition: Petition | undefined;
   title: string;
   description: string;
   handleChange: any;
-  handleSubmit: any;
 }
 
 const TitleEditer = styled.textarea`
-  width: 50vw;
-  height: 8vh;
-`;
-const DescriptionEditer = styled.textarea`
-  width: 50vw;
-  height: 50vh;
+  background-color: ${PALETTE.BACKGROUND};
+  font-family: Pretendard;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  height: 10vh;
+  padding: 1em;
+  margin-bottom: 1em;
+  outline-color: #444;
+  :focus {
+    background-color: #222;
+  }
 `;
 
-const Wrapper = styled.div`
+const DescriptionEditer = styled.textarea`
+  background-color: ${PALETTE.BACKGROUND};
+  font-family: Pretendard;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  height: 60vh;
+  padding: 1em;
+  outline-color: #444;
+  line-height: 1.5em;
+  :focus {
+    background-color: #222;
+  }
+`;
+
+const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const VModifyPetition = ({ title, description, handleChange, handleSubmit }: vModifyPeitionProps): JSX.Element => {
+const VModifyPetition = ({ title, description, handleChange }: vModifyPeitionProps): JSX.Element => {
   return (
-    <form onSubmit={handleSubmit}>
-      <Wrapper>
+    <>
+      <FormWrapper>
         <TitleEditer name="title" value={title} onChange={handleChange}></TitleEditer>
         <DescriptionEditer name="description" value={description} onChange={handleChange}></DescriptionEditer>
-        <button type="submit">청원 수정</button>
-      </Wrapper>
-    </form>
+      </FormWrapper>
+    </>
   );
 };
 

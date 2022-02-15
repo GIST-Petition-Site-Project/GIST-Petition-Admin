@@ -5,6 +5,7 @@ import VModifyPetition from './VModifyPetition';
 import { Change, diffChars, diffWords } from 'diff';
 import VChangeHighlight from './VChangeHighlight';
 import styled from 'styled-components';
+import { Wrapper, Title, StButton } from '@components/common';
 
 const Category = [
   '전체',
@@ -19,39 +20,44 @@ const Category = [
   '기타',
 ];
 
-const FlexWrap = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const ButtonWrapper = styled.div`
+  margin: auto 0;
+  justify-content: center;
 `;
 
 const ModifyPetition = (): JSX.Element => {
   const { petitionId } = useParams();
-  // const [petition, setPetition] = useState<Petition | undefined>();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   const [originalDescription, setOriginalDescription] = useState('');
+  const [originalTitle, setOriginalTitle] = useState('');
   const [categoryId, setCategoryId] = useState(0);
-  const [changes, setChanges] = useState<Array<Change>>([]);
+  const [titleChanges, setTitleChanges] = useState<Array<Change>>([]);
+  const [descChanges, setDescChanges] = useState<Array<Change>>([]);
+  const [status, setStatus] = useState(0);
 
   const fetchPetition = async () => {
     const response = await getPetitionById(petitionId);
-    // setPetition(response?.data || undefined);
     setTitle(response?.data?.title || '');
+    setOriginalTitle(response?.data?.title || '');
     setDescription(response?.data?.description || '');
     setOriginalDescription(response?.data?.description || '');
+
     if (response?.data?.categoryName) {
       const id = Category.indexOf(response?.data?.categoryName);
       setCategoryId(id);
     }
-    console.log(response?.data?.description);
   };
 
   useEffect(() => {
     fetchPetition();
   }, []);
-
-  useEffect(() => {
-    setChanges(diffChars(originalDescription, description));
-  }, [description]);
 
   const navigate = useNavigate();
   const vModifyPetitionProps = {
@@ -66,23 +72,44 @@ const ModifyPetition = (): JSX.Element => {
         setDescription(event.target.value);
       }
     },
-    handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      await putPetition(petitionId, categoryId, title, description);
-      navigate('/modify');
-    },
+  };
+  const handleClick = async () => {
+    switch (status) {
+      case 0:
+        setDescChanges(diffChars(originalDescription, description));
+        setTitleChanges(diffChars(originalTitle, title));
+        setStatus(1);
+        break;
+      case 1:
+        await putPetition(petitionId, categoryId, title, description);
+        navigate('/modify');
+        break;
+    }
+  };
+
+  const handleCancleClick = () => {
+    setStatus(0);
   };
 
   const vChangeHighlightProps = {
-    changes,
+    titleChanges,
+    descChanges,
   };
 
   return (
-    <FlexWrap>
-      <VModifyPetition {...vModifyPetitionProps} />
-      <VChangeHighlight {...vChangeHighlightProps} />
+    <Wrapper>
+      <TitleWrapper>
+        <Title>청원 수정</Title>
+        <ButtonWrapper>
+          {status === 1 ? <StButton onClick={handleCancleClick}>수정 취소</StButton> : null}
+          <StButton green onClick={handleClick}>
+            {status === 0 ? '수정 완료' : '청원 수정'}
+          </StButton>
+        </ButtonWrapper>
+      </TitleWrapper>
+      {status === 0 ? <VModifyPetition {...vModifyPetitionProps} /> : <VChangeHighlight {...vChangeHighlightProps} />}
       {/* <VAC name="VModifyPetition" data={vModifyPetitionProps} /> */}
-    </FlexWrap>
+    </Wrapper>
   );
 };
 

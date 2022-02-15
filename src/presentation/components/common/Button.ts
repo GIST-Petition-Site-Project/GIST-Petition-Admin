@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import PALETTE from '@styles/palette';
-interface ButtonProps {
+interface IButtonProps {
   full?: boolean;
   primary?: boolean;
 }
-const SButton = styled.button<ButtonProps>`
+const SButton = styled.button<IButtonProps>`
   border: none;
   border-radius: 0px;
   font-size: 1rem;
