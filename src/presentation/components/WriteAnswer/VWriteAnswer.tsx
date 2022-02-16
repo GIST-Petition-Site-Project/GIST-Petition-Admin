@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Wrapper, Title, StLine, StButton, BottomPadder } from '@components/common';
-import PALETTE from '@styles/palette';
 import { getDate } from '@utils/getTime';
 interface vWriteAnswerProps {
   petition: Petition | undefined;
@@ -10,16 +9,16 @@ interface vWriteAnswerProps {
 }
 
 const Writer = styled.textarea`
-  background-color: ${PALETTE.BACKGROUND};
+  background-color: ${(props) => props.theme.colors.background};
   font-family: Pretendard;
   font-size: 16px;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   width: 100%;
   height: 60vh;
   padding: 1em;
   outline-color: #444;
   :focus {
-    background-color: #222;
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 
@@ -38,7 +37,7 @@ const TitleWrapper = styled.div`
 const PetitionTitle = styled.div`
   white-space: pre-line;
   text-align: center;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   font-weight: 500;
   font-size: 28px;
   line-height: 1.5em;
@@ -51,7 +50,7 @@ const PetitionDescription = styled.div`
   padding-left: 1em;
   padding-right: 1em;
   margin-bottom: 1.5em;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5em;
@@ -62,7 +61,7 @@ const PetitionDate = styled.div`
   width: 100%;
   padding-right: 1em;
   text-align: end;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   font-weight: 200;
   font-size: 12px;
   line-height: 1.5em;

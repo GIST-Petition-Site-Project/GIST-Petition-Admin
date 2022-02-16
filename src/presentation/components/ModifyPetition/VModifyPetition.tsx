@@ -1,5 +1,3 @@
-import { StButton, Title, Wrapper } from '@components/common';
-import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 interface vModifyPeitionProps {
   // petition: Petition | undefined;
@@ -9,32 +7,32 @@ interface vModifyPeitionProps {
 }
 
 const TitleEditer = styled.textarea`
-  background-color: ${PALETTE.BACKGROUND};
+  background-color: ${(props) => props.theme.colors.background};
   font-family: Pretendard;
   font-size: 16px;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   width: 100%;
   height: 10vh;
   padding: 1em;
   margin-bottom: 1em;
   outline-color: #444;
   :focus {
-    background-color: #222;
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 
 const DescriptionEditer = styled.textarea`
-  background-color: ${PALETTE.BACKGROUND};
+  background-color: ${(props) => props.theme.colors.background};
   font-family: Pretendard;
   font-size: 16px;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   width: 100%;
   height: 60vh;
   padding: 1em;
   outline-color: #444;
   line-height: 1.5em;
   :focus {
-    background-color: #222;
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 

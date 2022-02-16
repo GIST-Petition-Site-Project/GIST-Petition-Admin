@@ -3,17 +3,11 @@ import { GlobalStyle } from '@styles/globalStyle';
 import MainRouter from '@routes/MainRouter';
 import Toast from '@components/Toast/Toast';
 import { getUsersMe } from '@api/userAPI';
-import { useAppDispatch } from '@hooks/useStore';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { setLogout, setUserRole } from '@stores/authSlice';
 import { useEffect } from 'react';
-import PALETTE from '@styles/palette';
-import styled from 'styled-components';
-
-// const Background = styled.div`
-//   background-color: ${PALETTE.BACKGROUND};
-//   width: 100%;
-//   height: 100%;
-// `;
+import { dark, light } from '@styles/theme';
+import { ThemeProvider } from 'styled-components';
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -24,17 +18,19 @@ const App = (): JSX.Element => {
       dispatch(setUserRole(''));
     }
   };
+  const isLightMode = useAppSelect((select) => select.mode.isLightMode);
+  const theme = isLightMode ? light : dark;
 
   useEffect(() => {
     checkSessionValid();
   }, []);
 
   return (
-    <>
-      <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle isLightMode={isLightMode} />
       <Toast />
       <MainRouter />
-    </>
+    </ThemeProvider>
   );
 };
 export default App;

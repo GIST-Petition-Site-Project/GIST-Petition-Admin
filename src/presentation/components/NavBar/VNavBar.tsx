@@ -1,18 +1,22 @@
-import logo from '@assets/img/new_logo.svg';
+import logo_dark from '@assets/img/logo_dark.svg';
+import logo_light from '@assets/img/logo_light.svg';
 import styled from 'styled-components';
-import palette from '@styles/palette';
-import PALETTE from '@styles/palette';
+import ToggleSwitch from '@components/NavBar/ToggleSwitch';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
+import { toggleMode } from '@stores/modeSlice';
 
 const NavBarBlock = styled.div`
-  color: white;
+  color: ${(props) => props.theme.colors.text};
+  /* background-color: ${(props) => props.theme.colors.background}; */
   height: 50px;
   position: sticky;
   top: 0px;
-  border-bottom: #444 1px solid;
+  border-bottom: ${(props) => props.theme.colors.line} 1px solid;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
+  transition: 0.2s;
 `;
 
 const Logo = styled.img`
@@ -35,6 +39,7 @@ const Menu = styled.div`
 
 const Role = styled.p`
   font-size: 15px;
+  margin-left: 10px;
 `;
 
 const LogoutBtn = styled.button`
@@ -43,13 +48,14 @@ const LogoutBtn = styled.button`
   padding: 6px;
   margin-left: 20px;
   background-color: transparent;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   border: 0px;
   border-radius: 40px;
   font-size: 15px;
-  transition: background-color 0.4s;
+  transition: 0.2s;
   :hover {
-    background-color: ${PALETTE.PRIMARY_RED};
+    background-color: ${(props) => props.theme.colors.gistRed};
+    color: white;
   }
 `;
 interface vNavBarProps {
@@ -59,14 +65,25 @@ interface vNavBarProps {
 
 const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
   // const role = 'ADMIN';
+  const isChecked = useAppSelect((select) => select.mode.isLightMode);
+  const isAuthorized = useAppSelect((select) => select.auth.isAuthorized);
+  const dispatch = useAppDispatch();
+  const vToggleSwitchProps = {
+    isChecked,
+    handleChange: () => {
+      dispatch(toggleMode());
+    },
+  };
+  const isLightMode = useAppSelect((select) => select.mode.isLightMode);
   return (
     <NavBarBlock>
       <a href="/">
-        <Logo src={logo} alt="logo" />
+        <Logo src={isLightMode ? logo_light : logo_dark} alt="logo" />
       </a>
       <Menu>
+        <ToggleSwitch {...vToggleSwitchProps} />
         <Role>{role}</Role>
-        <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn>
+        {isAuthorized ? <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn> : null}
       </Menu>
     </NavBarBlock>
   );

@@ -3,16 +3,18 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 import authReducer from './authSlice';
 import toastReducer from './toastSlice';
+import modeReducer from './modeSlice';
 
 const reducers = combineReducers({
   auth: authReducer,
   toast: toastReducer,
+  mode: modeReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'mode'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

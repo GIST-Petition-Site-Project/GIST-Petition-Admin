@@ -1,11 +1,10 @@
+import ToggleSwitch from '@components/NavBar/ToggleSwitch';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
-import palette from '@styles/palette';
 import styled from 'styled-components';
 
 const ContentsGrid = styled.div`
   height: 95vh;
-  background-color: #252525;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -13,28 +12,27 @@ const ContentsGrid = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 const StLink = styled.a`
-  /* background-color: #444; */
-  /* border: 1px solid white; */
   height: 100%;
   width: 100%;
   padding: 100;
   text-align: center;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   :link {
-    color: white;
+    color: ${(props) => props.theme.colors.text};
     text-decoration: none;
   }
   :visited {
-    color: white;
+    color: ${(props) => props.theme.colors.text};
     text-decoration: none;
   }
   &:hover {
-    color: white;
-    background-color: #222;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 
