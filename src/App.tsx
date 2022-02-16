@@ -3,7 +3,7 @@ import { GlobalStyle } from '@styles/globalStyle';
 import MainRouter from '@routes/MainRouter';
 import Toast from '@components/Toast/Toast';
 import { getUsersMe } from '@api/userAPI';
-import { useAppDispatch } from '@hooks/useStore';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { setLogout, setUserRole } from '@stores/authSlice';
 import { useEffect } from 'react';
 import { dark, light } from '@styles/theme';
@@ -18,17 +18,19 @@ const App = (): JSX.Element => {
       dispatch(setUserRole(''));
     }
   };
+  const isLightMode = useAppSelect((select) => select.mode.isLightMode);
+  const theme = isLightMode ? light : dark;
 
   useEffect(() => {
     checkSessionValid();
   }, []);
 
   return (
-    <>
-      <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle isLightMode={isLightMode} />
       <Toast />
       <MainRouter />
-    </>
+    </ThemeProvider>
   );
 };
 export default App;

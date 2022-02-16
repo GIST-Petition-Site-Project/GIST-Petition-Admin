@@ -12,7 +12,7 @@ interface IWrapper {
 }
 
 const Wrapper = styled.div<IWrapper>`
-  color: ${(props) => (props.color === 'warning' ? PALETTE.PRIMARY_RED : 'white')};
+  color: ${(props) => (props.color === 'warning' ? props.theme.colors.gistRed : 'white')};
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   /* background-color: black; */
@@ -46,7 +46,7 @@ const Message = styled.div`
 `;
 
 const Line = styled.div<ILine>`
-  background-color: ${(props) => (props.type === 'warning' ? PALETTE.PRIMARY_RED : 'white')};
+  background-color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : 'white')};
   animation: ${(props) => props.duration}s linear timer;
   position: absolute;
   bottom: 0;

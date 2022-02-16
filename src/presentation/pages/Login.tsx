@@ -1,5 +1,4 @@
 import LoginForm from '@components/LoginForm';
-import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 
 const LoginTemplateBlock = styled.div`
@@ -8,7 +7,7 @@ const LoginTemplateBlock = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background: ${PALETTE.BACKGROUND};
+  background: ${(props) => props.theme.colors.background};
   display: flex;
   flex-direction: column;
   justify-content: center;

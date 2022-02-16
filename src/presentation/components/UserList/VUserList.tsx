@@ -1,4 +1,3 @@
-import PALETTE from '@styles/palette';
 import styled from 'styled-components';
 
 interface vUserListProps {
@@ -18,11 +17,11 @@ const Useritem = styled.li`
 `;
 
 const StP = styled.p`
-  color: white;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const StLine = styled.hr`
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   border-color: white;
   background-color: white;
   opacity: 0.1;

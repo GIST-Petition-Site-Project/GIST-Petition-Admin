@@ -1,27 +1,25 @@
 import styled, { css } from 'styled-components';
-import PALETTE from '@styles/palette';
 
 export const Title = styled.h1`
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   font-weight: 700;
   font-size: 24px;
   margin-top: 36px;
   margin-bottom: 36px;
-  /* ::first-letter {
-    color: ${PALETTE.PRIMARY_RED};
-  } */
 `;
 
 export const Wrapper = styled.div`
-  background: ${PALETTE.BACKGROUND};
+  background-color: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.background};
   margin-left: 5%;
   margin-right: 5%;
+  transition: 0.2s linear;
 `;
 
 export const StLine = styled.hr`
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   border-color: white;
-  background-color: white;
+  /* background-color: white; */
   opacity: 0.1;
 `;
 
@@ -30,26 +28,28 @@ interface ButtonProps {
 }
 
 export const StButton = styled.button<ButtonProps>`
-  background-color: ${PALETTE.BACKGROUND};
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: 40px;
-  border: 1px solid white;
+  border: 1px solid ${(props) => props.theme.colors.text};
   font-family: Pretendard;
   font-size: 14px;
   padding: 12px 24px;
   margin: auto 0 auto 20px;
-  color: white;
-  transition: background-color 0.4s, border 0.4s;
-  --webkit-transition: background-color 0.4s, border 0.4s;
+  color: ${(props) => props.theme.colors.text};
+  /* transition: background-color 0.4s, border 0.4s;
+  --webkit-transition: background-color 0.4s, border 0.4s; */
+  transition: 0.2s linear;
   :hover {
-    background-color: ${PALETTE.PRIMARY_RED};
-    border: 1px solid ${PALETTE.PRIMARY_RED};
+    background-color: ${(props) => props.theme.colors.gistRed};
+    border: 1px solid ${(props) => props.theme.colors.gistRed};
+    color: white;
   }
   ${(props) =>
     props?.green &&
     css`
       :hover {
-        background-color: ${PALETTE.GREEN};
-        border: 1px solid ${PALETTE.GREEN};
+        background-color: ${(props) => props.theme.colors.gistGreen};
+        border: 1px solid ${(props) => props.theme.colors.gistGreen};
       }
     `}
 `;

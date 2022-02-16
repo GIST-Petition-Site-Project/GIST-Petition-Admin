@@ -1,4 +1,3 @@
-import SButton from '@components/common/Button';
 import styled from 'styled-components';
 interface vLoginFormProps {
   username: string;
@@ -55,9 +54,7 @@ const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFo
           onChange={handleChange}
           required
         />
-        <SButton type="submit" primary full style={{ marginTop: '1rem' }}>
-          Login
-        </SButton>
+        <button type="submit">Login</button>
       </form>
     </LoginFormBlock>
   );

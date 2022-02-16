@@ -12,10 +12,10 @@ const StUl = styled.ul`
 const PetitionItem = styled.div`
   display: grid;
   /* line-height: 50px; */
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: 1fr 6fr 100px;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   &:hover {
     background-color: #222;
   }
@@ -31,10 +31,10 @@ const PetitionTitle = styled.a`
   text-decoration: none;
   text-align: left;
   :link {
-    color: white;
+    color: ${(props) => props.theme.colors.text};
   }
   :visited {
-    color: white;
+    color: ${(props) => props.theme.colors.text};
   }
   &:hover {
     text-decoration: underline;
@@ -43,7 +43,7 @@ const PetitionTitle = styled.a`
 
 const StLine = styled.hr`
   margin: 0;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   border-color: white;
   background-color: white;
   opacity: 0.1;
