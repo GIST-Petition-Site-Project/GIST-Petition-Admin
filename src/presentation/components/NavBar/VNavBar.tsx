@@ -1,6 +1,5 @@
-import logo from '@assets/img/new_logo.svg';
+import logo from '@assets/img/logo_dark.svg';
 import styled from 'styled-components';
-import palette from '@styles/palette';
 import PALETTE from '@styles/palette';
 
 const NavBarBlock = styled.div`

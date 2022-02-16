@@ -36,7 +36,7 @@ export const StButton = styled.button<ButtonProps>`
   font-family: Pretendard;
   font-size: 14px;
   padding: 12px 24px;
-  margin: auto;
+  margin: auto 0 auto 20px;
   color: white;
   transition: background-color 0.4s, border 0.4s;
   --webkit-transition: background-color 0.4s, border 0.4s;

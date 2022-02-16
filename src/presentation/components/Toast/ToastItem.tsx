@@ -13,7 +13,10 @@ interface IWrapper {
 
 const Wrapper = styled.div<IWrapper>`
   color: ${(props) => (props.color === 'warning' ? PALETTE.PRIMARY_RED : 'white')};
-  background-color: black;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* background-color: black; */
+  border: 1px solid white;
   padding-bottom: 4px;
   position: relative;
   animation: 0.3s forwards ${(props) => (props.isClosing ? 'fadeout' : 'slideFromBottom')};
@@ -39,7 +42,7 @@ const Wrapper = styled.div<IWrapper>`
 `;
 
 const Message = styled.div`
-  margin: 10px;
+  margin: 10px 20px;
 `;
 
 const Line = styled.div<ILine>`

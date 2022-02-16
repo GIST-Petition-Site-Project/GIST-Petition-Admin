@@ -6,14 +6,8 @@ import { getUsersMe } from '@api/userAPI';
 import { useAppDispatch } from '@hooks/useStore';
 import { setLogout, setUserRole } from '@stores/authSlice';
 import { useEffect } from 'react';
-import PALETTE from '@styles/palette';
-import styled from 'styled-components';
-
-// const Background = styled.div`
-//   background-color: ${PALETTE.BACKGROUND};
-//   width: 100%;
-//   height: 100%;
-// `;
+import { dark, light } from '@styles/theme';
+import { ThemeProvider } from 'styled-components';
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
