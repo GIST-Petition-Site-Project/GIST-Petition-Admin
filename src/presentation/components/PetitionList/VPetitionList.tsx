@@ -17,7 +17,7 @@ const PetitionItem = styled.div`
   align-items: center;
   color: ${(props) => props.theme.colors.text};
   &:hover {
-    background-color: #222;
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 const PetitionDescription = styled.div`
@@ -43,9 +43,9 @@ const PetitionTitle = styled.a`
 
 const StLine = styled.hr`
   margin: 0;
-  color: ${(props) => props.theme.colors.text};
-  border-color: white;
-  background-color: white;
+  /* color: ${(props) => props.theme.colors.line}; */
+  /* border-color: ${(props) => props.theme.colors.line}; */
+  background-color: ${(props) => props.theme.colors.line};
   opacity: 0.1;
 `;
 

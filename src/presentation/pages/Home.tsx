@@ -32,7 +32,7 @@ const StLink = styled.a`
   }
   &:hover {
     color: ${(props) => props.theme.colors.text};
-    background-color: #222;
+    background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 

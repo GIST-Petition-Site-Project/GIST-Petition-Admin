@@ -12,11 +12,11 @@ interface IWrapper {
 }
 
 const Wrapper = styled.div<IWrapper>`
-  color: ${(props) => (props.color === 'warning' ? props.theme.colors.gistRed : 'white')};
+  color: ${(props) => (props.color === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   /* background-color: black; */
-  border: 1px solid white;
+  border: 1px solid ${(props) => props.theme.colors.text};
   padding-bottom: 4px;
   position: relative;
   animation: 0.3s forwards ${(props) => (props.isClosing ? 'fadeout' : 'slideFromBottom')};
@@ -46,7 +46,7 @@ const Message = styled.div`
 `;
 
 const Line = styled.div<ILine>`
-  background-color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : 'white')};
+  background-color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   animation: ${(props) => props.duration}s linear timer;
   position: absolute;
   bottom: 0;

@@ -44,10 +44,12 @@ const DescriptionWrapper = styled.div`
 
 const AddedSpan = styled.span`
   background-color: ${(props) => props.theme.colors.gistGreen};
+  color: white;
 `;
 const RemovedSpan = styled.span`
   background-color: ${(props) => props.theme.colors.gistRed};
   text-decoration: line-through;
+  color: white;
 `;
 const UnchangedSpan = styled.span`
   color: gray;

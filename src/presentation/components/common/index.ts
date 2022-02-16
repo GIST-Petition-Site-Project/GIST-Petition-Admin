@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
 export const StLine = styled.hr`
   color: ${(props) => props.theme.colors.text};
-  border-color: white;
+  border-color: ${(props) => props.theme.colors.line};
   /* background-color: white; */
   opacity: 0.1;
 `;

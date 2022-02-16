@@ -11,7 +11,7 @@ const NavBarBlock = styled.div`
   height: 50px;
   position: sticky;
   top: 0px;
-  border-bottom: #444 1px solid;
+  border-bottom: ${(props) => props.theme.colors.line} 1px solid;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   display: flex;
@@ -66,6 +66,7 @@ interface vNavBarProps {
 const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
   // const role = 'ADMIN';
   const isChecked = useAppSelect((select) => select.mode.isLightMode);
+  const isAuthorized = useAppSelect((select) => select.auth.isAuthorized);
   const dispatch = useAppDispatch();
   const vToggleSwitchProps = {
     isChecked,
@@ -82,7 +83,7 @@ const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
       <Menu>
         <ToggleSwitch {...vToggleSwitchProps} />
         <Role>{role}</Role>
-        <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn>
+        {isAuthorized ? <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn> : null}
       </Menu>
     </NavBarBlock>
   );

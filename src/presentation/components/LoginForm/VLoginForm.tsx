@@ -1,3 +1,4 @@
+import { StButton } from '@components/common';
 import styled from 'styled-components';
 interface vLoginFormProps {
   username: string;
@@ -6,36 +7,39 @@ interface vLoginFormProps {
   handleChange: any;
 }
 
-const LoginFormBlock = styled.div`
-  h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-    color: black;
-    margin-bottom: 1rem;
-  }
+export const Title = styled.h1`
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 300;
+  font-size: 24px;
+  margin-top: 36px;
+  margin-bottom: 36px;
 `;
 
 const SInput = styled.input`
-  font-size: 1rem;
-  border: none;
-  border-bottom: 1px solid gray;
-  padding-bottom: 0.5rem;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
+  font-size: 1em;
+  border: 1px solid ${(props) => props.theme.colors.text};
+  padding: 1em;
+  margin-bottom: 2em;
   outline: none;
   width: 100%;
-  &.focus {
-    color: $oc-teal-7;
-    border-bottom: 1px solid gray;
-  }
-  & + & {
-    margin-top: 1rem;
-  }
+  transition: 0.2s;
+`;
+
+const FormWrapper = styled.div`
+  height: 80vh;
+  padding: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 `;
 
 const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFormProps): JSX.Element => {
   return (
-    <LoginFormBlock>
-      <h3>지스트 청원 관리자</h3>
+    <FormWrapper>
+      <Title>관리자 로그인</Title>
       <form onSubmit={handleSubmit}>
         <SInput
           autoComplete="username"
@@ -54,9 +58,11 @@ const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFo
           onChange={handleChange}
           required
         />
-        <button type="submit">Login</button>
+        <StButton style={{ margin: 'auto', float: 'right', width: '150px' }} type="submit">
+          Login
+        </StButton>
       </form>
-    </LoginFormBlock>
+    </FormWrapper>
   );
 };
 
