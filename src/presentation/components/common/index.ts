@@ -10,7 +10,6 @@ export const Title = styled.h1`
 
 export const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
-  background: ${(props) => props.theme.colors.background};
   margin-left: 5%;
   margin-right: 5%;
   transition: 0.2s linear;
@@ -36,8 +35,6 @@ export const StButton = styled.button<ButtonProps>`
   padding: 12px 24px;
   margin: auto 0 auto 20px;
   color: ${(props) => props.theme.colors.text};
-  /* transition: background-color 0.4s, border 0.4s;
-  --webkit-transition: background-color 0.4s, border 0.4s; */
   transition: 0.2s linear;
   :hover {
     background-color: ${(props) => props.theme.colors.gistRed};

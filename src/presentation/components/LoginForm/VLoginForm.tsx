@@ -29,7 +29,9 @@ const SInput = styled.input`
 
 const FormWrapper = styled.div`
   height: 80vh;
-  padding: 20vw;
+  /* padding: 20vw; */
+  /* width: 400px; */
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;

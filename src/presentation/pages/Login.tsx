@@ -3,7 +3,7 @@ import { Wrapper } from '@components/common';
 
 const Login = () => {
   return (
-    <Wrapper>
+    <Wrapper style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <LoginForm />
     </Wrapper>
   );
