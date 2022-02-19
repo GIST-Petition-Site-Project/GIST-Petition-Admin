@@ -22,6 +22,7 @@ const StLink = styled.a`
   padding: 100;
   text-align: center;
   color: ${(props) => props.theme.colors.text};
+  transition: 0.2s;
   :link {
     color: ${(props) => props.theme.colors.text};
     text-decoration: none;
@@ -41,19 +42,23 @@ const Home = (): JSX.Element => {
 
   /* for testing toast */
   const toast = useToast();
-  const fireToast = () => {
-    toast({ message: 'clicked', type: 'success' });
-    console.log(role);
+  const fireSuccess = () => {
+    toast({ message: 'success', type: 'success' });
+  };
+  const fireWarning = () => {
+    toast({ message: 'warning', type: 'warning' });
   };
 
   return (
     <>
       <ContentsGrid>
         {role === 'ADMIN' ? <StLink href="/role">유저 역할 변경</StLink> : null}
-        {role === 'ADMIN' ? <div>청원 변경 이력 보기</div> : null}
+        {/* {role === 'ADMIN' ? <div>청원 변경 이력 보기</div> : null} */}
+        {role === 'MANAGER' ? <StLink href="/approve">청원 승인</StLink> : null}
         {role === 'MANAGER' ? <StLink href="/answer">답변 등록</StLink> : null}
         {role === 'MANAGER' ? <StLink href="/modify">청원 수정</StLink> : null}
-        <button onClick={fireToast}> 토스트 </button>
+        <button onClick={fireSuccess}> 성공 토스트 </button>
+        <button onClick={fireWarning}> 실패 토스트 </button>
       </ContentsGrid>
     </>
   );

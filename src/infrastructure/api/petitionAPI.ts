@@ -11,6 +11,12 @@ const getPetitionById = async (petitionId: string | undefined) => {
   return response;
 };
 
+const getTempPetition = async (tempURL: string | undefined) => {
+  if (!tempURL) return;
+  const response = await API.get(`petitions/temp/${tempURL}`);
+  return response;
+};
+
 const putPetition = async (petitionId: string | undefined, categoryId: number, title: string, description: string) => {
   if (!petitionId) return;
   console.log(title);
@@ -23,4 +29,15 @@ const putPetition = async (petitionId: string | undefined, categoryId: number, t
   return response;
 };
 
-export { getPetitions, getPetitionById, putPetition };
+const postPetitionRelease = async (petitionId: string | undefined) => {
+  if (!petitionId) return;
+  const response = await API.post(`petitions/${petitionId}/release`);
+  return response;
+};
+
+const getPeitionsWaiting = async () => {
+  const response = await API.get('petitions/waitingForCheck?size=100');
+  return response;
+};
+
+export { getPetitions, getPetitionById, putPetition, postPetitionRelease, getPeitionsWaiting, getTempPetition };

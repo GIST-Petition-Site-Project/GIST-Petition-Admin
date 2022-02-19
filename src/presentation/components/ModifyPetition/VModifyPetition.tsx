@@ -43,12 +43,10 @@ const FormWrapper = styled.div`
 
 const VModifyPetition = ({ title, description, handleChange }: vModifyPeitionProps): JSX.Element => {
   return (
-    <>
-      <FormWrapper>
-        <TitleEditer name="title" value={title} onChange={handleChange}></TitleEditer>
-        <DescriptionEditer name="description" value={description} onChange={handleChange}></DescriptionEditer>
-      </FormWrapper>
-    </>
+    <FormWrapper>
+      <TitleEditer name="title" value={title} onChange={handleChange}></TitleEditer>
+      <DescriptionEditer name="description" value={description} onChange={handleChange}></DescriptionEditer>
+    </FormWrapper>
   );
 };
 

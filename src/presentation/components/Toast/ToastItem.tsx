@@ -1,4 +1,3 @@
-import PALETTE from '@styles/palette';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -9,14 +8,15 @@ interface ILine {
 
 interface IWrapper {
   isClosing: boolean;
+  type: 'success' | 'warning';
 }
 
 const Wrapper = styled.div<IWrapper>`
-  color: ${(props) => (props.color === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
+  color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   /* background-color: black; */
-  border: 1px solid ${(props) => props.theme.colors.text};
+  border: 1px solid ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   padding-bottom: 4px;
   position: relative;
   animation: 0.3s forwards ${(props) => (props.isClosing ? 'fadeout' : 'slideFromBottom')};
@@ -76,7 +76,7 @@ const ToastItem = ({ message, type, duration }: Toast) => {
   }, []);
 
   return (
-    <Wrapper isClosing={isClosing}>
+    <Wrapper type={type} isClosing={isClosing}>
       <Message color={type}>
         <div>{message}</div>
       </Message>
