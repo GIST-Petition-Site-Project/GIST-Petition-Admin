@@ -14,7 +14,6 @@ const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const toast = useToast();
-
   const vLoginFormProps = {
     username,
     password,
@@ -30,6 +29,7 @@ const LoginForm = (): JSX.Element => {
       event.preventDefault();
       await postLogin(username, password);
       const response = await getUsersMe();
+      if (response.data.message) toast({ message: response.data.message, type: 'warning' });
       if (response?.data?.userRole === 'ADMIN' || response?.data?.userRole === 'MANAGER') {
         dispatch(setLogin());
         dispatch(setUserRole(response.data.userRole));
