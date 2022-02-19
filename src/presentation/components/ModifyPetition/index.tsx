@@ -2,8 +2,8 @@ import { getPetitionById, putPetition } from '@api/petitionAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import VModifyPetition from './VModifyPetition';
-import { Change, diffChars, diffWords } from 'diff';
-import VChangeHighlight from './VChangeHighlight';
+import { Change, diffChars } from 'diff';
+import VChangeHighlight from '@components/common/VChangeHighlight';
 import styled from 'styled-components';
 import { Wrapper, Title, StButton } from '@components/common';
 

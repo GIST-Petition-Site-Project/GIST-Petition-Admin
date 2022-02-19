@@ -19,3 +19,13 @@ interface Answer {
   updatedAt: string;
   userId: number;
 }
+
+interface Revision {
+  petitionTitle: string;
+  petitionDescription: string;
+  petitionCategory: string;
+  revisionId: number;
+  revisionTime: string;
+  revisionType: string;
+  workedBy: number;
+}

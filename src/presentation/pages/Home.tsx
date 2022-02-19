@@ -78,6 +78,9 @@ const Home = (): JSX.Element => {
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <StButton onClick={() => navigate('/answer')}>답변 등록</StButton>
           ) : null}
+          {role === 'MANAGER' || role === 'ADMIN' ? (
+            <StButton onClick={() => navigate('/revision')}>청원 수정 이력</StButton>
+          ) : null}
         </Buttons>
       </ContentsGrid>
     </>

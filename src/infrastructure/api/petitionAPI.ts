@@ -59,3 +59,8 @@ export const getWaitingAnswerCount = async () => {
   const response = await API.get('/petitions/waitingForAnswer/count');
   return response;
 };
+
+export const getPetitionRevisions = async (petitionId: string | undefined) => {
+  const response = await API.get(`petitions/${petitionId}/revisions`);
+  return response;
+};

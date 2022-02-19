@@ -55,6 +55,19 @@ export const StButton = styled.button<ButtonProps>`
   }
 `;
 
+export const StSelect = styled.select`
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  color: ${(props) => props.theme.colors.text};
+  height: 30px;
+  padding: 0.5em;
+  margin-right: 1px;
+  border-radius: 5px;
+  text-align: center;
+`;
+
 export const BottomPadder = styled.div`
   height: 50px;
 `;
