@@ -5,7 +5,7 @@ const Approve = (): JSX.Element => {
   return (
     <Wrapper>
       <Title>청원 승인</Title>
-      <PetitionList type="waiting" />
+      <PetitionList type="release" />
     </Wrapper>
   );
 };

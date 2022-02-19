@@ -1,4 +1,4 @@
-import { getPeitionsWaiting, getPetitions } from '@api/petitionAPI';
+import { getWaitingRelease, getPetitions, getWaitingAnswer } from '@api/petitionAPI';
 import { useEffect, useState } from 'react';
 import VPetitionList from './VPetitionList';
 
@@ -10,10 +10,15 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
   const [petitions, setPetitions] = useState<Array<Petition>>([]);
   const fetchPetitions = async () => {
     switch (type) {
-      case 'waiting':
-        const responseWaiting = await getPeitionsWaiting();
-        console.log(responseWaiting);
-        setPetitions(responseWaiting?.data?.content);
+      case 'release':
+        const responseRelease = await getWaitingRelease();
+        console.log(responseRelease);
+        setPetitions(responseRelease?.data?.content);
+        break;
+      case 'answer':
+        const responseAnswer = await getWaitingAnswer();
+        console.log(responseAnswer);
+        setPetitions(responseAnswer?.data?.content);
         break;
       default:
         const response = await getPetitions();

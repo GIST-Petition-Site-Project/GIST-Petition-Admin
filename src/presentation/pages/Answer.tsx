@@ -6,7 +6,7 @@ const Answer = (): JSX.Element => {
   return (
     <Wrapper>
       <Title>답변 등록</Title>
-      <PetitionList />
+      <PetitionList type="answer" />
     </Wrapper>
   );
 };

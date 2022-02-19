@@ -1,7 +1,6 @@
 import { getTempPetition, postPetitionRelease } from '@api/petitionAPI';
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import VAC from 'react-vac';
 import VApprovePetition from './VApprovePetition';
 import { useToast } from '@hooks/useToast';
 

@@ -1,23 +1,28 @@
 import API from './baseAPI';
 
-const getPetitions = async () => {
+export const getPetitions = async () => {
   const response = await API.get('petitions?size=100');
   return response;
 };
 
-const getPetitionById = async (petitionId: string | undefined) => {
+export const getPetitionById = async (petitionId: string | undefined) => {
   if (!petitionId) return;
   const response = await API.get(`petitions/${petitionId}`);
   return response;
 };
 
-const getTempPetition = async (tempURL: string | undefined) => {
+export const getTempPetition = async (tempURL: string | undefined) => {
   if (!tempURL) return;
   const response = await API.get(`petitions/temp/${tempURL}`);
   return response;
 };
 
-const putPetition = async (petitionId: string | undefined, categoryId: number, title: string, description: string) => {
+export const putPetition = async (
+  petitionId: string | undefined,
+  categoryId: number,
+  title: string,
+  description: string,
+) => {
   if (!petitionId) return;
   console.log(title);
   const payload = {
@@ -29,15 +34,28 @@ const putPetition = async (petitionId: string | undefined, categoryId: number, t
   return response;
 };
 
-const postPetitionRelease = async (petitionId: string | undefined) => {
+export const postPetitionRelease = async (petitionId: string | undefined) => {
   if (!petitionId) return;
   const response = await API.post(`petitions/${petitionId}/release`);
   return response;
 };
 
-const getPeitionsWaiting = async () => {
-  const response = await API.get('petitions/waitingForCheck?size=100');
+export const getWaitingRelease = async () => {
+  const response = await API.get('petitions/waitingForRelease?size=100');
   return response;
 };
 
-export { getPetitions, getPetitionById, putPetition, postPetitionRelease, getPeitionsWaiting, getTempPetition };
+export const getWaitingAnswer = async () => {
+  const response = await API.get('petitions/waitingForAnswer?size=100');
+  return response;
+};
+
+export const getWaitingReleaseCount = async () => {
+  const response = await API.get('/petitions/waitingForRelease/count');
+  return response;
+};
+
+export const getWaitingAnswerCount = async () => {
+  const response = await API.get('/petitions/waitingForAnswer/count');
+  return response;
+};

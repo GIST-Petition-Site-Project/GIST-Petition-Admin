@@ -1,7 +1,9 @@
+import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
 import { StButton } from '@components/common';
 import ToggleSwitch from '@components/NavBar/ToggleSwitch';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -44,14 +46,26 @@ const Buttons = styled.div`
 `;
 
 const Home = (): JSX.Element => {
+  const [release, setRelease] = useState(0);
+  const [answer, setAnswer] = useState(0);
+
+  const getCounts = async () => {
+    const response1 = await getWaitingReleaseCount();
+    const response2 = await getWaitingAnswerCount();
+    setRelease(response1.data);
+    setAnswer(response2.data);
+  };
+  useEffect(() => {
+    getCounts();
+  });
   const role = useAppSelect((select) => select.auth.role);
   const navigate = useNavigate();
   return (
     <>
       <ContentsGrid>
         <Dashboard>
-          <DashboardText>현재 승인을 기다리는 6개의 청원과, </DashboardText>
-          <DashboardText>답변을 기다리는 2개의 청원이 있습니다.</DashboardText>
+          <DashboardText>{`현재 승인을 기다리는 ${release}개의 청원과, `}</DashboardText>
+          <DashboardText>{`답변을 기다리는 ${answer}개의 청원이 있습니다.`}</DashboardText>
         </Dashboard>
         <Buttons>
           {role === 'ADMIN' ? <StButton onClick={() => navigate('/role')}>역할 변경</StButton> : null}
