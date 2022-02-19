@@ -25,6 +25,7 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
   }, []);
 
   const vPetitionListProps = {
+    type,
     petitions,
   };
 

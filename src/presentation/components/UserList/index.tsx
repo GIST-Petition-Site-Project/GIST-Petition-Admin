@@ -1,4 +1,5 @@
 import { getUsers, putUserRole } from '@api/userAPI';
+import { useToast } from '@hooks/useToast';
 import { ChangeEvent, useEffect, useState } from 'react';
 import VUserList from './VUserList';
 
@@ -22,13 +23,18 @@ const UserList = (): JSX.Element => {
     fetchUsers();
   }, []);
 
+  const toast = useToast();
+
   const vUserListProps = {
     users,
     each: (user: User) => ({
       ...user,
       handleChange: async (event: ChangeEvent<HTMLSelectElement>) => {
-        await putUserRole(user.id, event.target.value);
-        await fetchUsers();
+        const response = await putUserRole(user.id, event.target.value);
+        if (response.status === 204) {
+          toast({ message: '역할이 변경되었습니다.', type: 'success' });
+          await fetchUsers();
+        }
       },
     }),
   };

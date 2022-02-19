@@ -1,3 +1,4 @@
+import { StLine } from '@components/common';
 import styled from 'styled-components';
 
 interface vUserListProps {
@@ -6,7 +7,7 @@ interface vUserListProps {
 }
 
 const StUl = styled.ul`
-  line-height: 40px;
+  line-height: 50px;
 `;
 
 const Useritem = styled.li`
@@ -14,25 +15,24 @@ const Useritem = styled.li`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  :hover {
+    background-color: ${(props) => props.theme.colors.focus};
+  }
 `;
 
 const StP = styled.p`
   color: ${(props) => props.theme.colors.text};
 `;
 
-const StLine = styled.hr`
-  color: ${(props) => props.theme.colors.text};
-  border-color: white;
-  background-color: white;
-  opacity: 0.1;
-`;
-
 const StSelect = styled.select`
   -webkit-appearance: none; /* 네이티브 외형 감추기 */
   -moz-appearance: none;
   appearance: none;
+  background: transparent;
+  color: ${(props) => props.theme.colors.text};
   height: 30px;
   padding: 0.5em;
+  margin-right: 1px;
   border-radius: 5px;
   text-align: center;
 `;
