@@ -1,4 +1,3 @@
-import Card from '@components/Card/Card';
 import { StButton } from '@components/common';
 import ToggleSwitch from '@components/NavBar/ToggleSwitch';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
@@ -7,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ContentsGrid = styled.div`
-  height: 90vh;
+  height: 85vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
@@ -22,6 +21,7 @@ const ContentsGrid = styled.div`
 const Dashboard = styled.div`
   display: flex;
   flex-direction: column;
+  row-gap: 1em;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -33,7 +33,7 @@ const Dashboard = styled.div`
 `;
 
 const DashboardText = styled.div`
-  font-size: 3em;
+  font-size: 4vw;
   font-weight: 900;
 `;
 
@@ -50,19 +50,19 @@ const Home = (): JSX.Element => {
     <>
       <ContentsGrid>
         <Dashboard>
-          <DashboardText>현재 승인을 기다리는 3개의 청원과, </DashboardText>
-          <DashboardText>답변을 기다리는 10개의 청원이 있습니다.</DashboardText>
+          <DashboardText>현재 승인을 기다리는 6개의 청원과, </DashboardText>
+          <DashboardText>답변을 기다리는 2개의 청원이 있습니다.</DashboardText>
         </Dashboard>
         <Buttons>
           {role === 'ADMIN' ? <StButton onClick={() => navigate('/role')}>역할 변경</StButton> : null}
+          {role === 'MANAGER' || role === 'ADMIN' ? (
+            <StButton onClick={() => navigate('/modify')}>청원 수정</StButton>
+          ) : null}
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <StButton onClick={() => navigate('/approve')}>청원 승인</StButton>
           ) : null}
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <StButton onClick={() => navigate('/answer')}>답변 등록</StButton>
-          ) : null}
-          {role === 'MANAGER' || role === 'ADMIN' ? (
-            <StButton onClick={() => navigate('/modify')}>청원 수정</StButton>
           ) : null}
         </Buttons>
       </ContentsGrid>

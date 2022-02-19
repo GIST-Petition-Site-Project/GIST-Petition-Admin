@@ -28,6 +28,7 @@ const Logo = styled.img`
 `;
 const Menu = styled.div`
   display: flex;
+  column-gap: 10px;
   align-items: center;
   justify-content: space-between;
   position: absolute;
@@ -39,14 +40,12 @@ const Menu = styled.div`
 
 const Role = styled.p`
   font-size: 15px;
-  margin-left: 10px;
 `;
 
 const LogoutBtn = styled.button`
   cursor: pointer;
   font-family: Pretendard;
   padding: 6px;
-  margin-left: 20px;
   background-color: transparent;
   color: ${(props) => props.theme.colors.text};
   border: 0px;

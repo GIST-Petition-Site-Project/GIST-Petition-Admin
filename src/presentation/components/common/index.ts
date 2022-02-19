@@ -34,7 +34,7 @@ export const StButton = styled.button<ButtonProps>`
   font-family: Pretendard;
   font-size: 14px;
   padding: 12px 24px;
-  /* margin: auto 0 auto 20px; */
+  margin: auto 0 auto 0;
   color: ${(props) => props.theme.colors.text};
   transition: 0.2s linear;
   :hover {
