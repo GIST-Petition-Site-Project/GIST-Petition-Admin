@@ -17,7 +17,7 @@ const TitleWrapper = styled.div`
   padding: 1em;
   margin-bottom: 1em;
   outline-color: #444;
-  transition: 0.2s;
+  /* transition: 0.2s; */
   :focus {
     background-color: ${(props) => props.theme.colors.focus};
   }
@@ -36,7 +36,7 @@ const DescriptionWrapper = styled.div`
   padding: 1em;
   outline-color: #444;
   line-height: 1.5em;
-  transition: 0.2s;
+  /* transition: 0.2s; */
   :focus {
     background-color: ${(props) => props.theme.colors.focus};
   }

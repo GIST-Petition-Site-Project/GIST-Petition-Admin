@@ -22,7 +22,7 @@ const StLink = styled.a`
   padding: 100;
   text-align: center;
   color: ${(props) => props.theme.colors.text};
-  transition: 0.2s;
+  /* transition: 0.2s; */
   :link {
     color: ${(props) => props.theme.colors.text};
     text-decoration: none;

@@ -16,7 +16,7 @@ const NavBarBlock = styled.div`
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
-  transition: 0.2s;
+  /* transition: 0.2s; */
 `;
 
 const Logo = styled.img`

@@ -27,7 +27,7 @@ const App = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle isLightMode={isLightMode} />
+      <GlobalStyle />
       <Toast />
       <MainRouter />
     </ThemeProvider>

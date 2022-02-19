@@ -6,13 +6,14 @@ export const Title = styled.h1`
   font-size: 24px;
   margin-top: 36px;
   margin-bottom: 36px;
+  /* transition: 0.2s; */
 `;
 
 export const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   margin-left: 5%;
   margin-right: 5%;
-  transition: 0.2s linear;
+  /* transition: 0.2s linear; */
 `;
 
 export const StLine = styled.hr`

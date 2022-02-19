@@ -24,7 +24,7 @@ const SInput = styled.input`
   margin-bottom: 2em;
   outline: none;
   width: 100%;
-  transition: 0.2s;
+  /* transition: 0.2s; */
 `;
 
 const FormWrapper = styled.div`
