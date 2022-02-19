@@ -1,6 +1,5 @@
-import { getPetitionById, postPetitionRelease } from '@api/petitionAPI';
-import { getAnswer, postAnswer, putAnswer } from '@api/answerAPI';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { getTempPetition, postPetitionRelease } from '@api/petitionAPI';
+import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 // import VAC from 'react-vac';
 import VApprovePetition from './VApprovePetition';
@@ -10,7 +9,7 @@ const WriteAnswer = (): JSX.Element => {
   const { petitionId } = useParams();
   const [petition, setPetition] = useState<Petition | undefined>();
   const fetchPetition = async () => {
-    const response = await getPetitionById(petitionId);
+    const response = await getTempPetition(petitionId);
     setPetition(response?.data);
   };
   useEffect(() => {
@@ -24,7 +23,7 @@ const WriteAnswer = (): JSX.Element => {
     petition,
     handleClick: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const response = await postPetitionRelease(petitionId);
+      const response = await postPetitionRelease(String(petition?.id));
       navigate('/approve');
       fireToast({ message: '청원이 게시되었습니다.', type: 'success' });
     },

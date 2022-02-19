@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface vPetitionListProps {
   petitions: Array<Petition>;
+  type: any;
 }
 
 const StUl = styled.ul`
@@ -49,18 +50,18 @@ const StLine = styled.hr`
   opacity: 0.1;
 `;
 
-const VPetitionList = ({ petitions }: vPetitionListProps): JSX.Element => {
+const VPetitionList = ({ petitions, type }: vPetitionListProps): JSX.Element => {
   return (
     <StUl>
       <StLine />
       {petitions.map((petition) => {
         ('');
-        const { id, categoryName, title, createdAt } = petition;
+        const { id, categoryName, title, createdAt, tempUrl } = petition;
         return (
           <div key={'petition_item_' + id}>
             <PetitionItem>
               <PetitionDescription>{categoryName}</PetitionDescription>
-              <PetitionTitle href={`${location.pathname}/${id}`}>{title}</PetitionTitle>
+              <PetitionTitle href={`${location.pathname}/${type === 'waiting' ? tempUrl : id}`}>{title}</PetitionTitle>
               <PetitionDescription>{getDayTime(createdAt)}</PetitionDescription>
             </PetitionItem>
             <StLine />
