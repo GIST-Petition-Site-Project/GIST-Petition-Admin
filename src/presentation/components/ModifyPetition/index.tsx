@@ -27,7 +27,8 @@ const TitleWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: auto 0;
+  display: flex;
+  column-gap: 20px;
   justify-content: center;
 `;
 
