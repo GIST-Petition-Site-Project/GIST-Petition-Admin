@@ -12,12 +12,10 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
     switch (type) {
       case 'release':
         const responseRelease = await getWaitingRelease();
-        console.log(responseRelease);
         setPetitions(responseRelease?.data?.content);
         break;
       case 'answer':
         const responseAnswer = await getWaitingAnswer();
-        console.log(responseAnswer);
         setPetitions(responseAnswer?.data?.content);
         break;
       default:

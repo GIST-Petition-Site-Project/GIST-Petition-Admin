@@ -61,7 +61,7 @@ const VPetitionList = ({ petitions, type }: vPetitionListProps): JSX.Element => 
           <div key={'petition_item_' + id}>
             <PetitionItem>
               <PetitionDescription>{categoryName}</PetitionDescription>
-              <PetitionTitle href={`${location.pathname}/${type === 'waiting' ? tempUrl : id}`}>{title}</PetitionTitle>
+              <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>{title}</PetitionTitle>
               <PetitionDescription>{getDayTime(createdAt)}</PetitionDescription>
             </PetitionItem>
             <StLine />
