@@ -45,6 +45,10 @@ const PetitionDate = styled.div`
   line-height: 1.5em;
 `;
 
+const MLine = styled(StLine)`
+  margin-bottom: 2em;
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -60,7 +64,7 @@ const VApprovePetition = ({ petition, handleClick }: vWriteAnswerProps): JSX.Ele
         <PetitionDate>최초 작성 {getDate(petition?.createdAt || '')}</PetitionDate>
         <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || '')}</PetitionDate>
       </PetitionWrapper>
-      <StLine />
+      <MLine />
       <ButtonWrapper>
         <StButton onClick={handleClick}>청원 승인</StButton>
       </ButtonWrapper>
