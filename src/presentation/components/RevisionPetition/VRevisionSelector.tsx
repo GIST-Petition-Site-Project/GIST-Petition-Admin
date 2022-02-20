@@ -18,7 +18,7 @@ const SelectWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 20px;
+  column-gap: 10px;
 `;
 
 const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): JSX.Element => {
@@ -34,6 +34,7 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
     <Flex>
       <Title>청원 변경 이력</Title>
       <SelectWrapper>
+        <div>FROM</div>
         <StSelect value={from} onChange={fromChange}>
           {fromSelector.map((el) => (
             <option key={'from' + el} value={el}>
@@ -41,6 +42,7 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
             </option>
           ))}
         </StSelect>
+        <div>TO</div>
         <StSelect value={to} onChange={toChange}>
           {toSelector.map((el) => (
             <option key={'to' + el} value={el}>

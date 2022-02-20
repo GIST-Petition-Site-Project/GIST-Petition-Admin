@@ -81,7 +81,7 @@ const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
       </a>
       <Menu>
         <ToggleSwitch {...vToggleSwitchProps} />
-        <Role>{role}</Role>
+        {/* <Role>{role}</Role> */}
         {isAuthorized ? <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn> : null}
       </Menu>
     </NavBarBlock>

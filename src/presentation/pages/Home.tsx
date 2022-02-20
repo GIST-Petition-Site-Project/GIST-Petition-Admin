@@ -1,8 +1,6 @@
 import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
 import { StButton } from '@components/common';
-import ToggleSwitch from '@components/NavBar/ToggleSwitch';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
-import { useToast } from '@hooks/useToast';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -50,9 +48,28 @@ const Buttons = styled.div`
 `;
 
 const HomeButton = styled(StButton)`
+  position: relative;
   margin: 1.5vw 2vw;
   font-size: 1.5vw;
   font-weight: 400;
+  cursor: pointer;
+  :hover #noti {
+    display: none;
+  }
+`;
+
+const Noti = styled.div`
+  position: absolute;
+  text-align: center;
+  top: -5px;
+  right: -5px;
+  height: 16px;
+  width: 16px;
+  font-size: 12px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.colors.gistRed};
+  color: white;
+  transition: 0.2s;
 `;
 
 const Home = (): JSX.Element => {
@@ -67,9 +84,10 @@ const Home = (): JSX.Element => {
   };
   useEffect(() => {
     getCounts();
-  });
+  }, []);
   const role = useAppSelect((select) => select.auth.role);
   const navigate = useNavigate();
+
   return (
     <>
       <ContentsGrid>
@@ -83,10 +101,16 @@ const Home = (): JSX.Element => {
             <HomeButton onClick={() => navigate('/modify')}>청원 수정</HomeButton>
           ) : null}
           {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/approve')}>청원 승인</HomeButton>
+            <HomeButton onClick={() => navigate('/approve')}>
+              {release ? <Noti id="noti">{release}</Noti> : null}
+              청원 승인
+            </HomeButton>
           ) : null}
           {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/answer')}>답변 등록</HomeButton>
+            <HomeButton onClick={() => navigate('/answer')}>
+              {answer ? <Noti id="noti">{answer}</Noti> : null}
+              답변 등록
+            </HomeButton>
           ) : null}
           {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/revision')}>청원 수정 이력</HomeButton> : null}
         </Buttons>

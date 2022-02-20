@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* z-index: 10001; */
+  z-index: 10000;
   gap: 10px;
 `;
 
