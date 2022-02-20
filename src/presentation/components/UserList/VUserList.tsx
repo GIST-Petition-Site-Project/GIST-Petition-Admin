@@ -1,4 +1,4 @@
-import { StLine } from '@components/common';
+import { BottomPadder, StLine } from '@components/common';
 import styled from 'styled-components';
 
 interface vUserListProps {
@@ -7,21 +7,29 @@ interface vUserListProps {
 }
 
 const StUl = styled.ul`
-  line-height: 50px;
+  line-height: 1em;
 `;
 
 const Useritem = styled.li`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 90px;
   align-items: center;
-  width: 100%;
+  height: 64px;
   :hover {
     background-color: ${(props) => props.theme.colors.focus};
   }
 `;
 
+const HeaderItem = styled(Useritem)`
+  height: 2em;
+`;
+
 const StP = styled.p`
   color: ${(props) => props.theme.colors.text};
+`;
+
+const StRole = styled(StP)`
+  text-align: center;
 `;
 
 const StSelect = styled.select`
@@ -40,25 +48,32 @@ const StSelect = styled.select`
 const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
   const roles = ['USER', 'MANAGER', 'ADMIN'];
   return (
-    <StUl>
-      <StLine />
-      {users?.map((user) => {
-        const { id, username, userRole, handleChange } = each(user);
-        return (
-          <div key={'user_item_' + id}>
-            <Useritem>
-              <StP>{username}</StP>
-              <StSelect onChange={handleChange} value={userRole}>
-                {roles.map((role) => {
-                  return <option key={id + role}>{role}</option>;
-                })}
-              </StSelect>
-            </Useritem>
-            <StLine />
-          </div>
-        );
-      })}
-    </StUl>
+    <>
+      <StUl>
+        <HeaderItem>
+          <StP>이메일</StP>
+          <StRole>역할</StRole>
+        </HeaderItem>
+        <StLine />
+        {users?.map((user) => {
+          const { id, username, userRole, handleChange } = each(user);
+          return (
+            <div key={'user_item_' + id}>
+              <Useritem>
+                <StP>{username}</StP>
+                <StSelect onChange={handleChange} value={userRole}>
+                  {roles.map((role) => {
+                    return <option key={id + role}>{role}</option>;
+                  })}
+                </StSelect>
+              </Useritem>
+              <StLine />
+            </div>
+          );
+        })}
+      </StUl>
+      <BottomPadder />
+    </>
   );
 };
 

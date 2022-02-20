@@ -1,4 +1,5 @@
-import { getDayTime } from '@utils/getTime';
+import { BottomPadder, StLine } from '@components/common';
+import { getDay } from '@utils/getTime';
 import styled from 'styled-components';
 
 interface vPetitionListProps {
@@ -13,18 +14,25 @@ const StUl = styled.ul`
 const PetitionItem = styled.div`
   display: grid;
   /* line-height: 50px; */
-  grid-template-columns: 1fr 6fr 100px;
+  grid-template-columns: 80px 1fr 64px;
   justify-content: center;
   align-items: center;
+  height: 64px;
   color: ${(props) => props.theme.colors.text};
   &:hover {
     background-color: ${(props) => props.theme.colors.focus};
   }
 `;
+
+const HeaderItem = styled(PetitionItem)`
+  height: 2em;
+`;
+
 const PetitionDescription = styled.div`
   /* line-height: 1em; */
   text-align: center;
 `;
+
 const PetitionTitle = styled.a`
   padding-left: 1em;
   line-height: 1.5em;
@@ -42,33 +50,35 @@ const PetitionTitle = styled.a`
   }
 `;
 
-const StLine = styled.hr`
-  margin: 0;
-  /* color: ${(props) => props.theme.colors.line}; */
-  /* border-color: ${(props) => props.theme.colors.line}; */
-  background-color: ${(props) => props.theme.colors.line};
-  opacity: 0.1;
-`;
-
 const VPetitionList = ({ petitions, type }: vPetitionListProps): JSX.Element => {
   return (
-    <StUl>
-      <StLine />
-      {petitions.map((petition) => {
-        ('');
-        const { id, categoryName, title, createdAt, tempUrl } = petition;
-        return (
-          <div key={'petition_item_' + id}>
-            <PetitionItem>
-              <PetitionDescription>{categoryName}</PetitionDescription>
-              <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>{title}</PetitionTitle>
-              <PetitionDescription>{getDayTime(createdAt)}</PetitionDescription>
-            </PetitionItem>
-            <StLine />
-          </div>
-        );
-      })}
-    </StUl>
+    <>
+      <StUl>
+        <HeaderItem>
+          <PetitionDescription>분류</PetitionDescription>
+          <PetitionDescription>제목</PetitionDescription>
+          <PetitionDescription>작성 일자</PetitionDescription>
+        </HeaderItem>
+        <StLine />
+        {petitions.map((petition) => {
+          ('');
+          const { id, categoryName, title, createdAt, tempUrl } = petition;
+          return (
+            <div key={'petition_item_' + id}>
+              <PetitionItem>
+                <PetitionDescription>{categoryName}</PetitionDescription>
+                <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>
+                  {title}
+                </PetitionTitle>
+                <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
+              </PetitionItem>
+              <StLine />
+            </div>
+          );
+        })}
+      </StUl>
+      <BottomPadder />
+    </>
   );
 };
 

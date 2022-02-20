@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 `;
 
 export const StLine = styled.hr`
-  color: ${(props) => props.theme.colors.text};
+  margin: 0;
   border-color: ${(props) => props.theme.colors.line};
   /* background-color: white; */
   opacity: 0.1;
@@ -36,6 +36,7 @@ export const StButton = styled.button<ButtonProps>`
   padding: 12px 24px;
   margin: auto 0 auto 0;
   color: ${(props) => props.theme.colors.text};
+  white-space: nowrap;
   transition: 0.2s linear;
   :hover {
     background-color: ${(props) => props.theme.colors.gistRed};
