@@ -22,13 +22,13 @@ const SelectWrapper = styled.div`
 `;
 
 const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): JSX.Element => {
-  const fromSelector = Array((count || 1) - 1)
+  const fromSelector = Array((count || 1) - 1 || 1)
     .fill(0)
     .map((_x, i) => i);
-
-  const toSelector = Array((count || 1) - 1)
+  const toSelector = Array((count || 1) - 1 || 1)
     .fill(0)
     .map((_x, i) => i + 1);
+  console.log(fromSelector, toSelector);
 
   return (
     <Flex>
@@ -44,7 +44,7 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
         <StSelect value={to} onChange={toChange}>
           {toSelector.map((el) => (
             <option key={'to' + el} value={el}>
-              {el === count - 1 ? '최종본' : `${el}번째 수정본`}
+              {el >= count - 1 ? '최종본' : `${el}번째 수정본`}
             </option>
           ))}
         </StSelect>
