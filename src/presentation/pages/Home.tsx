@@ -1,6 +1,7 @@
 import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
 import { StButton } from '@components/common';
-import { useAppDispatch, useAppSelect } from '@hooks/useStore';
+import useInterceptor from '@hooks/useInterceptor';
+import { useAppSelect } from '@hooks/useStore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -73,6 +74,7 @@ const Noti = styled.div`
 `;
 
 const Home = (): JSX.Element => {
+  useInterceptor();
   const [release, setRelease] = useState(0);
   const [answer, setAnswer] = useState(0);
 
