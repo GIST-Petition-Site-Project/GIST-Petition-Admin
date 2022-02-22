@@ -1,4 +1,5 @@
 import { getWaitingRelease, getPetitions, getWaitingAnswer } from '@api/petitionAPI';
+import { useLoadingInterceptor } from '@hooks/useInterceptor';
 import { useEffect, useState } from 'react';
 import VPetitionList from './VPetitionList';
 
@@ -7,6 +8,7 @@ interface IPetitionList {
 }
 
 const PetitionList = ({ type }: IPetitionList): JSX.Element => {
+  const isLoading = useLoadingInterceptor();
   const [petitions, setPetitions] = useState<Array<Petition>>([]);
   const fetchPetitions = async () => {
     switch (type) {
@@ -28,12 +30,14 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
   }, []);
 
   const vPetitionListProps = {
+    isLoading,
     type,
     petitions,
   };
 
   return (
     <>
+      {/* {isLoading ? <div>요청중</div> : null} */}
       <VPetitionList {...vPetitionListProps} />
     </>
   );

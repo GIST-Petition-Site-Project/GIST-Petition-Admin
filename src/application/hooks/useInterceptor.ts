@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import API from '@api/baseAPI';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelect, useAppDispatch } from './useStore';
-import { setLogout } from '@stores/authSlice';
+import { setLogout, setUserRole } from '@stores/authSlice';
 import { useToast } from './useToast';
 
 /**
@@ -18,6 +18,7 @@ const useInterceptor = () => {
         if (response.status === 401) {
           toast({ message: '세션이 만료되었습니다', type: 'warning' });
           dispatch(setLogout());
+          dispatch(setUserRole(''));
           navigate('/login');
         }
         if (response.status === 403) {
@@ -35,7 +36,7 @@ const useInterceptor = () => {
     return () => {
       API.interceptors.response.eject(unauthInterceptor);
     };
-  });
+  }, []);
 };
 
 export const useRoleInterceptor = () => {
@@ -44,6 +45,7 @@ export const useRoleInterceptor = () => {
   useEffect(() => {
     const roleInterceptor = API.interceptors.response.use(
       (response) => {
+        console.log('role_interceptor');
         if (response.status === 401 && isAuthorized) {
           toast({ message: response.data.message, type: 'warning' });
         } else if (response.status >= 400 && !isAuthorized) {
@@ -64,7 +66,32 @@ export const useRoleInterceptor = () => {
     return () => {
       API.interceptors.response.eject(roleInterceptor);
     };
-  });
+  }, []);
+};
+
+export const useLoadingInterceptor = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const pendingInterceptor = API.interceptors.request.use((config) => {
+      setIsLoading(true);
+      return config;
+    });
+    const resolveInterceptor = API.interceptors.response.use(
+      (response) => {
+        setIsLoading(false);
+        return response;
+      },
+      (error) => {
+        setIsLoading(false);
+        return error;
+      },
+    );
+    return () => {
+      API.interceptors.request.eject(pendingInterceptor);
+      API.interceptors.response.eject(resolveInterceptor);
+    };
+  }, []);
+  return isLoading;
 };
 
 export default useInterceptor;

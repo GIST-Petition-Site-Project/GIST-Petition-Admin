@@ -86,6 +86,8 @@ const Home = (): JSX.Element => {
   };
   useEffect(() => {
     getCounts();
+    const interval = setInterval(() => getCounts(), 60000);
+    return () => clearInterval(interval);
   }, []);
   const role = useAppSelect((select) => select.auth.role);
   const navigate = useNavigate();

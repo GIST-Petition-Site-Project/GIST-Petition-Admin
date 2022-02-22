@@ -3,6 +3,7 @@ import { getDay } from '@utils/getTime';
 import styled from 'styled-components';
 
 interface vPetitionListProps {
+  isLoading: boolean;
   petitions: Array<Petition>;
   type: any;
 }
@@ -50,9 +51,25 @@ const PetitionTitle = styled.a`
   }
 `;
 
-const VPetitionList = ({ petitions, type }: vPetitionListProps): JSX.Element => {
+const Loading = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.5em;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  font-weight: 500;
+  border: 1px solid ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.text};
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+`;
+
+const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
   return (
     <>
+      {isLoading ? <Loading>로딩중...</Loading> : null}
       <StUl>
         <HeaderItem>
           <PetitionDescription>분류</PetitionDescription>
