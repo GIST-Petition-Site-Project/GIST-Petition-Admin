@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   /* transform: translate(0, -50%); */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: right;
   z-index: 10000;
   gap: 10px;
 `;

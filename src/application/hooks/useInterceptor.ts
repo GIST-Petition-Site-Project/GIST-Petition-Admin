@@ -45,12 +45,14 @@ export const useRoleInterceptor = () => {
   useEffect(() => {
     const roleInterceptor = API.interceptors.response.use(
       (response) => {
-        console.log('role_interceptor');
         if (response.status === 401 && isAuthorized) {
           toast({ message: response.data.message, type: 'warning' });
-        } else if (response.status >= 400 && !isAuthorized) {
+        }
+
+        if (response.status >= 400 && response.status !== 401 && !isAuthorized) {
           toast({ message: response.data.message, type: 'warning' });
         }
+
         if (response?.data?.userRole === 'USER') {
           toast({ message: '관리자 권한이 없습니다', type: 'warning' });
         } else if (response?.data?.userRole) {
