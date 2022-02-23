@@ -96,4 +96,22 @@ export const useLoadingInterceptor = () => {
   return isLoading;
 };
 
+export const useErrorInterceptor = () => {
+  const toast = useToast();
+  useEffect(() => {
+    const errorInterceptor = API.interceptors.response.use(
+      (response) => {
+        if (response.status >= 400) {
+          toast({ message: response.data.message, type: 'warning' });
+        }
+        return response;
+      },
+      (error) => {
+        return error;
+      },
+    );
+    return () => API.interceptors.response.eject(errorInterceptor);
+  }, []);
+};
+
 export default useInterceptor;
