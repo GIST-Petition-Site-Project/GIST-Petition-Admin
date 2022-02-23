@@ -34,21 +34,23 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
     <Flex>
       <Title>청원 변경 이력</Title>
       <SelectWrapper>
-        <div>FROM</div>
         <StSelect value={from} onChange={fromChange}>
-          {fromSelector.map((el) => (
-            <option key={'from' + el} value={el}>
-              {el === 0 ? '원본' : `${el}번째 수정본`}
-            </option>
-          ))}
+          <optgroup label="FROM">
+            {fromSelector.map((el) => (
+              <option key={'from' + el} value={el}>
+                {el === 0 ? '원본' : `${el}번째 수정본`}
+              </option>
+            ))}
+          </optgroup>
         </StSelect>
-        <div>TO</div>
         <StSelect value={to} onChange={toChange}>
-          {toSelector.map((el) => (
-            <option key={'to' + el} value={el}>
-              {el >= count - 1 ? '최종본' : `${el}번째 수정본`}
-            </option>
-          ))}
+          <optgroup label="FROM">
+            {toSelector.map((el) => (
+              <option key={'to' + el} value={el}>
+                {el >= count - 1 ? '최종본' : `${el}번째 수정본`}
+              </option>
+            ))}
+          </optgroup>
         </StSelect>
       </SelectWrapper>
     </Flex>

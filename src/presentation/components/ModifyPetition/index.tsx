@@ -6,6 +6,8 @@ import { Change, diffChars } from 'diff';
 import VChangeHighlight from '@components/common/VChangeHighlight';
 import styled from 'styled-components';
 import { Wrapper, Title, StButton } from '@components/common';
+import { useToast } from '@hooks/useToast';
+import { useErrorInterceptor } from '@hooks/useInterceptor';
 
 const Category = [
   '전체',
@@ -33,6 +35,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const ModifyPetition = (): JSX.Element => {
+  useErrorInterceptor();
   const { petitionId } = useParams();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
@@ -42,6 +45,8 @@ const ModifyPetition = (): JSX.Element => {
   const [titleChanges, setTitleChanges] = useState<Array<Change>>([]);
   const [descChanges, setDescChanges] = useState<Array<Change>>([]);
   const [status, setStatus] = useState(0);
+
+  const toast = useToast();
 
   const fetchPetition = async () => {
     const response = await getPetitionById(petitionId);
@@ -82,8 +87,12 @@ const ModifyPetition = (): JSX.Element => {
         setStatus(1);
         break;
       case 1:
-        await putPetition(petitionId, categoryId, title, description);
-        navigate('/modify');
+        const response = await putPetition(petitionId, categoryId, title, description);
+        if (response?.status === 204) {
+          toast({ message: '청원이 수정되었습니다', type: 'success' });
+          navigate('/modify');
+        }
+
         break;
     }
   };
