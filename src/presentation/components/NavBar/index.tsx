@@ -11,7 +11,6 @@ const NavBar = (): JSX.Element => {
   const toast = useToast();
 
   const vNavBarProps = {
-    role,
     handleClick: () => {
       postLogout();
       dispatch(setLogout());

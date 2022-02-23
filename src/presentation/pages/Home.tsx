@@ -1,5 +1,5 @@
 import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
-import { StButton } from '@components/common';
+import { StButton, Wrapper } from '@components/common';
 import useInterceptor from '@hooks/useInterceptor';
 import { useAppSelect } from '@hooks/useStore';
 import { useEffect, useState } from 'react';
@@ -34,7 +34,7 @@ const Dashboard = styled.div`
 `;
 
 const DashboardText = styled.div`
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: 900;
 `;
 

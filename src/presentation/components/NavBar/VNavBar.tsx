@@ -7,8 +7,8 @@ import { toggleMode } from '@stores/modeSlice';
 
 const NavBarBlock = styled.div`
   color: ${(props) => props.theme.colors.text};
-  /* background-color: ${(props) => props.theme.colors.background}; */
   height: 50px;
+  margin: 0 auto;
   position: sticky;
   top: 0px;
   border-bottom: ${(props) => props.theme.colors.line} 1px solid;
@@ -16,16 +16,23 @@ const NavBarBlock = styled.div`
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
-  /* transition: 0.2s; */
+`;
+
+const NavWrapper = styled.div`
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 5%;
 `;
 
 const Logo = styled.img`
   position: absolute;
-  left: 5%;
   top: 0;
   bottom: 0;
   margin: auto;
 `;
+
 const Menu = styled.div`
   display: flex;
   column-gap: 10px;
@@ -36,10 +43,6 @@ const Menu = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-`;
-
-const Role = styled.p`
-  font-size: 15px;
 `;
 
 const LogoutBtn = styled.button`
@@ -58,12 +61,10 @@ const LogoutBtn = styled.button`
   }
 `;
 interface vNavBarProps {
-  role: string;
   handleClick: any;
 }
 
-const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
-  // const role = 'ADMIN';
+const VNavBar = ({ handleClick }: vNavBarProps): JSX.Element => {
   const isChecked = useAppSelect((select) => select.mode.isLightMode);
   const isAuthorized = useAppSelect((select) => select.auth.isAuthorized);
   const dispatch = useAppDispatch();
@@ -76,14 +77,15 @@ const VNavBar = ({ handleClick, role }: vNavBarProps): JSX.Element => {
   const isLightMode = useAppSelect((select) => select.mode.isLightMode);
   return (
     <NavBarBlock>
-      <a href="/">
-        <Logo src={isLightMode ? logo_light : logo_dark} alt="logo" />
-      </a>
-      <Menu>
-        <ToggleSwitch {...vToggleSwitchProps} />
-        {/* <Role>{role}</Role> */}
-        {isAuthorized ? <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn> : null}
-      </Menu>
+      <NavWrapper>
+        <a href="/">
+          <Logo src={isLightMode ? logo_light : logo_dark} alt="logo" />
+        </a>
+        <Menu>
+          <ToggleSwitch {...vToggleSwitchProps} />
+          {isAuthorized ? <LogoutBtn onClick={handleClick}>LOGOUT</LogoutBtn> : null}
+        </Menu>
+      </NavWrapper>
     </NavBarBlock>
   );
 };
