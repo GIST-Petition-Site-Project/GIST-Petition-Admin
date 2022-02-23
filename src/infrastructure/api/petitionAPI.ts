@@ -50,6 +50,11 @@ export const getWaitingAnswer = async () => {
   return response;
 };
 
+export const getAnswered = async () => {
+  const response = await API.get('petitions/answered?size=100');
+  return response;
+};
+
 export const getWaitingReleaseCount = async () => {
   const response = await API.get('/petitions/waitingForRelease/count');
   return response;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Wrapper, Title, StLine, StButton, BottomPadder } from '@components/common';
 import { getDate } from '@utils/getTime';
 interface vWriteAnswerProps {
+  isAnswered: boolean;
   petition: Petition | undefined;
   answer: string;
   handleChange: any;
@@ -67,7 +68,7 @@ const PetitionDate = styled.div`
   line-height: 1.5em;
 `;
 
-const VWriteAnswer = ({ petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
+const VWriteAnswer = ({ isAnswered, petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (
     <Wrapper>
       <Title>답변 등록</Title>
@@ -81,7 +82,7 @@ const VWriteAnswer = ({ petition, answer, handleChange, handleSubmit }: vWriteAn
         <StLine />
         <TitleWrapper>
           <Title>{petition?.answered ? '답변 수정' : '답변 작성'}</Title>
-          <StButton type="submit">답변 등록</StButton>
+          <StButton type="submit">{isAnswered ? '답변 수정' : '답변 등록'}</StButton>
         </TitleWrapper>
         <Writer value={answer} onChange={handleChange}></Writer>
         <BottomPadder />

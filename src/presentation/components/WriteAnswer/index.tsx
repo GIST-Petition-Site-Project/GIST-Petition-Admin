@@ -2,10 +2,13 @@ import { getPetitionById } from '@api/petitionAPI';
 import { getAnswer, postAnswer, putAnswer } from '@api/answerAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import VAC from 'react-vac';
 import VWriteAnswer from './VWriteAnswer';
+import { useToast } from '@hooks/useToast';
+import { useErrorInterceptor } from '@hooks/useInterceptor';
 
 const WriteAnswer = (): JSX.Element => {
+  useErrorInterceptor();
+  const toast = useToast();
   const { petitionId } = useParams();
   const [petition, setPetition] = useState<Petition | undefined>();
   const [answer, setAnswer] = useState('');
@@ -19,11 +22,14 @@ const WriteAnswer = (): JSX.Element => {
       setAnswer(ansResponse?.data?.content || '');
     }
   };
+
   useEffect(() => {
     fetchPetition();
   }, []);
+
   const navigate = useNavigate();
   const vWriteAnswerProps = {
+    isAnswered,
     answer,
     petition,
     handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,16 +38,21 @@ const WriteAnswer = (): JSX.Element => {
     handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       if (isAnswered) {
-        await putAnswer(petitionId, answer);
+        const putResponse = await putAnswer(petitionId, answer);
+        if (putResponse?.status === 200) {
+          toast({ message: '답변을 수정하였습니다', type: 'success' });
+        }
       } else {
-        await postAnswer(petitionId, answer);
+        const postResponse = await postAnswer(petitionId, answer);
+        if (postResponse?.status === 201) {
+          toast({ message: '답변을 게시하였습니다', type: 'success' });
+        }
       }
       navigate('/answer');
     },
   };
   return (
     <>
-      {/* <VAC name="VWriteAnswer" data={vWriteAnswerProps} /> */}
       <VWriteAnswer {...vWriteAnswerProps} />
     </>
   );

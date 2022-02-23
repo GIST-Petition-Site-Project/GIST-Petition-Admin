@@ -78,7 +78,6 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          ('');
           const { id, categoryName, title, createdAt, tempUrl } = petition;
           return (
             <div key={'petition_item_' + id}>

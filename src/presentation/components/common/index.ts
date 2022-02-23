@@ -11,8 +11,9 @@ export const Title = styled.h1`
 
 export const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
-  margin-left: 5%;
-  margin-right: 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
   /* transition: 0.2s linear; */
 `;
 
