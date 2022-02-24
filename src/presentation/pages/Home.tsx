@@ -50,8 +50,8 @@ const Buttons = styled.div`
 
 const HomeButton = styled(StButton)`
   position: relative;
-  margin: 1.5vw 2vw;
-  font-size: 1.5vw;
+  margin: 0.5em 1em;
+  font-size: 1em;
   font-weight: 400;
   cursor: pointer;
   :hover #noti {

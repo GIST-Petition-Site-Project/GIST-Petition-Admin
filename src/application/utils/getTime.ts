@@ -1,23 +1,19 @@
-export const getDayTime = (str: string) => {
-  const replacedStr = str.replace('T', ' ');
-  const date = new Date(replacedStr);
+export const getDayTime = (timestamp: number) => {
+  const date = new Date(timestamp);
   return date.toLocaleString('sv-SE').substring(5, 16);
 };
 
-export const getTime = (str: string) => {
-  const replacedStr = str.replace('T', ' ');
-  const date = new Date(replacedStr);
+export const getTime = (timestamp: number) => {
+  const date = new Date(timestamp);
   return date.toLocaleString('sv-SE').substring(11, 16);
 };
 
-export const getDay = (str: string) => {
-  const replacedStr = str.replace('T', ' ');
-  const date = new Date(replacedStr);
+export const getDay = (timestamp: number) => {
+  const date = new Date(timestamp);
   return date.toLocaleString('sv-SE').substring(5, 10);
 };
 
-export const getDate = (str: string) => {
-  const replacedStr = str.replace('T', ' ');
-  const date = new Date(replacedStr);
+export const getDate = (timestamp: number) => {
+  const date = new Date(timestamp);
   return date.toLocaleString();
 };

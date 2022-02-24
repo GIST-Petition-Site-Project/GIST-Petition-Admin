@@ -61,8 +61,8 @@ const VApprovePetition = ({ petition, handleClick }: vWriteAnswerProps): JSX.Ele
       <PetitionWrapper>
         <PetitionTitle>{petition?.title}</PetitionTitle>
         <PetitionDescription>{petition?.description}</PetitionDescription>
-        <PetitionDate>최초 작성 {getDate(petition?.createdAt || '')}</PetitionDate>
-        <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || '')}</PetitionDate>
+        <PetitionDate>최초 작성 {getDate(petition?.createdAt || 0)}</PetitionDate>
+        <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || 0)}</PetitionDate>
       </PetitionWrapper>
       <MLine />
       <ButtonWrapper>
