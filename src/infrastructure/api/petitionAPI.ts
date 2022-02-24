@@ -1,7 +1,7 @@
 import API from './baseAPI';
 
 export const getPetitions = async () => {
-  const response = await API.get('petitions?size=100');
+  const response = await API.get('petitions/ongoing?size=100');
   return response;
 };
 
