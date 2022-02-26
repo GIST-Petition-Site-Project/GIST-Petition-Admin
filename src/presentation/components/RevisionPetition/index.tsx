@@ -17,7 +17,6 @@ const RevisionPetition = (): JSX.Element => {
   const getRevisions = async () => {
     const response = await getPetitionRevisions(petitionId);
     setRevisions(response.data.content);
-    console.log(from, to, count);
   };
 
   useEffect(() => {

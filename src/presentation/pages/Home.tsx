@@ -101,9 +101,9 @@ const Home = (): JSX.Element => {
         </Dashboard>
         <Buttons>
           {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/role')}>역할 변경</HomeButton> : null}
-          {role === 'MANAGER' || role === 'ADMIN' ? (
+          {/* {role === 'MANAGER' || role === 'ADMIN' ? (
             <HomeButton onClick={() => navigate('/modify')}>청원 수정</HomeButton>
-          ) : null}
+          ) : null} */}
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <HomeButton onClick={() => navigate('/approve')}>
               {release ? <Noti id="noti">{release}</Noti> : null}
@@ -112,11 +112,14 @@ const Home = (): JSX.Element => {
           ) : null}
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <HomeButton onClick={() => navigate('/answer')}>
-              {answer ? <Noti id="noti">{answer}</Noti> : null}
+              {release ? <Noti id="noti">{answer}</Noti> : null}
               답변 등록
             </HomeButton>
           ) : null}
-          {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/revision')}>청원 수정 이력</HomeButton> : null}
+          {role === 'MANAGER' || role === 'ADMIN' ? (
+            <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
+          ) : null}
+          {/* {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/revision')}>청원 수정 이력</HomeButton> : null} */}
         </Buttons>
       </ContentsGrid>
     </>

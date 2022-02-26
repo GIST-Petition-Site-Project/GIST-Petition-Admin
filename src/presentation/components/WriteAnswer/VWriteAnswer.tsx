@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Wrapper, Title, StLine, StButton, BottomPadder } from '@components/common';
 import { getDate } from '@utils/getTime';
+import VPetition from '@components/common/VPetition';
 interface vWriteAnswerProps {
   isAnswered: boolean;
   petition: Petition | undefined;
@@ -70,24 +71,15 @@ const PetitionDate = styled.div`
 
 const VWriteAnswer = ({ isAnswered, petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (
-    <Wrapper>
-      <Title>답변 등록</Title>
-      <form onSubmit={handleSubmit}>
-        <PetitionWrapper>
-          <PetitionTitle>{petition?.title}</PetitionTitle>
-          <PetitionDescription>{petition?.description}</PetitionDescription>
-          <PetitionDate>최초 작성 {getDate(petition?.createdAt || 0)}</PetitionDate>
-          <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || 0)}</PetitionDate>
-        </PetitionWrapper>
-        <StLine />
-        <TitleWrapper>
-          <Title>{petition?.answered ? '답변 수정' : '답변 작성'}</Title>
-          <StButton type="submit">{isAnswered ? '답변 수정' : '답변 등록'}</StButton>
-        </TitleWrapper>
-        <Writer value={answer} onChange={handleChange}></Writer>
-        <BottomPadder />
-      </form>
-    </Wrapper>
+    <form onSubmit={handleSubmit}>
+      {/* <Petition petition={petition} /> */}
+      <TitleWrapper>
+        <Title>{petition?.answered ? '답변 수정' : '답변 작성'}</Title>
+        <StButton type="submit">{isAnswered ? '답변 수정' : '답변 등록'}</StButton>
+      </TitleWrapper>
+      <Writer value={answer} onChange={handleChange}></Writer>
+      <BottomPadder />
+    </form>
   );
 };
 

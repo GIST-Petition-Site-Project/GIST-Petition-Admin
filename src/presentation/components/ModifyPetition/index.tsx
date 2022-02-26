@@ -5,7 +5,7 @@ import VModifyPetition from './VModifyPetition';
 import { Change, diffChars } from 'diff';
 import VChangeHighlight from '@components/common/VChangeHighlight';
 import styled from 'styled-components';
-import { Wrapper, Title, StButton } from '@components/common';
+import { Wrapper, Title, StButton, BottomPadder, TitleWrapper, ButtonWrapper } from '@components/common';
 import { useToast } from '@hooks/useToast';
 import { useErrorInterceptor } from '@hooks/useInterceptor';
 
@@ -22,26 +22,23 @@ const Category = [
   '기타',
 ];
 
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
+interface IModifyPetition {
+  petition?: Petition;
+}
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  column-gap: 20px;
-  justify-content: center;
-`;
-
-const ModifyPetition = (): JSX.Element => {
+// temp인 경우 props 로 petition 정보를 넣어줌, 공개된 청원일 경우 정보 가져옴
+const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
   useErrorInterceptor();
   const { petitionId } = useParams();
-  const [description, setDescription] = useState('');
-  const [title, setTitle] = useState('');
-  const [originalDescription, setOriginalDescription] = useState('');
-  const [originalTitle, setOriginalTitle] = useState('');
-  const [categoryId, setCategoryId] = useState(0);
+  const [description, setDescription] = useState(petition?.description || '');
+  const [originalDescription, setOriginalDescription] = useState(petition?.description || '');
+
+  const [title, setTitle] = useState(petition?.title || '');
+  const [originalTitle, setOriginalTitle] = useState(petition?.title || '');
+
+  const [categoryId, setCategoryId] = useState(petition ? Category.indexOf(petition?.categoryName) : 0);
+  // const [originalCategoryId, setOriginalCategoryId] = useState(petition ? Category.indexOf(petition?.categoryName) : 0);
+
   const [titleChanges, setTitleChanges] = useState<Array<Change>>([]);
   const [descChanges, setDescChanges] = useState<Array<Change>>([]);
   const [status, setStatus] = useState(0);
@@ -62,7 +59,9 @@ const ModifyPetition = (): JSX.Element => {
   };
 
   useEffect(() => {
-    fetchPetition();
+    if (!petition) {
+      fetchPetition();
+    }
   }, []);
 
   const navigate = useNavigate();
@@ -87,17 +86,16 @@ const ModifyPetition = (): JSX.Element => {
         setStatus(1);
         break;
       case 1:
-        const response = await putPetition(petitionId, categoryId, title, description);
+        const response = await putPetition(petition ? String(petition.id) : petitionId, categoryId, title, description);
         if (response?.status === 204) {
           toast({ message: '청원이 수정되었습니다', type: 'success' });
-          navigate('/modify');
         }
-
+        navigate(0);
         break;
     }
   };
 
-  const handleCancleClick = () => {
+  const handleCancel = () => {
     setStatus(0);
   };
 
@@ -107,19 +105,19 @@ const ModifyPetition = (): JSX.Element => {
   };
 
   return (
-    <Wrapper>
+    <>
       <TitleWrapper>
         <Title>청원 수정</Title>
         <ButtonWrapper>
-          {status === 1 ? <StButton onClick={handleCancleClick}>수정 취소</StButton> : null}
+          {status === 1 ? <StButton onClick={handleCancel}>수정 취소</StButton> : null}
           <StButton green onClick={handleClick}>
             {status === 0 ? '수정 완료' : '청원 수정'}
           </StButton>
         </ButtonWrapper>
       </TitleWrapper>
       {status === 0 ? <VModifyPetition {...vModifyPetitionProps} /> : <VChangeHighlight {...vChangeHighlightProps} />}
-      {/* <VAC name="VModifyPetition" data={vModifyPetitionProps} /> */}
-    </Wrapper>
+      <BottomPadder />
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const StUl = styled.ul`
 const PetitionItem = styled.div`
   display: grid;
   /* line-height: 50px; */
-  grid-template-columns: 80px 1fr 64px;
+  grid-template-columns: 80px 80px 1fr 64px;
   justify-content: center;
   align-items: center;
   height: 64px;
@@ -72,16 +72,22 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
       {isLoading ? <Loading>로딩중...</Loading> : null}
       <StUl>
         <HeaderItem>
+          {/* <PetitionDescription>상태</PetitionDescription> */}
+          <PetitionDescription>ID</PetitionDescription>
           <PetitionDescription>분류</PetitionDescription>
           <PetitionDescription>제목</PetitionDescription>
           <PetitionDescription>작성 일자</PetitionDescription>
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { id, categoryName, title, createdAt, tempUrl } = petition;
+          const { agreements, answered, id, categoryName, title, createdAt, tempUrl } = petition;
           return (
             <div key={'petition_item_' + id}>
               <PetitionItem>
+                {/* <PetitionDescription>
+                  {agreements >= 20 ? (answered ? '답변 완료' : '답변 대기 중') : '진행 중'}
+                </PetitionDescription> */}
+                <PetitionDescription>{id}</PetitionDescription>
                 <PetitionDescription>{categoryName}</PetitionDescription>
                 <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>
                   {title}
@@ -93,7 +99,6 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
           );
         })}
       </StUl>
-      <BottomPadder />
     </>
   );
 };

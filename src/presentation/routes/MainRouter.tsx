@@ -5,12 +5,12 @@ import Login from '@pages/Login';
 import Home from '@pages/Home';
 import Role from '@pages/Role';
 import Answer from '@pages/Answer';
-import WriteAnswer from '@components/WriteAnswer';
-import Modify from '@pages/Modify';
 import ModifyPetition from '@components/ModifyPetition';
 import Approve from '@pages/Approve';
-import ApprovePetition from '@components/ApprovePetition';
-import Revision from '@pages/Revision';
+import ApprovePetition from '@pages/ApprovePetition';
+import Manage from '@pages/Manage';
+import ManagePetition from '@pages/ManagePetition';
+import AnswerPetition from '@pages/AnswerPetition';
 import RevisionPetition from '@components/RevisionPetition';
 
 const MainRouter = (): JSX.Element => {
@@ -28,21 +28,23 @@ const MainRouter = (): JSX.Element => {
           <Route path="/role" element={<AdminRoute />}>
             <Route index element={<Role />} />
           </Route>
+          <Route path="/modify" element={<ManagerRoute />}>
+            <Route path=":petitionId" element={<ModifyPetition />} />
+          </Route>
+          <Route path="/revision" element={<ManagerRoute />}>
+            <Route path=":petitionId" element={<RevisionPetition />} />
+          </Route>
           <Route path="/answer" element={<ManagerRoute />}>
             <Route index element={<Answer />} />
-            <Route path=":petitionId" element={<WriteAnswer />} />
-          </Route>
-          <Route path="/modify" element={<ManagerRoute />}>
-            <Route index element={<Modify />} />
-            <Route path=":petitionId" element={<ModifyPetition />} />
+            <Route path=":petitionId" element={<AnswerPetition />} />
           </Route>
           <Route path="/approve" element={<ManagerRoute />}>
             <Route index element={<Approve />} />
             <Route path=":petitionId" element={<ApprovePetition />} />
           </Route>
-          <Route path="/revision" element={<ManagerRoute />}>
-            <Route index element={<Revision />} />
-            <Route path=":petitionId" element={<RevisionPetition />} />
+          <Route path="/manage" element={<ManagerRoute />}>
+            <Route index element={<Manage />} />
+            <Route path=":petitionId" element={<ManagePetition />} />
           </Route>
         </Routes>
       </BrowserRouter>

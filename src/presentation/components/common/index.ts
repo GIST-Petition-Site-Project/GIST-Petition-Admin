@@ -71,5 +71,17 @@ export const StSelect = styled.select`
 `;
 
 export const BottomPadder = styled.div`
-  height: 50px;
+  height: 100px;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
 `;

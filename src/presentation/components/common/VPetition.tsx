@@ -1,10 +1,6 @@
-import styled from 'styled-components';
-import { Wrapper, Title, StLine, StButton, BottomPadder } from '@components/common';
+import { StLine } from '@components/common';
 import { getDate } from '@utils/getTime';
-import VPetition from '@components/common/VPetition';
-interface vWriteAnswerProps {
-  petition: Petition | undefined;
-}
+import styled from 'styled-components';
 
 const PetitionWrapper = styled.div`
   display: flex;
@@ -49,18 +45,22 @@ const MLine = styled(StLine)`
   margin-bottom: 2em;
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+interface IPeition {
+  petition: Petition | undefined;
+}
 
-const VApprovePetition = ({ petition }: vWriteAnswerProps): JSX.Element => {
+const VPetition = ({ petition }: IPeition): JSX.Element => {
   return (
-    <Wrapper>
-      <Title>청원 승인</Title>
-      <VPetition petition={petition} />
-    </Wrapper>
+    <>
+      <PetitionWrapper>
+        <PetitionTitle>{petition?.title}</PetitionTitle>
+        <PetitionDescription>{petition?.description}</PetitionDescription>
+        <PetitionDate>최초 작성 {getDate(petition?.createdAt || 0)}</PetitionDate>
+        <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || 0)}</PetitionDate>
+      </PetitionWrapper>
+      <MLine />
+    </>
   );
 };
 
-export default VApprovePetition;
+export default VPetition;

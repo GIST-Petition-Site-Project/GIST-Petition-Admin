@@ -72,7 +72,6 @@ const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
           );
         })}
       </StUl>
-      <BottomPadder />
     </>
   );
 };

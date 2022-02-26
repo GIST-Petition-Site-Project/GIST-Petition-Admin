@@ -48,7 +48,7 @@ const WriteAnswer = (): JSX.Element => {
           toast({ message: '답변을 게시하였습니다', type: 'success' });
         }
       }
-      navigate('/answer');
+      navigate(`/manage/${petitionId}`);
     },
   };
   return (

@@ -48,7 +48,7 @@ const AddedSpan = styled.span`
 `;
 const RemovedSpan = styled.span`
   background-color: ${(props) => props.theme.colors.gistRed};
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
   color: white;
 `;
 const UnchangedSpan = styled.span`

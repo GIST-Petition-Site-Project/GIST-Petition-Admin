@@ -13,10 +13,10 @@ interface Petition {
 
 interface Answer {
   content: string;
-  createdAt: string;
+  createdAt: number;
   id: number;
   petitionId: number;
-  updatedAt: string;
+  updatedAt: number;
   userId: number;
 }
 

@@ -2,10 +2,10 @@ import API from './baseAPI';
 
 /**
  * @description 등록된 유저를 조회를 조회합니다.
- * 페이지네이션이 적용되어있습니다. 서버 기본 size=20
+ * @pagination
  */
 const getUsers = async () => {
-  const response = await API.get('users');
+  const response = await API.get(`users${location.search}`);
   return response;
 };
 
