@@ -1,4 +1,4 @@
-name: Deploy Develop
+name: Develop Deploy
 on:
   push:
     branches:
