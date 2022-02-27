@@ -7,6 +7,7 @@ interface IAnswerRevision {
   answerSelect: any;
 }
 const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnswerRevision): JSX.Element => {
+  console.log(answerRevisions);
   return (
     <>
       <TitleWrapper>
@@ -24,7 +25,7 @@ const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnsw
         </StSelect>
       </TitleWrapper>
       <Description>작성자 {answerRevisions[answerVersion]?.workedBy}</Description>
-      <Description>{getDate(answerRevisions[answerVersion]?.revisionTime || 0)}</Description>
+      <Description>업데이트 {getDate(answerRevisions[answerVersion]?.revisionTime || 0)}</Description>
       <Content>{answerRevisions[answerVersion]?.answerContent}</Content>
     </>
   );

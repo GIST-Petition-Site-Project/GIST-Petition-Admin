@@ -119,7 +119,6 @@ const Home = (): JSX.Element => {
           {role === 'MANAGER' || role === 'ADMIN' ? (
             <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
           ) : null}
-          {/* {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/revision')}>청원 수정 이력</HomeButton> : null} */}
         </Buttons>
       </ContentsGrid>
     </>
