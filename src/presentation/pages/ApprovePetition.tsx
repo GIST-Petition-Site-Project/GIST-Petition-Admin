@@ -7,6 +7,8 @@ import { BottomPadder, StButton, Title, Wrapper } from '@components/common';
 import ModifyPetition from '@components/ModifyPetition';
 import { useLoadingInterceptor } from '@hooks/useInterceptor';
 import VPetition from '@components/common/VPetition';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
+import { onModifying } from '@stores/modifySlice';
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -15,10 +17,10 @@ const ButtonWrapper = styled.div`
 `;
 
 const ApprovePetition = (): JSX.Element => {
-  const isLoading = useLoadingInterceptor();
   const { petitionId } = useParams();
   const [petition, setPetition] = useState<Petition | undefined>();
-  const [isModifying, setIsModifying] = useState(false);
+  const isModifying = useAppSelect((select) => select.modify.isModifying);
+  const dispatch = useAppDispatch();
   const fetchPetition = async () => {
     const response = await getTempPetition(petitionId);
     setPetition(response?.data);
@@ -37,7 +39,7 @@ const ApprovePetition = (): JSX.Element => {
   };
 
   const handleModify = () => {
-    setIsModifying(!isModifying);
+    dispatch(onModifying());
   };
 
   const VModifyPetitionProps = {
@@ -45,17 +47,22 @@ const ApprovePetition = (): JSX.Element => {
   };
 
   return (
-    <Wrapper>
-      <Title>청원 승인</Title>
-      <VPetition petition={petition} />
+    <>
       {isModifying ? <ModifyPetition {...VModifyPetitionProps} /> : null}
-      {isModifying ? null : (
-        <ButtonWrapper>
-          <StButton onClick={handleModify}>청원 수정</StButton>
-          <StButton onClick={handleClick}>청원 승인</StButton>
-        </ButtonWrapper>
-      )}
-    </Wrapper>
+      <Wrapper>
+        {isModifying ? null : (
+          <>
+            <Title>청원 승인</Title>
+            <VPetition petition={petition} />
+            <ButtonWrapper>
+              <StButton onClick={handleModify}>청원 수정</StButton>
+              <StButton onClick={handleClick}>청원 승인</StButton>
+            </ButtonWrapper>
+          </>
+        )}
+        <BottomPadder />
+      </Wrapper>
+    </>
   );
 };
 

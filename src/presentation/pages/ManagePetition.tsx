@@ -1,10 +1,8 @@
 import { getAnswer } from '@api/answerAPI';
 import { getPetitionById, getTempPetition } from '@api/petitionAPI';
-import { ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
+import { BottomPadder, ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
 import VAnswer from '@components/common/VAnswer';
 import VPetition from '@components/common/VPetition';
-import RevisionPetition from '@components/RevisionPetition';
-import WriteAnswer from '@components/WriteAnswer';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -33,15 +31,29 @@ const ManagePetition = (): JSX.Element => {
   const navigateRevision = () => {
     navigate(`/revision/${petitionId}`);
   };
+  const navigateAnswer = () => {
+    navigate(`/answer/${petitionId}`);
+  };
   return (
     <Wrapper>
       <TitleWrapper>
         <Title>청원 관리</Title>
-        <StButton onClick={navigateRevision}>수정 이력</StButton>
       </TitleWrapper>
       <VPetition petition={petition} />
-      {answer ? <VAnswer answer={answer} /> : null}
-      {/* <WriteAnswer /> */}
+      {answer ? (
+        <>
+          <TitleWrapper>
+            <Title>답변 관리</Title>
+          </TitleWrapper>
+          <VAnswer answer={answer} />
+        </>
+      ) : null}
+      <ButtonWrapper>
+        <StButton onClick={navigateModify}>청원 수정</StButton>
+        {answer ? <StButton onClick={navigateAnswer}>답변 수정</StButton> : null}
+        <StButton onClick={navigateRevision}>수정 이력</StButton>
+      </ButtonWrapper>
+      <BottomPadder />
     </Wrapper>
   );
 };

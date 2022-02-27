@@ -25,7 +25,15 @@ interface Revision {
   petitionDescription: string;
   petitionCategory: string;
   revisionId: number;
-  revisionTime: string;
+  revisionTime: number;
   revisionType: string;
   workedBy: number;
+}
+
+interface AnswerRevision {
+  revisionId: number;
+  revisionTime: number;
+  revisionType: number;
+  workedBy: number;
+  answerContent: string;
 }

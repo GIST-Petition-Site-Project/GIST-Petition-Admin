@@ -78,10 +78,48 @@ export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
   column-gap: 20px;
   justify-content: center;
+`;
+
+export const Loading = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.5em;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  font-weight: 500;
+  border: 1px solid ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.text};
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+`;
+
+export const Content = styled.div`
+  white-space: pre-line;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 1.5em;
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+`;
+
+export const Description = styled.div`
+  white-space: pre-line;
+  width: 100%;
+  text-align: end;
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1.5em;
 `;

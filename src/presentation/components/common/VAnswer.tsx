@@ -2,23 +2,13 @@ import { StLine } from '@components/common';
 import { getDate } from '@utils/getTime';
 import styled from 'styled-components';
 
-const PetitionWrapper = styled.div`
+const AnswerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const PetitionTitle = styled.div`
-  white-space: pre-line;
-  text-align: center;
-  color: ${(props) => props.theme.colors.text};
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 1.5em;
-  margin-bottom: 1em;
-`;
-
-const PetitionDescription = styled.div`
+const AnswerDescription = styled.div`
   white-space: pre-line;
   width: 100%;
   padding-left: 1em;
@@ -28,9 +18,10 @@ const PetitionDescription = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5em;
+  min-height: 50vh;
 `;
 
-const PetitionDate = styled.div`
+const AnswerDate = styled.div`
   white-space: pre-line;
   width: 100%;
   padding-right: 1em;
@@ -52,12 +43,11 @@ interface IAnswer {
 const VAnswer = ({ answer }: IAnswer): JSX.Element => {
   return (
     <>
-      <PetitionWrapper>
-        <PetitionTitle> 답변 </PetitionTitle>
-        <PetitionDescription>{answer?.content}</PetitionDescription>
-        <PetitionDate>최초 작성 {getDate(answer?.createdAt || 0)}</PetitionDate>
-        <PetitionDate>마지막 수정 {getDate(answer?.updatedAt || 0)}</PetitionDate>
-      </PetitionWrapper>
+      <AnswerWrapper>
+        <AnswerDescription>{answer?.content}</AnswerDescription>
+        <AnswerDate>최초 작성 {getDate(answer?.createdAt || 0)}</AnswerDate>
+        <AnswerDate>마지막 수정 {getDate(answer?.updatedAt || 0)}</AnswerDate>
+      </AnswerWrapper>
       <MLine />
     </>
   );

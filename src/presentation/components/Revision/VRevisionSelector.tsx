@@ -28,7 +28,6 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
   const toSelector = Array((count || 1) - 1 || 1)
     .fill(0)
     .map((_x, i) => i + 1);
-  console.log(fromSelector, toSelector);
 
   return (
     <Flex>
@@ -37,16 +36,16 @@ const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): J
         <StSelect value={from} onChange={fromChange}>
           <optgroup label="FROM">
             {fromSelector.map((el) => (
-              <option key={'from' + el} value={el}>
+              <option key={'from_' + el} value={el}>
                 {el === 0 ? '원본' : `${el}번째 수정본`}
               </option>
             ))}
           </optgroup>
         </StSelect>
         <StSelect value={to} onChange={toChange}>
-          <optgroup label="FROM">
+          <optgroup label="To">
             {toSelector.map((el) => (
-              <option key={'to' + el} value={el}>
+              <option key={'to_' + el} value={el}>
                 {el >= count - 1 ? '최종본' : `${el}번째 수정본`}
               </option>
             ))}

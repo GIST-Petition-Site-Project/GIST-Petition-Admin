@@ -21,6 +21,7 @@ const PetitionTitle = styled.div`
 const PetitionDescription = styled.div`
   white-space: pre-line;
   width: 100%;
+  min-height: 60vh;
   padding-left: 1em;
   padding-right: 1em;
   margin-bottom: 1.5em;

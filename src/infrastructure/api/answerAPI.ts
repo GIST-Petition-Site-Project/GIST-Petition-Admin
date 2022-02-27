@@ -29,4 +29,10 @@ const putAnswer = async (petitionId: string | undefined, answer: string) => {
   return response;
 };
 
-export { getAnswer, postAnswer, putAnswer };
+const getAnswerRevisions = async (answerId: string | number | undefined) => {
+  if (!answerId) return;
+  const response = await API.get(`answers/${answerId}/revisions`);
+  return response;
+};
+
+export { getAnswer, postAnswer, putAnswer, getAnswerRevisions };

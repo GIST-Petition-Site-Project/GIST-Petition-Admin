@@ -1,4 +1,4 @@
-import { BottomPadder, StLine } from '@components/common';
+import { BottomPadder, Loading, StLine } from '@components/common';
 import { getDay } from '@utils/getTime';
 import styled from 'styled-components';
 
@@ -7,6 +7,10 @@ interface vPetitionListProps {
   petitions: Array<Petition>;
   type: any;
 }
+
+const MinHeight = styled.div`
+  min-height: 65vh;
+`;
 
 const StUl = styled.ul`
   line-height: 1em;
@@ -51,24 +55,9 @@ const PetitionTitle = styled.a`
   }
 `;
 
-const Loading = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: 0.5em;
-  transform: translate(-50%, -50%);
-  font-size: 1em;
-  font-weight: 500;
-  border: 1px solid ${(props) => props.theme.colors.text};
-  color: ${(props) => props.theme.colors.text};
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-`;
-
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
   return (
-    <>
+    <MinHeight>
       {isLoading ? <Loading>로딩중...</Loading> : null}
       <StUl>
         <HeaderItem>
@@ -99,7 +88,7 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
           );
         })}
       </StUl>
-    </>
+    </MinHeight>
   );
 };
 

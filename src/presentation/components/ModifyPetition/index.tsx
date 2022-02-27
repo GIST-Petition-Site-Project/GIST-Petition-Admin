@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import { Wrapper, Title, StButton, BottomPadder, TitleWrapper, ButtonWrapper } from '@components/common';
 import { useToast } from '@hooks/useToast';
 import { useErrorInterceptor } from '@hooks/useInterceptor';
+import { useAppDispatch } from '@hooks/useStore';
+import { offModiying } from '@stores/modifySlice';
 
 const Category = [
   '전체',
@@ -64,7 +66,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
     }
   }, []);
 
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const vModifyPetitionProps = {
     // petition,
     title,
@@ -90,7 +92,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
         if (response?.status === 204) {
           toast({ message: '청원이 수정되었습니다', type: 'success' });
         }
-        navigate(0);
+        dispatch(offModiying());
         break;
     }
   };
@@ -105,7 +107,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
   };
 
   return (
-    <>
+    <Wrapper>
       <TitleWrapper>
         <Title>청원 수정</Title>
         <ButtonWrapper>
@@ -116,8 +118,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
         </ButtonWrapper>
       </TitleWrapper>
       {status === 0 ? <VModifyPetition {...vModifyPetitionProps} /> : <VChangeHighlight {...vChangeHighlightProps} />}
-      <BottomPadder />
-    </>
+    </Wrapper>
   );
 };
 

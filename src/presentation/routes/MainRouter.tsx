@@ -11,7 +11,7 @@ import ApprovePetition from '@pages/ApprovePetition';
 import Manage from '@pages/Manage';
 import ManagePetition from '@pages/ManagePetition';
 import AnswerPetition from '@pages/AnswerPetition';
-import RevisionPetition from '@components/RevisionPetition';
+import Revision from '@components/Revision';
 
 const MainRouter = (): JSX.Element => {
   return (
@@ -32,7 +32,7 @@ const MainRouter = (): JSX.Element => {
             <Route path=":petitionId" element={<ModifyPetition />} />
           </Route>
           <Route path="/revision" element={<ManagerRoute />}>
-            <Route path=":petitionId" element={<RevisionPetition />} />
+            <Route path=":petitionId" element={<Revision />} />
           </Route>
           <Route path="/answer" element={<ManagerRoute />}>
             <Route index element={<Answer />} />
