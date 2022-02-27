@@ -18,8 +18,6 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build
-        env:
-          production: true
         run: yarn build
 
       - name: Deploy
