@@ -80,6 +80,9 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
       }
     },
   };
+
+  const navigate = useNavigate();
+
   const handleClick = async () => {
     switch (status) {
       case 0:
@@ -91,6 +94,9 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
         const response = await putPetition(petition ? String(petition.id) : petitionId, categoryId, title, description);
         if (response?.status === 204) {
           toast({ message: '청원이 수정되었습니다', type: 'success' });
+        }
+        if (location.pathname.includes('modify')) {
+          navigate(`/manage/${petitionId}`);
         }
         dispatch(offModiying());
         break;
@@ -113,7 +119,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
         <ButtonWrapper>
           {status === 1 ? <StButton onClick={handleCancel}>수정 취소</StButton> : null}
           <StButton green onClick={handleClick}>
-            {status === 0 ? '수정 완료' : '청원 수정'}
+            {status === 0 ? '청원 수정' : '수정 완료'}
           </StButton>
         </ButtonWrapper>
       </TitleWrapper>

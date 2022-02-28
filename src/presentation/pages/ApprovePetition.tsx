@@ -27,7 +27,7 @@ const ApprovePetition = (): JSX.Element => {
   };
   useEffect(() => {
     fetchPetition();
-  }, []);
+  }, [isModifying]);
 
   const navigate = useNavigate();
   const fireToast = useToast();
