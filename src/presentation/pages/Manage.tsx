@@ -1,10 +1,12 @@
-import { Title, Wrapper } from '@components/common';
+import { Title, TitleWrapper, Wrapper } from '@components/common';
 import PetitionList from '@components/PetitionList';
 
 const Manage = (): JSX.Element => {
   return (
     <Wrapper>
-      <Title>청원 관리</Title>
+      <TitleWrapper>
+        <Title>청원 관리</Title>
+      </TitleWrapper>
       <PetitionList />
     </Wrapper>
   );

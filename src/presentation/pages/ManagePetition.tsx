@@ -15,7 +15,6 @@ const ManagePetition = (): JSX.Element => {
     setPetition(petitionResponse?.data);
     if (petitionResponse?.data.answered) {
       const answerResponse = await getAnswer(petitionId);
-      console.log(answerResponse);
       setAnswer(answerResponse?.data);
     }
   };
