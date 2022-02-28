@@ -17,6 +17,10 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Add GH Secrets into .env file
+        run: |
+          echo "REACT_APP_DEV_API_URL=$DEV_API_URL" >> .env
+
       - name: Build
         run: yarn build
 
