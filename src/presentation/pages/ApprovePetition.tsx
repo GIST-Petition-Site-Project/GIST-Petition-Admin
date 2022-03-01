@@ -5,7 +5,6 @@ import { useToast } from '@hooks/useToast';
 import styled from 'styled-components';
 import { BottomPadder, StButton, Title, Wrapper } from '@components/common';
 import ModifyPetition from '@components/ModifyPetition';
-import { useLoadingInterceptor } from '@hooks/useInterceptor';
 import VPetition from '@components/common/VPetition';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { onModifying } from '@stores/modifySlice';

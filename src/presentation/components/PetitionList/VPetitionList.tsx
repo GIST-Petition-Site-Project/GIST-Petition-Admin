@@ -34,7 +34,6 @@ const HeaderItem = styled(PetitionItem)`
 `;
 
 const PetitionDescription = styled.div`
-  /* line-height: 1em; */
   text-align: center;
 `;
 
@@ -65,10 +64,10 @@ const PetitionStatus = styled.div`
 `;
 
 const statusColor = {
-  '승인 대기중': '#F58473',
-  '청원 진행중': '#AB241D',
+  '승인 대기중': '#DD433B',
+  '청원 진행중': '#616463',
   '답변 대기중': '#DF3127',
-  '답변 완료': '#5E1410',
+  '답변 완료': '#008DD5',
 };
 
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {

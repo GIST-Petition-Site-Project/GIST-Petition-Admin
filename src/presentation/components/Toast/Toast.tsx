@@ -5,9 +5,7 @@ import ToastItem from './ToastItem';
 const Wrapper = styled.div`
   position: absolute;
   bottom: 50px;
-  /* left: 50%; */
   right: 0px;
-  /* transform: translate(0, -50%); */
   display: flex;
   flex-direction: column;
   align-items: right;

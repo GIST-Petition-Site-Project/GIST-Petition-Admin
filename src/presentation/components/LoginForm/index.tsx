@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-// import { VAC } from 'react-vac';
 import VLoginForm from './VLoginForm';
 import { postLogin, getUsersMe, postLogout } from '@api/userAPI';
 import { setLogin, setUserRole } from '@stores/authSlice';

@@ -1,11 +1,10 @@
 import { getPetitionById, putPetition } from '@api/petitionAPI';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import VModifyPetition from './VModifyPetition';
 import { Change, diffChars } from 'diff';
 import VChangeHighlight from '@components/common/VChangeHighlight';
-import styled from 'styled-components';
-import { Wrapper, Title, StButton, BottomPadder, TitleWrapper, ButtonWrapper } from '@components/common';
+import { Wrapper, Title, StButton, TitleWrapper, ButtonWrapper } from '@components/common';
 import { useToast } from '@hooks/useToast';
 import { useErrorInterceptor } from '@hooks/useInterceptor';
 import { useAppDispatch } from '@hooks/useStore';

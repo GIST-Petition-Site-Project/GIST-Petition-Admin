@@ -1,4 +1,3 @@
-// import React from 'react';
 import { GlobalStyle } from '@styles/globalStyle';
 import MainRouter from '@routes/MainRouter';
 import Toast from '@components/Toast/Toast';

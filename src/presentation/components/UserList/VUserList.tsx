@@ -33,7 +33,7 @@ const StRole = styled(StP)`
 `;
 
 const StSelect = styled.select`
-  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;

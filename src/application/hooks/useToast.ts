@@ -8,7 +8,6 @@ export const useToast = () => {
   const fireToast = ({ message, type, duration = 2000 }: Toast) => {
     const id = getRandomID();
     dispatch(addToast({ message, type, duration, id }));
-    // console.log('Toast added');
     setTimeout(() => dispatch(popToast({ id })), duration + 600);
   };
 

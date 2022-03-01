@@ -6,6 +6,7 @@ interface IAnswerRevision {
   answerVersion: any;
   answerSelect: any;
 }
+
 const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnswerRevision): JSX.Element => {
   console.log(answerRevisions);
   return (
