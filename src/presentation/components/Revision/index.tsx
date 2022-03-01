@@ -2,7 +2,7 @@ import { getAnswer, getAnswerRevisions } from '@api/answerAPI';
 import { getPetitionRevisions } from '@api/petitionAPI';
 import { BottomPadder, Content, Description, StSelect, Title, TitleWrapper, Wrapper } from '@components/common';
 import VChangeHighlight from '@components/common/VChangeHighlight';
-import { getDate } from '@utils/getTime';
+import { getDate } from '@utils/timeFormat';
 import { Change, diffChars } from 'diff';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

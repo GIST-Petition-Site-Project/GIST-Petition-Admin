@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Wrapper, Title, StLine, StButton, BottomPadder } from '@components/common';
-import { getDate } from '@utils/getTime';
+import { getDate } from '@utils/timeFormat';
 import VPetition from '@components/common/VPetition';
 interface vWriteAnswerProps {
   isAnswered: boolean;
