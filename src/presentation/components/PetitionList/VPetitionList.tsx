@@ -1,5 +1,6 @@
 import { BottomPadder, Loading, StLine } from '@components/common';
-import { getDay } from '@utils/getTime';
+import checkPetitionStatus from '@utils/petitionStatus';
+import { getDay } from '@utils/timeFormat';
 import styled from 'styled-components';
 
 interface vPetitionListProps {
@@ -18,8 +19,7 @@ const StUl = styled.ul`
 
 const PetitionItem = styled.div`
   display: grid;
-  /* line-height: 50px; */
-  grid-template-columns: 80px 80px 1fr 80px 80px;
+  grid-template-columns: 64px 80px 80px 1fr 80px;
   justify-content: center;
   align-items: center;
   height: 64px;
@@ -55,7 +55,21 @@ const PetitionTitle = styled.a`
   }
 `;
 
-const PetitionStatus = styled.a``;
+const PetitionStatus = styled.div`
+  font-size: 0.8em;
+  color: white;
+  border-radius: 4px;
+  background-color: gray;
+  text-align: center;
+  width: 70px;
+`;
+
+const statusColor = {
+  '승인 대기중': '#F58473',
+  '청원 진행중': '#AB241D',
+  '답변 대기중': '#DF3127',
+  '답변 완료': '#5E1410',
+};
 
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
   return (
@@ -63,27 +77,26 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
       {isLoading ? <Loading>로딩중...</Loading> : null}
       <StUl>
         <HeaderItem>
+          <PetitionDescription>상태</PetitionDescription>
           <PetitionDescription>ID</PetitionDescription>
           <PetitionDescription>분류</PetitionDescription>
           <PetitionDescription>제목</PetitionDescription>
           <PetitionDescription>작성 일자</PetitionDescription>
-          <PetitionDescription>상태</PetitionDescription>
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { agreements, answered, id, categoryName, title, createdAt, tempUrl } = petition;
+          const { released, agreements, answered, id, categoryName, title, createdAt, tempUrl } = petition;
+          const status = checkPetitionStatus(released, agreements, answered);
           return (
             <div key={'petition_item_' + id}>
               <PetitionItem>
+                <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
                 <PetitionDescription>{id}</PetitionDescription>
                 <PetitionDescription>{categoryName}</PetitionDescription>
                 <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>
                   {title}
                 </PetitionTitle>
                 <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
-                <PetitionDescription>
-                  {agreements >= 20 ? (answered ? '답변 완료' : '답변 대기 중') : '진행 중'}
-                </PetitionDescription>
               </PetitionItem>
               <StLine />
             </div>
