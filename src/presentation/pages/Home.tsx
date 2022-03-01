@@ -27,6 +27,7 @@ const Dashboard = styled.div`
   text-align: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   height: 100%;
   padding: 0 5% 0 5%;
   border-bottom: 1px solid ${(props) => props.theme.colors.line};
@@ -101,24 +102,15 @@ const Home = (): JSX.Element => {
         </Dashboard>
         <Buttons>
           {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/role')}>역할 변경</HomeButton> : null}
-          {/* {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/modify')}>청원 수정</HomeButton>
-          ) : null} */}
-          {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/approve')}>
-              {release ? <Noti id="noti">{release}</Noti> : null}
-              청원 승인
-            </HomeButton>
-          ) : null}
-          {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/answer')}>
-              {release ? <Noti id="noti">{answer}</Noti> : null}
-              답변 등록
-            </HomeButton>
-          ) : null}
-          {role === 'MANAGER' || role === 'ADMIN' ? (
-            <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
-          ) : null}
+          <HomeButton onClick={() => navigate('/approve')}>
+            {/* {release ? <Noti id="noti">{release}</Noti> : null} */}
+            청원 승인
+          </HomeButton>
+          <HomeButton onClick={() => navigate('/answer')}>
+            {/* {release ? <Noti id="noti">{answer}</Noti> : null} */}
+            답변 등록
+          </HomeButton>
+          <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
         </Buttons>
       </ContentsGrid>
     </>
