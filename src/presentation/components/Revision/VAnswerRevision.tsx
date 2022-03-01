@@ -1,5 +1,5 @@
 import { Content, Description, StSelect, Title, TitleWrapper } from '@components/common';
-import { getDate } from '@utils/getTime';
+import { getDate } from '@utils/timeFormat';
 
 interface IAnswerRevision {
   answerRevisions: any;

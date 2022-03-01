@@ -1,5 +1,5 @@
 import { StLine } from '@components/common';
-import { getDate } from '@utils/getTime';
+import { getDate } from '@utils/timeFormat';
 import styled from 'styled-components';
 
 const AnswerWrapper = styled.div`

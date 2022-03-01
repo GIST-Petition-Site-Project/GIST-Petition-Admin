@@ -9,7 +9,10 @@ interface Petition {
   updatedAt: number;
   userId: number;
   tempUrl: string;
+  released: true;
 }
+
+type PetitionStatus = '승인 대기중' | '청원 진행중' | '답변 대기중' | '답변 완료';
 
 interface Answer {
   content: string;

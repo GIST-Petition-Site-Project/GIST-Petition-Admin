@@ -25,7 +25,7 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
       setTotalPages(response?.data?.totalPages);
       setNumber(
         response?.data?.number > response?.data?.totalPages - 1
-          ? response?.data?.totalPages - 1
+          ? Math.max(response?.data?.totalPages - 1, 0)
           : response?.data?.number < 0
           ? 0
           : response?.data?.number,
@@ -68,7 +68,6 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
 
   return (
     <>
-      {/* {isLoading ? <div>요청중</div> : null} */}
       <VPetitionList {...vPetitionListProps} />
       <VPagination {...vPaginationProps} />
     </>
