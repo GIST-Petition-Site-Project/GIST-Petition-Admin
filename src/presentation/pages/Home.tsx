@@ -27,7 +27,6 @@ const Dashboard = styled.div`
   text-align: center;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
   height: 100%;
   padding: 0 5% 0 5%;
   border-bottom: 1px solid ${(props) => props.theme.colors.line};
