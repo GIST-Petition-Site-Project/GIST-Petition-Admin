@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 interface vModifyPeitionProps {
-  // petition: Petition | undefined;
   title: string;
   description: string;
   handleChange: any;

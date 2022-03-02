@@ -1,5 +1,4 @@
 import { getUsers, putUserRole } from '@api/userAPI';
-import { BottomPadder } from '@components/common';
 import VPagination from '@components/Pagination/VPagination';
 import { useToast } from '@hooks/useToast';
 import { ChangeEvent, useEffect, useState } from 'react';

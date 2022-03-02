@@ -29,6 +29,9 @@ const putAnswer = async (petitionId: string | undefined, answer: string) => {
   return response;
 };
 
+/**
+ * @description 청원 수정 기록을 가져옵니다.
+ */
 const getAnswerRevisions = async (answerId: string | number | undefined) => {
   if (!answerId) return;
   const response = await API.get(`answers/${answerId}/revisions`);

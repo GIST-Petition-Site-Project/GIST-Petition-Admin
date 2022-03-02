@@ -1,5 +1,5 @@
 import { getAnswer } from '@api/answerAPI';
-import { getPetitionById, getTempPetition } from '@api/petitionAPI';
+import { getPetitionById } from '@api/petitionAPI';
 import { BottomPadder, ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
 import VAnswer from '@components/common/VAnswer';
 import VPetition from '@components/common/VPetition';

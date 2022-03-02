@@ -1,5 +1,4 @@
 import PetitionList from '@components/PetitionList';
-import WriteAnswer from '@components/WriteAnswer';
 import { Wrapper, Title } from '@components/common';
 
 const Answer = (): JSX.Element => {

@@ -5,9 +5,6 @@ import { useAppSelect, useAppDispatch } from './useStore';
 import { setLogout, setUserRole } from '@stores/authSlice';
 import { useToast } from './useToast';
 
-/**
- * @description Hooks an axios interceptor when response.status===401
- */
 const useInterceptor = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

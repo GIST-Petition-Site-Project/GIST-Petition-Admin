@@ -20,7 +20,6 @@ const Wrapper = styled.div<IWrapper>`
   padding-bottom: 4px;
   position: relative;
   animation: 0.3s forwards ${(props) => (props.isClosing ? 'fadeout' : 'slideFromBottom')};
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   @keyframes fadeout {
     from {
       opacity: 1;

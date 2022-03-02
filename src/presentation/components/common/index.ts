@@ -6,7 +6,6 @@ export const Title = styled.h1`
   font-size: 24px;
   margin-top: 36px;
   margin-bottom: 36px;
-  /* transition: 0.2s; */
 `;
 
 export const Wrapper = styled.div`
@@ -14,13 +13,11 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 5%;
-  /* transition: 0.2s linear; */
 `;
 
 export const StLine = styled.hr`
   margin: 0;
   border-color: ${(props) => props.theme.colors.line};
-  /* background-color: white; */
   opacity: 0.1;
 `;
 

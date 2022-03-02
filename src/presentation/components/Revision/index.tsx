@@ -6,7 +6,6 @@ import { getDate } from '@utils/timeFormat';
 import { Change, diffChars } from 'diff';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import VAnswerRevision from './VAnswerRevision';
 import VRevisionSelector from './VRevisionSelector';
 
