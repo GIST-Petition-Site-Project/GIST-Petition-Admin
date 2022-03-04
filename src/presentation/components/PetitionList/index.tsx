@@ -52,6 +52,7 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
 
   useEffect(() => {
     fetchPetitions();
+    window.scrollTo(0, 0);
   }, [search]);
 
   const vPetitionListProps = {

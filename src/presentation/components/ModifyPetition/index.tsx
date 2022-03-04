@@ -98,6 +98,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
           navigate(`/manage/${petitionId}`);
         }
         dispatch(offModiying());
+        window.scrollTo(0, 0);
         break;
     }
   };

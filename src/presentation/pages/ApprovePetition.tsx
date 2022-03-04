@@ -39,6 +39,7 @@ const ApprovePetition = (): JSX.Element => {
 
   const handleModify = () => {
     dispatch(onModifying());
+    window.scrollTo(0, 0);
   };
 
   const VModifyPetitionProps = {
