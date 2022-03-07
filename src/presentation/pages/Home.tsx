@@ -59,19 +59,19 @@ const HomeButton = styled(StButton)`
   }
 `;
 
-const Noti = styled.div`
-  position: absolute;
-  text-align: center;
-  top: -5px;
-  right: -5px;
-  height: 16px;
-  width: 16px;
-  font-size: 12px;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme.colors.gistRed};
-  color: white;
-  transition: 0.2s;
-`;
+// const Noti = styled.div`
+//   position: absolute;
+//   text-align: center;
+//   top: -5px;
+//   right: -5px;
+//   height: 16px;
+//   width: 16px;
+//   font-size: 12px;
+//   border-radius: 50%;
+//   background-color: ${(props) => props.theme.colors.gistRed};
+//   color: white;
+//   transition: 0.2s;
+// `;
 
 const Home = (): JSX.Element => {
   useInterceptor();
