@@ -62,6 +62,7 @@ const VPagination = ({ totalPages, number }: IPagination) => {
 
   return (
     <Flex>
+      {number > 0 ? <PageButton onClick={(e) => handleClick(e, 0)}>{`<<`}</PageButton> : null}
       {number > 0 ? <PageButton onClick={(e) => handleClick(e, number - 1)}>{`<`}</PageButton> : null}
       {leftIndices.map((idx) => (
         <PageButton key={`page_${idx}`} onClick={(e) => handleClick(e, idx)}>
@@ -75,6 +76,7 @@ const VPagination = ({ totalPages, number }: IPagination) => {
         </PageButton>
       ))}
       {number < totalPages - 1 ? <PageButton onClick={(e) => handleClick(e, number + 1)}>{`>`}</PageButton> : null}
+      {number < totalPages - 1 ? <PageButton onClick={(e) => handleClick(e, totalPages - 1)}>{`>>`}</PageButton> : null}
     </Flex>
   );
 };

@@ -1,4 +1,4 @@
-import { BottomPadder, Loading, StLine } from '@components/common';
+import { Loading, StLine } from '@components/common';
 import checkPetitionStatus from '@utils/petitionStatus';
 import { getDay } from '@utils/timeFormat';
 import styled from 'styled-components';

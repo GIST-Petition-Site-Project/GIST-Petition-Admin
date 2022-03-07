@@ -50,6 +50,15 @@ export const postPetitionRelease = async (petitionId: string | number | undefine
 };
 
 /**
+ * @description 사전 동의중인 청원을 반려합니다.
+ */
+export const deletePetitionRelease = async (petitionId: string | number | undefined) => {
+  if (!petitionId) return;
+  const response = await API.delete(`petitions/${petitionId}/release`);
+  return response;
+};
+
+/**
  * @description 게시된 청원들을 가져옵니다.
  * @pagination size, page
  */

@@ -1,8 +1,9 @@
 import { getAnswer } from '@api/answerAPI';
-import { getPetitionById } from '@api/petitionAPI';
+import { deletePetitionRelease, getPetitionById } from '@api/petitionAPI';
 import { BottomPadder, ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
 import VAnswer from '@components/common/VAnswer';
 import VPetition from '@components/common/VPetition';
+import { useToast } from '@hooks/useToast';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -22,6 +23,12 @@ const ManagePetition = (): JSX.Element => {
   useEffect(() => {
     fetchPetition();
   }, []);
+  const fireToast = useToast();
+  const withdrawPetition = async () => {
+    await deletePetitionRelease(petition?.id);
+    navigate('/approve');
+    fireToast({ message: '청원이 반려되었습니다.', type: 'warning' });
+  };
 
   const navigate = useNavigate();
   const navigateModify = () => {
@@ -49,6 +56,7 @@ const ManagePetition = (): JSX.Element => {
       ) : null}
       <ButtonWrapper>
         <StButton onClick={navigateModify}>청원 수정</StButton>
+        <StButton onClick={withdrawPetition}>청원 반려</StButton>
         {answer ? <StButton onClick={navigateAnswer}>답변 수정</StButton> : null}
         <StButton onClick={navigateRevision}>수정 이력</StButton>
       </ButtonWrapper>

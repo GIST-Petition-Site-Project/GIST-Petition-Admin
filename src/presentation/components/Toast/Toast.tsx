@@ -3,7 +3,7 @@ import { useToasts } from '@hooks/useToast';
 import ToastItem from './ToastItem';
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   right: 0px;
   display: flex;

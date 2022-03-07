@@ -1,4 +1,4 @@
-import { getTempPetition, postPetitionRelease } from '@api/petitionAPI';
+import { deletePetitionRelease, getTempPetition, postPetitionRelease } from '@api/petitionAPI';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@hooks/useToast';
@@ -31,14 +31,21 @@ const ApprovePetition = (): JSX.Element => {
   const navigate = useNavigate();
   const fireToast = useToast();
 
-  const handleClick = async () => {
+  const handleApprove = async () => {
     await postPetitionRelease(petition?.id);
     navigate('/approve');
     fireToast({ message: '청원이 게시되었습니다.', type: 'success' });
   };
 
+  const handleReject = async () => {
+    await deletePetitionRelease(petition?.id);
+    // navigate('/approve');
+    fireToast({ message: '해당 기능은 구현중입니다.', type: 'warning' });
+  };
+
   const handleModify = () => {
     dispatch(onModifying());
+    window.scrollTo(0, 0);
   };
 
   const VModifyPetitionProps = {
@@ -55,7 +62,8 @@ const ApprovePetition = (): JSX.Element => {
             <VPetition petition={petition} />
             <ButtonWrapper>
               <StButton onClick={handleModify}>청원 수정</StButton>
-              <StButton onClick={handleClick}>청원 승인</StButton>
+              <StButton onClick={handleReject}>청원 거절</StButton>
+              <StButton onClick={handleApprove}>청원 승인</StButton>
             </ButtonWrapper>
           </>
         )}

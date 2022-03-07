@@ -1,4 +1,4 @@
-import { BottomPadder, StLine } from '@components/common';
+import { StLine } from '@components/common';
 import styled from 'styled-components';
 
 interface vUserListProps {

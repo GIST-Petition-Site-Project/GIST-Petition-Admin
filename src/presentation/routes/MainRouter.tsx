@@ -12,12 +12,14 @@ import Manage from '@pages/Manage';
 import ManagePetition from '@pages/ManagePetition';
 import AnswerPetition from '@pages/AnswerPetition';
 import Revision from '@components/Revision';
+import ScrollTop from './ScrollTop';
 
 const MainRouter = (): JSX.Element => {
   return (
     <>
       <NavBar />
       <BrowserRouter>
+        <ScrollTop />
         <Routes>
           <Route path="/" element={<AuthRoute />}>
             <Route index element={<Home />} />
