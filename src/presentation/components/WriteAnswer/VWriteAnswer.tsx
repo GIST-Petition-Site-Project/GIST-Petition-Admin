@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Title, StButton, BottomPadder } from '@components/common';
 interface vWriteAnswerProps {
-  isAnswered: boolean;
-  petition: Petition | undefined;
   answer: string;
+  petition: Petition | undefined;
   handleChange: any;
   handleSubmit: any;
 }
@@ -28,12 +27,12 @@ const TitleWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const VWriteAnswer = ({ isAnswered, petition, answer, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
+const VWriteAnswer = ({ answer, petition, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (
     <form onSubmit={handleSubmit}>
       <TitleWrapper>
         <Title>{petition?.answered ? '답변 수정' : '답변 작성'}</Title>
-        <StButton type="submit">{isAnswered ? '답변 수정' : '답변 등록'}</StButton>
+        <StButton type="submit">{petition?.answered ? '답변 수정' : '답변 등록'}</StButton>
       </TitleWrapper>
       <Writer value={answer} onChange={handleChange}></Writer>
       <BottomPadder />

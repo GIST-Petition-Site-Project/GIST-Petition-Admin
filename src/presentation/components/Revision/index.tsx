@@ -1,5 +1,5 @@
-import { getAnswer, getAnswerRevisions } from '@api/answerAPI';
-import { getPetitionRevisions } from '@api/petitionAPI';
+import { getAnswerRevisions } from '@api/answerAPI';
+import { getPetitionById, getPetitionRevisions } from '@api/petitionAPI';
 import { BottomPadder, Description, Wrapper } from '@components/common';
 import VChangeHighlight from '@components/common/VChangeHighlight';
 import { getDate } from '@utils/timeFormat';
@@ -12,7 +12,6 @@ import VRevisionSelector from './VRevisionSelector';
 const Revision = (): JSX.Element => {
   const { petitionId } = useParams();
   const [revisions, setRevisions] = useState<Array<Revision>>([]);
-  const [answered, setAnswered] = useState(false);
   const [answerRevisions, setAnswerRevisions] = useState<Array<AnswerRevision>>([]);
   const [from, setFrom] = useState(0);
   const [to, setTo] = useState(0);
@@ -22,13 +21,12 @@ const Revision = (): JSX.Element => {
   const [descChanges, setDescChanges] = useState<Array<Change>>([]);
 
   const fetchRevisions = async () => {
-    const response = await getPetitionRevisions(petitionId);
-    setRevisions(response.data.content);
+    const petitionResponse = await getPetitionRevisions(petitionId);
+    setRevisions(petitionResponse.data.content);
 
-    const fetchAnswerId = await getAnswer(petitionId);
-    if (fetchAnswerId?.data.id) {
-      setAnswered(true);
-      const answerResponse = await getAnswerRevisions(fetchAnswerId?.data.id);
+    const response = await getPetitionById(petitionId);
+    if (response?.data?.answered) {
+      const answerResponse = await getAnswerRevisions(petitionId);
       setAnswerRevisions(answerResponse?.data.content || []);
     }
   };
@@ -80,7 +78,7 @@ const Revision = (): JSX.Element => {
       <Description>업데이트 {getDate(revisions[to]?.revisionTime || 0)}</Description>
       <VChangeHighlight {...vChangeHighlightProps} />
       <BottomPadder />
-      {answered ? <VAnswerRevision {...vAnswerRevisionProps} /> : null}
+      {answerRevisions.length > 0 ? <VAnswerRevision {...vAnswerRevisionProps} /> : null}
       <BottomPadder />
     </Wrapper>
   );
