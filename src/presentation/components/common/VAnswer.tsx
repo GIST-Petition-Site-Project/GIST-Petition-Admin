@@ -44,7 +44,7 @@ const VAnswer = ({ answer }: IAnswer): JSX.Element => {
   return (
     <>
       <AnswerWrapper>
-        <AnswerDescription>{answer?.content}</AnswerDescription>
+        <AnswerDescription>{answer?.description}</AnswerDescription>
         <AnswerDate>최초 작성 {getDate(answer?.createdAt || 0)}</AnswerDate>
         <AnswerDate>마지막 수정 {getDate(answer?.updatedAt || 0)}</AnswerDate>
       </AnswerWrapper>

@@ -27,7 +27,7 @@ const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnsw
       </TitleWrapper>
       <Description>작성자 {answerRevisions[answerVersion]?.workedBy}</Description>
       <Description>업데이트 {getDate(answerRevisions[answerVersion]?.revisionTime || 0)}</Description>
-      <Content>{answerRevisions[answerVersion]?.answerContent}</Content>
+      <Content>{answerRevisions[answerVersion]?.answerDescription}</Content>
     </>
   );
 };

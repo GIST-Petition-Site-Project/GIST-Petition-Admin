@@ -1,5 +1,5 @@
 import { getPetitionById } from '@api/petitionAPI';
-import { getAnswer, postAnswer, putAnswer } from '@api/answerAPI';
+import { postAnswer, putAnswer } from '@api/answerAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import VWriteAnswer from './VWriteAnswer';
@@ -12,15 +12,10 @@ const WriteAnswer = (): JSX.Element => {
   const { petitionId } = useParams();
   const [petition, setPetition] = useState<Petition | undefined>();
   const [answer, setAnswer] = useState('');
-  const [isAnswered, setAnswered] = useState(false);
   const fetchPetition = async () => {
     const response = await getPetitionById(petitionId);
     setPetition(response?.data);
-    if (response?.data?.answered === true) {
-      setAnswered(true);
-      const ansResponse = await getAnswer(petitionId);
-      setAnswer(ansResponse?.data?.content || '');
-    }
+    setAnswer(response?.data?.answer?.description || '');
   };
 
   useEffect(() => {
@@ -29,7 +24,6 @@ const WriteAnswer = (): JSX.Element => {
 
   const navigate = useNavigate();
   const vWriteAnswerProps = {
-    isAnswered,
     answer,
     petition,
     handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -37,7 +31,7 @@ const WriteAnswer = (): JSX.Element => {
     },
     handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      if (isAnswered) {
+      if (petition?.answered) {
         const putResponse = await putAnswer(petitionId, answer);
         if (putResponse?.status === 200) {
           toast({ message: '답변을 수정하였습니다', type: 'success' });
