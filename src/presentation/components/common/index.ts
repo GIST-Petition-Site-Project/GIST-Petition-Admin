@@ -60,7 +60,7 @@ export const StSelect = styled.select`
   appearance: none;
   background: transparent;
   color: ${(props) => props.theme.colors.text};
-  height: 30px;
+  height: 34px;
   padding: 0.5em;
   margin-right: 1px;
   border-radius: 5px;

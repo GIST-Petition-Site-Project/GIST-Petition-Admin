@@ -19,7 +19,7 @@ const StUl = styled.ul`
 
 const PetitionItem = styled.div`
   display: grid;
-  grid-template-columns: 64px 80px 80px 1fr 80px;
+  grid-template-columns: 80px 80px 80px 1fr 80px;
   justify-content: center;
   align-items: center;
   height: 64px;
@@ -55,6 +55,7 @@ const PetitionTitle = styled.a`
 `;
 
 const PetitionStatus = styled.div`
+  margin: auto;
   font-size: 0.8em;
   color: white;
   border-radius: 4px;
@@ -84,8 +85,8 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { released, agreements, answered, id, categoryName, title, createdAt, tempUrl } = petition;
-          const status = checkPetitionStatus(released, agreements, answered);
+          const { released, agreeCount, answered, id, categoryName, title, createdAt, tempUrl } = petition;
+          const status = checkPetitionStatus(released, agreeCount, answered);
           return (
             <div key={'petition_item_' + id}>
               <PetitionItem>
