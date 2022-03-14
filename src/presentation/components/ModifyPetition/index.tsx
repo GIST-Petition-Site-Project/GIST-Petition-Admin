@@ -8,7 +8,7 @@ import { Wrapper, Title, StButton, TitleWrapper, ButtonWrapper } from '@componen
 import { useToast } from '@hooks/useToast';
 import { useErrorInterceptor } from '@hooks/useInterceptor';
 import { useAppDispatch } from '@hooks/useStore';
-import { offModiying } from '@stores/modifySlice';
+import { offModifying } from '@stores/modifySlice';
 
 const Category = [
   '전체',
@@ -97,7 +97,7 @@ const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
         if (location.pathname.includes('modify')) {
           navigate(`/manage/${petitionId}`);
         }
-        dispatch(offModiying());
+        dispatch(offModifying());
         window.scrollTo(0, 0);
         break;
     }

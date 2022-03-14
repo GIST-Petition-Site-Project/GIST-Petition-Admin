@@ -30,7 +30,6 @@ export const putPetition = async (
   description: string,
 ) => {
   if (!petitionId) return;
-  console.log(title);
   const payload = {
     categoryId,
     title,

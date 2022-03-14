@@ -1,5 +1,5 @@
 interface Petition {
-  agreements: number;
+  agreeCount: number;
   answered: boolean;
   answer: Answer;
   categoryName: string;

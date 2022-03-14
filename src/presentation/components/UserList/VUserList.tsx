@@ -1,4 +1,4 @@
-import { StLine } from '@components/common';
+import { StLine, StSelect } from '@components/common';
 import styled from 'styled-components';
 
 interface vUserListProps {
@@ -20,29 +20,9 @@ const Useritem = styled.li`
   }
 `;
 
-const HeaderItem = styled(Useritem)`
-  height: 2em;
-`;
-
 const StP = styled.p`
+  padding: 1em;
   color: ${(props) => props.theme.colors.text};
-`;
-
-const StRole = styled(StP)`
-  text-align: center;
-`;
-
-const StSelect = styled.select`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-  color: ${(props) => props.theme.colors.text};
-  height: 30px;
-  padding: 0.5em;
-  margin-right: 1px;
-  border-radius: 5px;
-  text-align: center;
 `;
 
 const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
@@ -50,20 +30,16 @@ const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
   return (
     <>
       <StUl>
-        <HeaderItem>
-          <StP>이메일</StP>
-          <StRole>역할</StRole>
-        </HeaderItem>
         <StLine />
-        {users?.map((user) => {
-          const { id, username, userRole, handleChange } = each(user);
+        {users?.map((user, idx) => {
+          const { username, userRole, handleChange } = each(user);
           return (
-            <div key={'user_item_' + id}>
+            <div key={'user_item_' + idx}>
               <Useritem>
                 <StP>{username}</StP>
                 <StSelect onChange={handleChange} value={userRole}>
                   {roles.map((role) => {
-                    return <option key={id + role}>{role}</option>;
+                    return <option key={idx + role}>{role}</option>;
                   })}
                 </StSelect>
               </Useritem>

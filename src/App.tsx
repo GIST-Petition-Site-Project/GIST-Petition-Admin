@@ -21,6 +21,10 @@ const App = (): JSX.Element => {
   const theme = isLightMode ? light : dark;
 
   useEffect(() => {
+    document.querySelector("meta[name='theme-color']")?.setAttribute('content', theme.colors.background);
+  });
+
+  useEffect(() => {
     checkSessionValid();
   }, []);
 

@@ -34,9 +34,9 @@ const postLogout = async () => {
   return response;
 };
 
-const putUserRole = async (id: number, userRole: string) => {
+const putUserRole = async (username: string, userRole: string) => {
   const payload = { userRole };
-  const response = await API.put(`users/${id}/userRole`, payload);
+  const response = await API.put(`users/${username}/userRole`, payload);
   return response;
 };
 
