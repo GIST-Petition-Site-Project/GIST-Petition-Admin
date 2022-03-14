@@ -74,7 +74,7 @@ const HomeButton = styled(StButton)`
 // `;
 
 const Home = (): JSX.Element => {
-  useInterceptor();
+  // useInterceptor();
   const [release, setRelease] = useState(0);
   const [answer, setAnswer] = useState(0);
 
