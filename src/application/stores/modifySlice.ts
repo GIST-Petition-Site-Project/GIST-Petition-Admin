@@ -11,12 +11,12 @@ export const modifySlice = createSlice({
     onModifying: (state) => {
       state.isModifying = true;
     },
-    offModiying: (state) => {
+    offModifying: (state) => {
       state.isModifying = false;
     },
   },
 });
 
-export const { onModifying, offModiying } = modifySlice.actions;
+export const { onModifying, offModifying } = modifySlice.actions;
 
 export default modifySlice.reducer;

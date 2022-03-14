@@ -1,6 +1,5 @@
 import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
 import { StButton } from '@components/common';
-import useInterceptor from '@hooks/useInterceptor';
 import { useAppSelect } from '@hooks/useStore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

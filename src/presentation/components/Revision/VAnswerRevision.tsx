@@ -8,7 +8,6 @@ interface IAnswerRevision {
 }
 
 const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnswerRevision): JSX.Element => {
-  console.log(answerRevisions);
   return (
     <>
       <TitleWrapper>

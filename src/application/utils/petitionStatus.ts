@@ -6,7 +6,6 @@ const checkPetitionStatus = (released: boolean, agreeCount: number, answered: bo
 
   if (!released) return '승인 대기중';
   if (answered) return '답변 완료';
-  console.log(agreeCount);
   if (agreeCount < REQUIRED_AGREEMENT_COUNTS) return '청원 진행중';
   else return '답변 대기중';
 };
