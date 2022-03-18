@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const checkSessionValid = async () => {
     const response = await getUsersMe();
-    if (response.status === 401) {
+    if (response.status === 401 || response.data.userRole === 'USER') {
       dispatch(setLogout());
       dispatch(setUserRole(''));
     }
