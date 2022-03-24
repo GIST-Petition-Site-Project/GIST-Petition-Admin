@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { postLogin, getUsersMe, postLogout } from '@api/userAPI';
-import { setLogin, setUserRole } from '@stores/authSlice';
+import { setLogin, setUserRoleAdmin, setUserRoleManager } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useRoleInterceptor } from '@hooks/useInterceptor';
@@ -29,9 +29,14 @@ const LoginForm = (): JSX.Element => {
       const loginResponse = await postLogin(username, password);
       if (loginResponse.status === 204) {
         const meResponse = await getUsersMe();
-        if (meResponse?.data?.userRole === 'ADMIN' || meResponse?.data?.userRole === 'MANAGER') {
+        const role = meResponse?.data?.userRole;
+        if (role === 'ADMIN' || role === 'MANAGER') {
           dispatch(setLogin());
-          dispatch(setUserRole(meResponse.data.userRole));
+          if (role === 'ADMIN') {
+            dispatch(setUserRoleAdmin());
+          } else {
+            dispatch(setUserRoleManager());
+          }
           if (location.hash) {
             navigate({ pathname: location.hash.replace('#', '') }, { replace: true });
           } else {

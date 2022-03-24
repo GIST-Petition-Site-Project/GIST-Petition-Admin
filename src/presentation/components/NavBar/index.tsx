@@ -1,7 +1,7 @@
 import { postLogout } from '@api/userAPI';
 import { useAppDispatch } from '@hooks/useStore';
 import { useToast } from '@hooks/useToast';
-import { setLogout, setUserRole } from '@stores/authSlice';
+import { setLogout, setUserRoleNull } from '@stores/authSlice';
 import VNavBar from './VNavBar';
 
 const NavBar = (): JSX.Element => {
@@ -12,7 +12,7 @@ const NavBar = (): JSX.Element => {
     handleClick: () => {
       postLogout();
       dispatch(setLogout());
-      dispatch(setUserRole(''));
+      dispatch(setUserRoleNull());
       toast({ message: '로그아웃 되었습니다', type: 'success' });
     },
   };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import API from '@api/baseAPI';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelect, useAppDispatch } from './useStore';
-import { setLogout, setUserRole } from '@stores/authSlice';
+import { setLogout, setUserRoleNull } from '@stores/authSlice';
 import { useToast } from './useToast';
 
 const useInterceptor = () => {
@@ -15,7 +15,7 @@ const useInterceptor = () => {
         if (response.status === 401) {
           toast({ message: '세션이 만료되었습니다', type: 'warning' });
           dispatch(setLogout());
-          dispatch(setUserRole(''));
+          dispatch(setUserRoleNull());
           navigate('/login');
         }
         if (response.status === 403) {
