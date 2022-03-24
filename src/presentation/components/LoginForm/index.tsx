@@ -1,16 +1,16 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import VLoginForm from './VLoginForm';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { postLogin, getUsersMe, postLogout } from '@api/userAPI';
 import { setLogin, setUserRole } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@hooks/useStore';
+import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 import { useRoleInterceptor } from '@hooks/useInterceptor';
+import VLoginForm from './VLoginForm';
 
 const LoginForm = (): JSX.Element => {
   useRoleInterceptor();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const auth = useAppSelect((select) => select.auth.isAuthorized);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const vLoginFormProps = {
@@ -32,13 +32,18 @@ const LoginForm = (): JSX.Element => {
         if (meResponse?.data?.userRole === 'ADMIN' || meResponse?.data?.userRole === 'MANAGER') {
           dispatch(setLogin());
           dispatch(setUserRole(meResponse.data.userRole));
-          navigate('/');
+          if (location.hash) {
+            navigate({ pathname: location.hash.replace('#', '') }, { replace: true });
+          } else {
+            navigate('/');
+          }
         } else {
           await postLogout();
         }
       }
     },
   };
+
   return (
     <>
       <VLoginForm {...vLoginFormProps} />
