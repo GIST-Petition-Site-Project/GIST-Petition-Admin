@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthRoute, UnauthRoute, AdminRoute, ManagerRoute } from './PrivateRouter';
+import { AuthRoute } from './PrivateRouter';
 import NavBar from '@components/NavBar';
 import Login from '@pages/Login';
 import Home from '@pages/Home';
@@ -21,30 +21,28 @@ const MainRouter = (): JSX.Element => {
       <BrowserRouter>
         <ScrollTop />
         <Routes>
-          <Route path="/" element={<AuthRoute />}>
+          <Route path="/" element={<AuthRoute type="AUTH" />}>
             <Route index element={<Home />} />
           </Route>
-          <Route path="/login" element={<UnauthRoute />}>
-            <Route index element={<Login />} />
-          </Route>
-          <Route path="/role" element={<AdminRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/role" element={<AuthRoute type="ADMIN" />}>
             <Route index element={<Role />} />
           </Route>
-          <Route path="/modify" element={<ManagerRoute />}>
+          <Route path="/modify" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<ModifyPetition />} />
           </Route>
-          <Route path="/revision" element={<ManagerRoute />}>
+          <Route path="/revision" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<Revision />} />
           </Route>
-          <Route path="/answer" element={<ManagerRoute />}>
+          <Route path="/answer" element={<AuthRoute type="MANAGER" />}>
             <Route index element={<Answer />} />
             <Route path=":petitionId" element={<AnswerPetition />} />
           </Route>
-          <Route path="/approve" element={<ManagerRoute />}>
+          <Route path="/approve" element={<AuthRoute type="MANAGER" />}>
             <Route index element={<Approve />} />
             <Route path=":petitionId" element={<ApprovePetition />} />
           </Route>
-          <Route path="/manage" element={<ManagerRoute />}>
+          <Route path="/manage" element={<AuthRoute type="MANAGER" />}>
             <Route index element={<Manage />} />
             <Route path=":petitionId" element={<ManagePetition />} />
           </Route>

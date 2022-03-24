@@ -1,4 +1,4 @@
-import { getPetitionById, getTempPetition } from '@api/petitionAPI';
+import { getPetitionById } from '@api/petitionAPI';
 import { Title, Wrapper } from '@components/common';
 import VPetition from '@components/common/VPetition';
 import WriteAnswer from '@components/WriteAnswer';

@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+type UserRole = 'NULL' | 'ADMIN' | 'MANAGER';
+
+const initialState: { isAuthorized: boolean; role: UserRole } = {
   isAuthorized: false,
-  role: '',
+  role: 'NULL',
 };
 
 export const authSlice = createSlice({
@@ -15,12 +17,18 @@ export const authSlice = createSlice({
     setLogout: (state) => {
       state.isAuthorized = false;
     },
-    setUserRole: (state, action: PayloadAction<string>) => {
-      state.role = action.payload;
+    setUserRoleNull: (state) => {
+      state.role = 'NULL';
+    },
+    setUserRoleManager: (state) => {
+      state.role = 'MANAGER';
+    },
+    setUserRoleAdmin: (state) => {
+      state.role = 'ADMIN';
     },
   },
 });
 
-export const { setLogin, setLogout, setUserRole } = authSlice.actions;
+export const { setLogin, setLogout, setUserRoleNull, setUserRoleAdmin, setUserRoleManager } = authSlice.actions;
 
 export default authSlice.reducer;
