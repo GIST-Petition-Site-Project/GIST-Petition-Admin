@@ -12,10 +12,13 @@ const WriteAnswer = (): JSX.Element => {
   const { petitionId } = useParams();
   const [petition, setPetition] = useState<Petition | undefined>();
   const [answer, setAnswer] = useState('');
+  const [videoUrl, setVideoUrl] = useState('');
+
   const fetchPetition = async () => {
     const response = await getPetitionById(petitionId);
     setPetition(response?.data);
     setAnswer(response?.data?.answer?.description || '');
+    setVideoUrl(response?.data?.answer?.videoUrl);
   };
 
   useEffect(() => {
@@ -26,23 +29,27 @@ const WriteAnswer = (): JSX.Element => {
   const vWriteAnswerProps = {
     answer,
     petition,
+    videoUrl,
     handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
-      setAnswer(event.target.value);
+      console.log(event.target.className);
+      if (event.target.className.includes('answer')) setAnswer(event.target.value);
+      if (event.target.className.includes('videoUrl')) setVideoUrl(event.target.value);
     },
     handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       if (petition?.answered) {
-        const putResponse = await putAnswer(petitionId, answer);
+        const putResponse = await putAnswer(petitionId, answer, videoUrl);
         if (putResponse?.status === 200) {
           toast({ message: '답변을 수정하였습니다', type: 'success' });
+          navigate(`/manage/${petitionId}`);
         }
       } else {
-        const postResponse = await postAnswer(petitionId, answer);
+        const postResponse = await postAnswer(petitionId, answer, videoUrl);
         if (postResponse?.status === 201) {
           toast({ message: '답변을 게시하였습니다', type: 'success' });
+          navigate(`/manage/${petitionId}`);
         }
       }
-      navigate(`/manage/${petitionId}`);
     },
   };
   return (

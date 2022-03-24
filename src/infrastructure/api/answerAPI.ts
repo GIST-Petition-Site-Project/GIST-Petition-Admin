@@ -3,9 +3,9 @@ import API from './baseAPI';
 /**
  * @description 청원에 답변을 등록합니다.
  */
-const postAnswer = async (petitionId: string | undefined, answer: string) => {
+const postAnswer = async (petitionId: string | undefined, answer: string, videoUrl: string) => {
   if (!petitionId) return;
-  const payload = { description: answer };
+  const payload = { description: answer, videoUrl };
   const response = await API.post(`petitions/${petitionId}/answer`, payload);
   return response;
 };
@@ -13,9 +13,9 @@ const postAnswer = async (petitionId: string | undefined, answer: string) => {
 /**
  * @description 청원에 등록된 답변을 수정합니다.
  */
-const putAnswer = async (petitionId: string | undefined, answer: string) => {
+const putAnswer = async (petitionId: string | undefined, answer: string, videoUrl: string) => {
   if (!petitionId) return;
-  const payload = { description: answer };
+  const payload = { description: answer, videoUrl };
   const response = await API.put(`petitions/${petitionId}/answer`, payload);
   return response;
 };
