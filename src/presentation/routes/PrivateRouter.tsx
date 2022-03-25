@@ -1,12 +1,10 @@
 import { useAppSelect } from '@hooks/useStore';
-import { useToast } from '@hooks/useToast';
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const AuthRoute = ({ type }: { type: 'AUTH' | 'ADMIN' | 'MANAGER' }): never | JSX.Element => {
   const auth = useAppSelect((select) => select.auth.isAuthorized);
   const role = useAppSelect((select) => select.auth.role);
-  const toast = useToast();
   const navigate = useNavigate();
   useEffect(() => {
     switch (type) {

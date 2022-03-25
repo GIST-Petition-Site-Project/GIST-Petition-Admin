@@ -120,3 +120,18 @@ export const Description = styled.div`
   font-size: 12px;
   line-height: 1.5em;
 `;
+
+export const Writer = styled.textarea`
+  background-color: ${(props) => props.theme.colors.background};
+  font-family: Pretendard;
+  font-size: 16px;
+  color: ${(props) => props.theme.colors.text};
+  width: 100%;
+  height: 60vh;
+  padding: 1em;
+  margin-bottom: 2em;
+  outline-color: #444;
+  :focus {
+    background-color: ${(props) => props.theme.colors.focus};
+  }
+`;

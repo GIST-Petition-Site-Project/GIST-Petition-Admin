@@ -100,14 +100,9 @@ const Home = (): JSX.Element => {
         </Dashboard>
         <Buttons>
           {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/role')}>역할 변경</HomeButton> : null}
-          <HomeButton onClick={() => navigate('/approve')}>
-            {/* {release ? <Noti id="noti">{release}</Noti> : null} */}
-            청원 승인
-          </HomeButton>
-          <HomeButton onClick={() => navigate('/answer')}>
-            {/* {release ? <Noti id="noti">{answer}</Noti> : null} */}
-            답변 등록
-          </HomeButton>
+          <HomeButton onClick={() => navigate('/approve')}>청원 승인</HomeButton>
+          <HomeButton onClick={() => navigate('/rejected')}>반려된 청원</HomeButton>
+          <HomeButton onClick={() => navigate('/answer')}>답변 등록</HomeButton>
           <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
         </Buttons>
       </ContentsGrid>

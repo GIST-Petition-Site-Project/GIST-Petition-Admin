@@ -18,11 +18,11 @@ const ManagePetition = (): JSX.Element => {
   useEffect(() => {
     fetchPetition();
   }, []);
-  const fireToast = useToast();
+  const toast = useToast();
   const withdrawPetition = async () => {
     await deletePetitionRelease(petition?.id);
     navigate('/manage');
-    fireToast({ message: '청원이 반려되었습니다.', type: 'warning' });
+    toast({ message: '청원이 반려되었습니다.', type: 'warning' });
   };
 
   const navigate = useNavigate();

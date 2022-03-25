@@ -93,6 +93,15 @@ export const getAnswered = async () => {
 };
 
 /**
+ * @description 반려된 청원들을 가져옵니다.
+ * @pagination size, page
+ */
+export const getRejected = async () => {
+  const response = await API.get(`petitions/rejected${location.search}`);
+  return response;
+};
+
+/**
  * @description 승인 대기중인 청원의 개수를 가져옵니다.
  */
 export const getWaitingReleaseCount = async () => {
@@ -113,5 +122,29 @@ export const getWaitingAnswerCount = async () => {
  */
 export const getPetitionRevisions = async (petitionId: string | number | undefined) => {
   const response = await API.get(`petitions/${petitionId}/revisions`);
+  return response;
+};
+
+/**
+ * @description 청원을 반려합니다.
+ */
+export const postPetitionRejection = async (petitionId: string | number | undefined, description: string) => {
+  const payload = {
+    description,
+  };
+  const response = await API.post(`petitions/${petitionId}/rejection`, payload);
+  return response;
+};
+
+export const putPetitionRejection = async (petitionId: string | number | undefined, description: string) => {
+  const payload = {
+    description,
+  };
+  const response = await API.put(`petitions/${petitionId}/rejection`, payload);
+  return response;
+};
+
+export const deletePetitionRejection = async (petitionId: string | number | undefined) => {
+  const response = await API.delete(`petitions/${petitionId}/rejection`);
   return response;
 };

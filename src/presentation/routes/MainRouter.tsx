@@ -13,6 +13,7 @@ import ManagePetition from '@pages/ManagePetition';
 import AnswerPetition from '@pages/AnswerPetition';
 import Revision from '@components/Revision';
 import ScrollTop from './ScrollTop';
+import Rejected from '@pages/Rejected';
 
 const MainRouter = (): JSX.Element => {
   return (
@@ -30,6 +31,9 @@ const MainRouter = (): JSX.Element => {
           </Route>
           <Route path="/modify" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<ModifyPetition />} />
+          </Route>
+          <Route path="/rejected" element={<AuthRoute type="MANAGER" />}>
+            <Route index element={<Rejected />} />
           </Route>
           <Route path="/revision" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<Revision />} />
