@@ -1,8 +1,13 @@
-import { getTempPetition, postPetitionRejection, postPetitionRelease, putPetitionRejection } from '@api/petitionAPI';
+import {
+  deletePetitionRejection,
+  getTempPetition,
+  postPetitionRejection,
+  postPetitionRelease,
+  putPetitionRejection,
+} from '@api/petitionAPI';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@hooks/useToast';
-import styled from 'styled-components';
 import { BottomPadder, StButton, Title, TitleWrapper, ButtonWrapper, Wrapper, Writer } from '@components/common';
 import ModifyPetition from '@components/ModifyPetition';
 import VPetition from '@components/common/VPetition';
@@ -48,7 +53,7 @@ const ApprovePetition = (): JSX.Element => {
       : await postPetitionRejection(petition?.id, rejectDescription);
     if (response.status === 201 || response.status === 200) {
       toast({ message: '청원이 반려되었습니다.', type: 'warning' });
-      navigate('/approve');
+      navigate('/rejected');
     } else {
       toast({ message: response.data?.message, type: 'warning' });
     }
@@ -56,6 +61,11 @@ const ApprovePetition = (): JSX.Element => {
 
   const handleCancel = () => {
     setIsRejecting(false);
+  };
+
+  const cancelReject = async () => {
+    await deletePetitionRejection(petition?.id);
+    navigate('/approve');
   };
 
   const handleChange = async (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -79,19 +89,19 @@ const ApprovePetition = (): JSX.Element => {
           <>
             <Title>청원 승인</Title>
             <VPetition petition={petition} />
-            {isRejecting && (
+            {isRejecting ? (
               <>
                 <TitleWrapper>
                   <Title>청원 반려</Title>
                   <ButtonWrapper>
                     <StButton onClick={handleCancel}>취소</StButton>
+                    <StButton onClick={cancelReject}>반려 취소</StButton>
                     <StButton onClick={handleReject}>청원 반려</StButton>
                   </ButtonWrapper>
                 </TitleWrapper>
                 <Writer value={rejectDescription} onChange={handleChange} />
               </>
-            )}
-            {isRejecting || (
+            ) : (
               <ButtonWrapper>
                 <StButton onClick={handleModify}>청원 수정</StButton>
                 <StButton onClick={handleReject}>청원 반려</StButton>

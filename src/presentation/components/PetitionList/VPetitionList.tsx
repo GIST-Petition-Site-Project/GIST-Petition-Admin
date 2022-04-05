@@ -94,7 +94,9 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
                 <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
                 <PetitionDescription>{id}</PetitionDescription>
                 <PetitionDescription>{categoryName}</PetitionDescription>
-                <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>
+                <PetitionTitle
+                  href={`${location.pathname}/${type === 'release' || type === 'rejected' ? tempUrl : id}`}
+                >
                   {title}
                 </PetitionTitle>
                 <PetitionDescription>{getDay(createdAt)}</PetitionDescription>

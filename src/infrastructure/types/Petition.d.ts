@@ -12,7 +12,7 @@ interface Petition {
   tempUrl: string;
   released: boolean;
   rejected: boolean;
-  rejection: Rejection;
+  rejection?: Rejection;
 }
 
 interface Rejection {

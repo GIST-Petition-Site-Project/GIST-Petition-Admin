@@ -32,9 +32,10 @@ const MainRouter = (): JSX.Element => {
           <Route path="/modify" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<ModifyPetition />} />
           </Route>
-          <Route path="/rejected" element={<AuthRoute type="MANAGER" />}>
+          {/* <Route path="/rejected" element={<AuthRoute type="MANAGER" />}>
             <Route index element={<Rejected />} />
-          </Route>
+            <Route path=":petitionId" element={<ApprovePetition />} />
+          </Route> */}
           <Route path="/revision" element={<AuthRoute type="MANAGER" />}>
             <Route path=":petitionId" element={<Revision />} />
           </Route>
