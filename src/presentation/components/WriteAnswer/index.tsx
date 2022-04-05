@@ -31,7 +31,6 @@ const WriteAnswer = (): JSX.Element => {
     petition,
     videoUrl,
     handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
-      console.log(event.target.className);
       if (event.target.className.includes('answer')) setAnswer(event.target.value);
       if (event.target.className.includes('videoUrl')) setVideoUrl(event.target.value);
     },

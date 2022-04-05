@@ -1,8 +1,8 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { postLogin, getUsersMe, postLogout } from '@api/userAPI';
 import { setLogin, setUserRoleAdmin, setUserRoleManager } from '@stores/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelect } from '@hooks/useStore';
+import { useAppDispatch } from '@hooks/useStore';
 import { useRoleInterceptor } from '@hooks/useInterceptor';
 import VLoginForm from './VLoginForm';
 
@@ -10,7 +10,7 @@ const LoginForm = (): JSX.Element => {
   useRoleInterceptor();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const auth = useAppSelect((select) => select.auth.isAuthorized);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const vLoginFormProps = {

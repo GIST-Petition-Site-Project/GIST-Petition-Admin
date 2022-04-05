@@ -1,4 +1,4 @@
-import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered } from '@api/petitionAPI';
+import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered, getRejected } from '@api/petitionAPI';
 import VPagination from '@components/Pagination/VPagination';
 import { useErrorInterceptor, useLoadingInterceptor } from '@hooks/useInterceptor';
 import { AxiosResponse } from 'axios';
@@ -43,6 +43,10 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
       case 'answered':
         const responseAnswered = await getAnswered();
         setListInfo(responseAnswered);
+        break;
+      case 'rejected':
+        const responseRejected = await getRejected();
+        setListInfo(responseRejected);
         break;
       default:
         const response = await getPetitions();

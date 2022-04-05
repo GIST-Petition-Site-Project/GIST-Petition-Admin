@@ -1,5 +1,5 @@
-import styled, { AnyStyledComponent } from 'styled-components';
-import { Title, StButton, BottomPadder } from '@components/common';
+import styled from 'styled-components';
+import { Title, StButton, BottomPadder, Writer } from '@components/common';
 interface vWriteAnswerProps {
   answer: string;
   videoUrl: string;
@@ -7,20 +7,6 @@ interface vWriteAnswerProps {
   handleChange: any;
   handleSubmit: any;
 }
-
-const Writer = styled.textarea`
-  background-color: ${(props) => props.theme.colors.background};
-  font-family: Pretendard;
-  font-size: 16px;
-  color: ${(props) => props.theme.colors.text};
-  width: 100%;
-  height: 60vh;
-  padding: 1em;
-  outline-color: #444;
-  :focus {
-    background-color: ${(props) => props.theme.colors.focus};
-  }
-`;
 
 const VideoFlex = styled.div`
   display: flex;

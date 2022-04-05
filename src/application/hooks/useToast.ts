@@ -5,13 +5,13 @@ export const useToast = () => {
   const dispatch = useAppDispatch();
   const getRandomID = () => String(new Date().getTime());
 
-  const fireToast = ({ message, type, duration = 2000 }: Toast) => {
+  const toast = ({ message, type, duration = 2000 }: Toast) => {
     const id = getRandomID();
     dispatch(addToast({ message, type, duration, id }));
     setTimeout(() => dispatch(popToast({ id })), duration + 600);
   };
 
-  return fireToast;
+  return toast;
 };
 
 export const useToasts = () => useAppSelect((state) => state.toast);

@@ -69,6 +69,7 @@ const statusColor = {
   '청원 진행중': '#616463',
   '답변 대기중': '#DF3127',
   '답변 완료': '#008DD5',
+  '승인 반려': '#000000',
 };
 
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
@@ -85,15 +86,17 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { released, agreeCount, answered, id, categoryName, title, createdAt, tempUrl } = petition;
-          const status = checkPetitionStatus(released, agreeCount, answered);
+          const { released, agreeCount, answered, rejected, id, categoryName, title, createdAt, tempUrl } = petition;
+          const status = checkPetitionStatus(released, agreeCount, answered, rejected);
           return (
             <div key={'petition_item_' + id}>
               <PetitionItem>
                 <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
                 <PetitionDescription>{id}</PetitionDescription>
                 <PetitionDescription>{categoryName}</PetitionDescription>
-                <PetitionTitle href={`${location.pathname}/${type === 'release' ? tempUrl : id}`}>
+                <PetitionTitle
+                  href={`${location.pathname}/${type === 'release' || type === 'rejected' ? tempUrl : id}`}
+                >
                   {title}
                 </PetitionTitle>
                 <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
