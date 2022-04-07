@@ -1,4 +1,4 @@
-import { getPetitionById } from '@api/petitionAPI';
+import { getPetitionById } from '@api/petitionQueryAPI';
 import { postAnswer, putAnswer } from '@api/answerAPI';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';

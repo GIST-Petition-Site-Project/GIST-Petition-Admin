@@ -55,8 +55,9 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { released, agreeCount, answered, rejected, id, categoryName, title, createdAt, tempUrl } = petition;
-          const status = checkPetitionStatus(released, agreeCount, answered, rejected);
+          const { released, agreeCount, answered, rejected, id, categoryName, title, createdAt, tempUrl, expired } =
+            petition;
+          const status = checkPetitionStatus(released, agreeCount, answered, rejected, expired);
           const vPetitionItemProps = {
             type,
             id,
@@ -66,7 +67,6 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
             tempUrl,
             status,
           };
-
           return (
             <div key={'petition_item_' + id}>
               <VPetitionItem {...vPetitionItemProps}></VPetitionItem>

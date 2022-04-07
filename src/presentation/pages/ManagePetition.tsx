@@ -1,4 +1,5 @@
-import { deletePetitionRelease, getPetitionById } from '@api/petitionAPI';
+import { deletePetitionRelease } from '@api/petitionCommandAPI';
+import { getPetitionById } from '@api/petitionQueryAPI';
 import { BottomPadder, ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
 import VAnswer from '@components/common/VAnswer';
 import VPetition from '@components/common/VPetition';

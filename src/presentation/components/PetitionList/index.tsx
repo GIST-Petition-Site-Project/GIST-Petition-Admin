@@ -1,4 +1,4 @@
-import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered, getRejected } from '@api/petitionAPI';
+import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered, getRejected } from '@api/petitionQueryAPI';
 import VPagination from '@components/Pagination/VPagination';
 import { useErrorInterceptor, useLoadingInterceptor } from '@hooks/useInterceptor';
 import { AxiosResponse } from 'axios';

@@ -1,10 +1,10 @@
 import {
   deletePetitionRejection,
-  getTempPetition,
   postPetitionRejection,
   postPetitionRelease,
   putPetitionRejection,
-} from '@api/petitionAPI';
+} from '@api/petitionCommandAPI';
+import { getTempPetition } from '@api/petitionQueryAPI';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@hooks/useToast';
