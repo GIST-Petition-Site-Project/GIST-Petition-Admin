@@ -1,4 +1,5 @@
-import { getPetitionById, putPetition } from '@api/petitionAPI';
+import { putPetition } from '@api/petitionCommandAPI';
+import { getPetitionById } from '@api/petitionQueryAPI';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import VModifyPetition from './VModifyPetition';

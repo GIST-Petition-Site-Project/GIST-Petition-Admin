@@ -1,4 +1,4 @@
-import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
+import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionQueryAPI';
 import { StButton } from '@components/common';
 import { useAppSelect } from '@hooks/useStore';
 import { useEffect, useState } from 'react';
