@@ -97,6 +97,7 @@ const statusColor = {
   '답변 대기중': '#DF3127',
   '답변 완료': '#008DD5',
   '승인 반려': '#000000',
+  '청원 만료': '#000000',
 };
 
 interface IPetitionList {
