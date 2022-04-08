@@ -1,11 +1,18 @@
 import LoginForm from '@components/LoginForm';
 import { Wrapper } from '@components/common';
+import styled from 'styled-components';
+
+const LoginWrapper = styled(Wrapper)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Login = () => {
   return (
-    <Wrapper style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <LoginWrapper>
       <LoginForm />
-    </Wrapper>
+    </LoginWrapper>
   );
 };
 
