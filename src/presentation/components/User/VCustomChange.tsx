@@ -61,14 +61,14 @@ const StRole = styled.p`
   color: ${(props) => props.theme.colors.text};
 `;
 
-interface Props {
+interface vCustomChangeProps {
   email: string;
   customRole: string;
   handleEmailChange: any;
   handleRoleChange: any;
 }
 
-const VCustomChange = ({ email, customRole, handleEmailChange, handleRoleChange }: Props): JSX.Element => {
+const VCustomChange = ({ email, customRole, handleEmailChange, handleRoleChange }: vCustomChangeProps): JSX.Element => {
   const roles = ['USER', 'MANAGER', 'ADMIN'];
   return (
     <>

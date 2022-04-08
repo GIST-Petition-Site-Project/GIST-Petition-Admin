@@ -1,11 +1,6 @@
 import { StLine, StSelect } from '@components/common';
 import styled from 'styled-components';
 
-interface vUserListProps {
-  users: Array<User>;
-  each: any;
-}
-
 const StUl = styled.ul`
   line-height: 1em;
 `;
@@ -24,6 +19,11 @@ const StP = styled.p`
   padding: 1em;
   color: ${(props) => props.theme.colors.text};
 `;
+
+interface vUserListProps {
+  users: Array<User>;
+  each: any;
+}
 
 const VUserList = ({ users, each }: vUserListProps): JSX.Element => {
   const roles = ['USER', 'MANAGER', 'ADMIN'];

@@ -65,11 +65,11 @@ const MLine = styled(StLine)`
   margin-bottom: 2em;
 `;
 
-interface IPeition {
+interface vPetitionProps {
   petition: Petition | undefined;
 }
 
-const VPetition = ({ petition }: IPeition): JSX.Element => {
+const VPetition = ({ petition }: vPetitionProps): JSX.Element => {
   const status = checkPetitionStatus(petition);
   return (
     <>

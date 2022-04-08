@@ -46,11 +46,11 @@ const SwitchCheckbox = styled.input`
     }
   }
 `;
-interface IToggle {
+interface vToggleSwitchProps {
   isChecked: boolean;
   handleChange: any;
 }
-const ToggleSwitch = ({ isChecked, handleChange }: IToggle) => {
+const ToggleSwitch = ({ isChecked, handleChange }: vToggleSwitchProps) => {
   return (
     <SwitchContainer>
       <SwitchCheckbox type="checkbox" checked={isChecked} onChange={handleChange} id="checkbox" />

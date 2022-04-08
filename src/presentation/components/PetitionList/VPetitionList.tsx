@@ -3,12 +3,6 @@ import checkPetitionStatus from '@utils/petitionStatus';
 import styled from 'styled-components';
 import VPetitionItem from './VPetitionItem';
 
-interface vPetitionListProps {
-  isLoading: boolean;
-  petitions: Array<Petition>;
-  type: Menu;
-}
-
 const StUl = styled.ul`
   line-height: 1em;
 `;
@@ -31,6 +25,12 @@ const HeaderItem = styled.div`
     display: grid;
   }
 `;
+
+interface vPetitionListProps {
+  isLoading: boolean;
+  petitions: Array<Petition>;
+  type: Menu;
+}
 
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
   return (

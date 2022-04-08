@@ -1,14 +1,6 @@
 import { StSelect, Title } from '@components/common';
 import styled from 'styled-components';
 
-interface IProps {
-  from: number;
-  to: number;
-  count: number;
-  fromChange: any;
-  toChange: any;
-}
-
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
@@ -21,7 +13,15 @@ const SelectWrapper = styled.div`
   column-gap: 10px;
 `;
 
-const VRevisionSelector = ({ from, to, count, fromChange, toChange }: IProps): JSX.Element => {
+interface vRevisionSelectorProps {
+  from: number;
+  to: number;
+  count: number;
+  fromChange: any;
+  toChange: any;
+}
+
+const VRevisionSelector = ({ from, to, count, fromChange, toChange }: vRevisionSelectorProps): JSX.Element => {
   const fromSelector = Array((count || 1) - 1 || 1)
     .fill(0)
     .map((_x, i) => i);

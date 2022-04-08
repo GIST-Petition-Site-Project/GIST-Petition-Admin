@@ -1,4 +1,4 @@
-import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered, getRejected } from '@api/petitionQueryAPI';
+import { getWaitingRelease, getPetitions, getWaitingAnswer } from '@api/petitionQueryAPI';
 import { ListWrapper } from '@components/common';
 import VPagination from '@components/Pagination/VPagination';
 import { useErrorInterceptor, useLoadingInterceptor } from '@hooks/useInterceptor';

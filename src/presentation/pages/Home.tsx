@@ -1,4 +1,4 @@
-import { Title, Wrapper } from '@components/common';
+import { Title } from '@components/common';
 import PetitionList from '@components/PetitionList';
 import Sidebar from '@components/Sidebar';
 import UserList from '@components/User';
@@ -35,7 +35,6 @@ const Home = (): JSX.Element => {
   return (
     <div style={{ maxWidth: '1350px', width: '100%', margin: '0 auto', justifyContent: 'center' }}>
       <Flex>
-        {/* <div style={{ width: '150px', flexGrow: 1, background: 'lime' }}></div> */}
         <Sidebar />
         {type === 'user' ? (
           <ContentItem>

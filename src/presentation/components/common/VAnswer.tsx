@@ -36,11 +36,11 @@ const MLine = styled(StLine)`
   margin-bottom: 2em;
 `;
 
-interface IAnswer {
-  answer: Answer | undefined;
+interface vAnswerProps {
+  answer?: Answer;
 }
 
-const VAnswer = ({ answer }: IAnswer): JSX.Element => {
+const VAnswer = ({ answer }: vAnswerProps): JSX.Element => {
   return (
     <>
       <AnswerWrapper>

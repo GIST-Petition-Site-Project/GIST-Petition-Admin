@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-interface ILine {
-  duration: number;
-  type: 'success' | 'warning';
-}
-
-interface IWrapper {
+interface WrapperProps {
   isClosing: boolean;
   type: 'success' | 'warning';
 }
 
-const Wrapper = styled.div<IWrapper>`
+const Wrapper = styled.div<WrapperProps>`
   color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -44,7 +39,12 @@ const Message = styled.div`
   margin: 10px 20px;
 `;
 
-const Line = styled.div<ILine>`
+interface LineProps {
+  duration: number;
+  type: 'success' | 'warning';
+}
+
+const Line = styled.div<LineProps>`
   background-color: ${(props) => (props.type === 'warning' ? props.theme.colors.gistRed : props.theme.colors.text)};
   animation: ${(props) => props.duration}s linear timer;
   position: absolute;
