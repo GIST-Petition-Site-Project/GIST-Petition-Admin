@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { getDay } from '@utils/timeFormat';
 import { StLine } from '@components/common';
+import React from 'react';
 
 const PetitionItem = styled.div`
   display: grid;
@@ -35,7 +36,7 @@ const PetitionItem = styled.div`
   }
   margin: 1rem 0;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: 80px 80px 80px 1fr 80px;
     grid-template-rows: repeat(1, 1fr);
     min-height: 64px;
@@ -92,16 +93,16 @@ const PetitionStatus = styled.div`
 `;
 
 const statusColor = {
-  '승인 대기중': '#DD433B',
-  '청원 진행중': '#616463',
-  '답변 대기중': '#DF3127',
-  '답변 완료': '#008DD5',
-  '승인 반려': '#000000',
-  '청원 만료': '#000000',
+  '승인 대기중': '#ed903e',
+  '청원 진행중': '#a8714c',
+  '답변 대기중': '#57482b',
+  '답변 완료됨': '#ad2e24',
+  '승인 반려됨': '#DF3127',
+  '청원 만료됨': '#7a1c0b',
 };
 
 interface IPetitionList {
-  type?: any;
+  type?: Menu;
 }
 
 interface vPetitionItemProps {
@@ -129,7 +130,7 @@ const VPetitionItem = ({
         <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
         <PetitionDescription>{id}</PetitionDescription>
         <PetitionDescription>{categoryName}</PetitionDescription>
-        <PetitionTitle href={`${location.pathname}/${type === 'release' || type === 'rejected' ? tempUrl : id}`}>
+        <PetitionTitle href={`${type}/${type === 'approve' || type === 'rejected' ? tempUrl : id}`}>
           {title}
         </PetitionTitle>
         <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
@@ -139,4 +140,4 @@ const VPetitionItem = ({
   );
 };
 
-export default VPetitionItem;
+export default React.memo(VPetitionItem);
