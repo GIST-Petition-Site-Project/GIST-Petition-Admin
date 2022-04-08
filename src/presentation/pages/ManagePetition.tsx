@@ -22,7 +22,7 @@ const ManagePetition = (): JSX.Element => {
   const toast = useToast();
   const withdrawPetition = async () => {
     await deletePetitionRelease(petition?.id);
-    navigate('/manage');
+    navigate('/');
     toast({ message: '승인이 취소되었습니다.', type: 'warning' });
   };
 
@@ -52,7 +52,7 @@ const ManagePetition = (): JSX.Element => {
       ) : null}
       <ButtonWrapper>
         <StButton onClick={navigateModify}>청원 수정</StButton>
-        <StButton onClick={withdrawPetition}>승인 취소</StButton>
+        {petition?.rejected ? null : <StButton onClick={withdrawPetition}>승인 취소</StButton>}
         {petition?.answer ? <StButton onClick={navigateAnswer}>답변 수정</StButton> : null}
         <StButton onClick={navigateRevision}>수정 이력</StButton>
       </ButtonWrapper>
