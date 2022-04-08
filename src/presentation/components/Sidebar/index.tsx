@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import { MdManageAccounts, MdViewList, MdPlaylistAddCheck, MdOutlineBorderColor } from 'react-icons/md';
 
 const SidebarWrapper = styled.div`
-  /* position: fixed; */
   width: 180px;
   left: 2em;
   color: ${(props) => props.theme.colors.text};
@@ -17,7 +16,6 @@ const SidebarWrapper = styled.div`
     display: none;
   }
 `;
-
 const SidebarButton = styled.button`
   border: 0;
   width: 100%;
@@ -25,6 +23,7 @@ const SidebarButton = styled.button`
   color: ${(props) => props.theme.colors.text};
   text-align: center;
   padding: 2em;
+  position: relative;
   @media screen and (min-width: 768px) {
     text-align: left;
   }
@@ -36,22 +35,24 @@ const SidebarButton = styled.button`
 const Count = styled.div`
   color: white;
   display: inline-block;
-  margin-left: 4px;
   height: 1rem;
   width: 1rem;
   border-radius: 50%;
   background: red;
   text-align: center;
+  position: absolute;
+  margin-left: 4px;
+  top: 15px;
+  @media screen and (min-width: 768px) {
+    top: unset;
+  }
 `;
 
 const MobileWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }
-  div {
-    position: fixed;
-    z-index: 1;
-  }
+  /* display: none; */
 
   svg {
     transform: scale(2);
@@ -66,7 +67,7 @@ const MobileWrapper = styled.div`
 const Sidebar = (): JSX.Element => {
   const [waitingReleaseCount, setWaitingReleaseCount] = useState(0);
   const [waitingAnswerCount, setWaitingAnswerCount] = useState(0);
-  // const type = useAppSelect((select) => select.menu.type);
+  const type = useAppSelect((select) => select.menu.type);
 
   const getCounts = async () => {
     const response1 = await getWaitingReleaseCount();
@@ -93,12 +94,30 @@ const Sidebar = (): JSX.Element => {
   return (
     <>
       <SidebarWrapper>
-        {role === 'ADMIN' && <SidebarButton onClick={() => handleClick(setUser())}>유저 관리</SidebarButton>}
-        <SidebarButton onClick={() => handleClick(setManage())}>청원 관리</SidebarButton>
-        <SidebarButton onClick={() => handleClick(setApprove())}>
+        {role === 'ADMIN' && (
+          <SidebarButton
+            style={type === 'user' ? { textDecoration: 'underline' } : {}}
+            onClick={() => handleClick(setUser())}
+          >
+            유저 관리
+          </SidebarButton>
+        )}
+        <SidebarButton
+          style={type === 'manage' ? { textDecoration: 'underline' } : {}}
+          onClick={() => handleClick(setManage())}
+        >
+          청원 관리
+        </SidebarButton>
+        <SidebarButton
+          style={type === 'approve' ? { textDecoration: 'underline' } : {}}
+          onClick={() => handleClick(setApprove())}
+        >
           청원 승인 <Count>{waitingReleaseCount}</Count>
         </SidebarButton>
-        <SidebarButton onClick={() => handleClick(setAnswer())}>
+        <SidebarButton
+          style={type === 'answer' ? { textDecoration: 'underline' } : {}}
+          onClick={() => handleClick(setAnswer())}
+        >
           답변 등록 <Count>{waitingAnswerCount}</Count>
         </SidebarButton>
       </SidebarWrapper>
@@ -112,10 +131,12 @@ const Sidebar = (): JSX.Element => {
           <MdViewList></MdViewList>
         </SidebarButton>
         <SidebarButton onClick={() => handleClick(setApprove())}>
-          <MdPlaylistAddCheck></MdPlaylistAddCheck> <Count>{waitingReleaseCount}</Count>
+          <MdPlaylistAddCheck></MdPlaylistAddCheck>
+          <Count>{waitingReleaseCount}</Count>
         </SidebarButton>
         <SidebarButton onClick={() => handleClick(setAnswer())}>
-          <MdOutlineBorderColor></MdOutlineBorderColor> <Count>{waitingAnswerCount}</Count>
+          <MdOutlineBorderColor></MdOutlineBorderColor>
+          <Count>{waitingAnswerCount}</Count>
         </SidebarButton>
       </MobileWrapper>
     </>
