@@ -21,9 +21,9 @@ const NavBarBlock = styled.div`
 const NavWrapper = styled.div`
   position: relative;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1350px;
   width: 100%;
-  padding: 0 5%;
+  padding: 0 2em;
 `;
 
 const Logo = styled.img`
@@ -39,7 +39,7 @@ const Menu = styled.div`
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  right: 5%;
+  right: 2em;
   top: 0;
   bottom: 0;
   margin: auto;

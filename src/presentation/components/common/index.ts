@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Title = styled.h1`
+export const Title = styled.div`
+  display: block;
+  /* width: 100%; */
   color: ${(props) => props.theme.colors.text};
   font-weight: 700;
   font-size: 24px;
@@ -134,4 +136,11 @@ export const Writer = styled.textarea`
   :focus {
     background-color: ${(props) => props.theme.colors.focus};
   }
+`;
+
+export const ListWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
