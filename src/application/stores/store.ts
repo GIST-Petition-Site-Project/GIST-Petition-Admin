@@ -5,17 +5,20 @@ import authReducer from './authSlice';
 import toastReducer from './toastSlice';
 import modeReducer from './modeSlice';
 import modifyReducer from './modifySlice';
+import menuReducer from './menuSlice';
+
 const reducers = combineReducers({
   auth: authReducer,
   toast: toastReducer,
   mode: modeReducer,
   modify: modifyReducer,
+  menu: menuReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'mode'],
+  whitelist: ['auth', 'mode', 'menu'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
