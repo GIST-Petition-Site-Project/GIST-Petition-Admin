@@ -9,41 +9,32 @@ interface vPetitionListProps {
   type: any;
 }
 
-const MinHeight = styled.div`
-  min-height: 65vh;
-`;
-
 const StUl = styled.ul`
   line-height: 1em;
-`;
-
-const PetitionItem = styled.div`
-  display: grid;
-  grid-template-columns: 80px 80px 80px 1fr 80px;
-  justify-content: center;
-  align-items: center;
-  height: 64px;
-  color: ${(props) => props.theme.colors.text};
-  &:hover {
-    background-color: ${(props) => props.theme.colors.focus};
-  }
 `;
 
 const PetitionDescription = styled.div`
   text-align: center;
 `;
 
-const HeaderItem = styled(PetitionItem)`
+const HeaderItem = styled.div`
   height: 2em;
   display: none;
-  @media screen and (min-width: 600px) {
+  grid-template-columns: 80px 80px 80px 1fr 80px;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => props.theme.colors.text};
+  &:hover {
+    background-color: ${(props) => props.theme.colors.focus};
+  }
+  @media screen and (min-width: 768px) {
     display: grid;
   }
 `;
 
 const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.Element => {
   return (
-    <MinHeight>
+    <>
       {isLoading ? <Loading>로딩중...</Loading> : null}
       <StUl>
         <HeaderItem>
@@ -74,7 +65,7 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
           );
         })}
       </StUl>
-    </MinHeight>
+    </>
   );
 };
 
