@@ -10,9 +10,9 @@ const checkPetitionStatus = (
    */
   const REQUIRED_AGREEMENT_COUNTS = 50;
   if (!released) return '승인 대기중';
-  if (rejected) return '승인 반려';
-  if (answered) return '답변 완료';
-  if (expired) return '청원 만료';
+  if (rejected) return '승인 반려됨';
+  if (answered) return '답변 완료됨';
+  if (expired) return '청원 만료됨';
   return agreeCount > REQUIRED_AGREEMENT_COUNTS ? '답변 대기중' : '청원 진행중';
 };
 
