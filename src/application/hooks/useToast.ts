@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelect } from '@hooks/useStore';
 
 export const useToast = () => {
   const dispatch = useAppDispatch();
-  const getRandomID = () => String(new Date().getTime());
+  const getRandomID = () => String(new Date().getTime()).slice(0, -1);
 
   const toast = ({ message, type, duration = 2000 }: Toast) => {
     const id = getRandomID();

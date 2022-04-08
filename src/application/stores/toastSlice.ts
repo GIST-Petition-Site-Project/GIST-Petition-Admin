@@ -6,7 +6,7 @@ export const toastSlice = createSlice({
   name: 'toast',
   initialState,
   reducers: {
-    addToast: (state, { payload }) => [...state, payload],
+    addToast: (state, { payload }) => state.filter((toast) => toast.id !== payload.id).concat(payload),
     popToast: (state, { payload }) => state.filter((toast) => toast.id !== payload.id),
   },
 });
