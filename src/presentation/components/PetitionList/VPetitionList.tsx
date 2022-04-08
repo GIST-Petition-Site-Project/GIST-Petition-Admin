@@ -6,7 +6,7 @@ import VPetitionItem from './VPetitionItem';
 interface vPetitionListProps {
   isLoading: boolean;
   petitions: Array<Petition>;
-  type: any;
+  type: Menu;
 }
 
 const StUl = styled.ul`
@@ -46,9 +46,8 @@ const VPetitionList = ({ isLoading, petitions, type }: vPetitionListProps): JSX.
         </HeaderItem>
         <StLine />
         {petitions.map((petition) => {
-          const { released, agreeCount, answered, rejected, id, categoryName, title, createdAt, tempUrl, expired } =
-            petition;
-          const status = checkPetitionStatus(released, agreeCount, answered, rejected, expired);
+          const { id, categoryName, title, createdAt, tempUrl } = petition;
+          const status = checkPetitionStatus(petition);
           const vPetitionItemProps = {
             type,
             id,

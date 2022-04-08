@@ -101,12 +101,8 @@ const statusColor = {
   '청원 만료됨': '#7a1c0b',
 };
 
-interface IPetitionList {
-  type?: Menu;
-}
-
 interface vPetitionItemProps {
-  type: IPetitionList;
+  type: Menu;
   id: number;
   categoryName: string;
   title: string;
@@ -130,9 +126,7 @@ const VPetitionItem = ({
         <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
         <PetitionDescription>{id}</PetitionDescription>
         <PetitionDescription>{categoryName}</PetitionDescription>
-        <PetitionTitle href={`${type}/${type === 'approve' || type === 'rejected' ? tempUrl : id}`}>
-          {title}
-        </PetitionTitle>
+        <PetitionTitle href={`${type}/${type === 'approve' ? tempUrl : id}`}>{title}</PetitionTitle>
         <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
       </PetitionItem>
       <StLine />
