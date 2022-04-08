@@ -5,6 +5,7 @@ import { setAnswer, setApprove, setManage, setUser } from '@stores/menuSlice';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { MdManageAccounts, MdViewList, MdPlaylistAddCheck, MdOutlineBorderColor } from 'react-icons/md';
 
 const SidebarWrapper = styled.div`
   /* position: fixed; */
@@ -22,8 +23,11 @@ const SidebarButton = styled.button`
   width: 100%;
   background: transparent;
   color: ${(props) => props.theme.colors.text};
-  text-align: left;
+  text-align: center;
   padding: 2em;
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
   :hover {
     background: ${(props) => props.theme.colors.focus};
   }
@@ -32,6 +36,7 @@ const SidebarButton = styled.button`
 const Count = styled.div`
   color: white;
   display: inline-block;
+  margin-left: 4px;
   height: 1rem;
   width: 1rem;
   border-radius: 50%;
@@ -47,6 +52,15 @@ const MobileWrapper = styled.div`
     position: fixed;
     z-index: 1;
   }
+
+  svg {
+    transform: scale(2);
+  }
+
+  width: 80px;
+  left: 2em;
+  color: ${(props) => props.theme.colors.text};
+  border-right: solid 1px ${(props) => props.theme.colors.line};
 `;
 
 const Sidebar = (): JSX.Element => {
@@ -88,7 +102,22 @@ const Sidebar = (): JSX.Element => {
           답변 등록 <Count>{waitingAnswerCount}</Count>
         </SidebarButton>
       </SidebarWrapper>
-      <MobileWrapper></MobileWrapper>
+      <MobileWrapper>
+        {role === 'ADMIN' && (
+          <SidebarButton onClick={() => handleClick(setUser())}>
+            <MdManageAccounts></MdManageAccounts>
+          </SidebarButton>
+        )}
+        <SidebarButton onClick={() => handleClick(setManage())}>
+          <MdViewList></MdViewList>
+        </SidebarButton>
+        <SidebarButton onClick={() => handleClick(setApprove())}>
+          <MdPlaylistAddCheck></MdPlaylistAddCheck> <Count>{waitingReleaseCount}</Count>
+        </SidebarButton>
+        <SidebarButton onClick={() => handleClick(setAnswer())}>
+          <MdOutlineBorderColor></MdOutlineBorderColor> <Count>{waitingAnswerCount}</Count>
+        </SidebarButton>
+      </MobileWrapper>
     </>
   );
 };
