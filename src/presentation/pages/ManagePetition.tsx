@@ -54,7 +54,7 @@ const ManagePetition = (): JSX.Element => {
       {petition?.rejection ? (
         <>
           <TitleWrapper>
-            <Title>반려 관리</Title>
+            <Title>반려 사유</Title>
           </TitleWrapper>
           <VRejection rejection={petition?.rejection} />
         </>
