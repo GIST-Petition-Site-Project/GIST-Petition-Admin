@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 import { Title, StButton, BottomPadder, Writer } from '@components/common';
-interface vWriteAnswerProps {
-  answer: string;
-  videoUrl: string;
-  petition: Petition | undefined;
-  handleChange: any;
-  handleSubmit: any;
-}
 
 const VideoFlex = styled.div`
   display: flex;
@@ -34,6 +27,14 @@ const TitleWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+interface vWriteAnswerProps {
+  answer: string;
+  videoUrl: string;
+  petition: Petition | undefined;
+  handleChange: any;
+  handleSubmit: any;
+}
 
 const VWriteAnswer = ({ answer, petition, videoUrl, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {
   return (

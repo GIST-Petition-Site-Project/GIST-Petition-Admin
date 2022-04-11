@@ -1,4 +1,5 @@
 import { StLine } from '@components/common';
+import checkPetitionStatus from '@utils/petitionStatus';
 import { getDate } from '@utils/timeFormat';
 import styled from 'styled-components';
 
@@ -42,18 +43,38 @@ const PetitionDate = styled.div`
   line-height: 1.5em;
 `;
 
+const PetitionStatus = styled.span`
+  font-size: 1em;
+  color: white;
+  border-radius: 0.2em;
+  background-color: gray;
+  text-align: center;
+  width: 80px;
+`;
+
+const statusColor = {
+  '승인 대기중': '#ed903e',
+  '청원 진행중': '#a8714c',
+  '답변 대기중': '#57482b',
+  '답변 완료됨': '#ad2e24',
+  '승인 반려됨': '#DF3127',
+  '청원 만료됨': '#7a1c0b',
+};
+
 const MLine = styled(StLine)`
   margin-bottom: 2em;
 `;
 
-interface IPeition {
+interface vPetitionProps {
   petition: Petition | undefined;
 }
 
-const VPetition = ({ petition }: IPeition): JSX.Element => {
+const VPetition = ({ petition }: vPetitionProps): JSX.Element => {
+  const status = checkPetitionStatus(petition);
   return (
     <>
       <PetitionWrapper>
+        <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
         <PetitionTitle>{petition?.title}</PetitionTitle>
         <PetitionDescription>{petition?.description}</PetitionDescription>
         <PetitionDate>최초 작성 {getDate(petition?.createdAt || 0)}</PetitionDate>

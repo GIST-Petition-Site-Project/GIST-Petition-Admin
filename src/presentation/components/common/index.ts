@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Title = styled.h1`
+export const Title = styled.div`
+  display: block;
+  /* width: 100%; */
   color: ${(props) => props.theme.colors.text};
   font-weight: 700;
   font-size: 24px;
@@ -134,4 +136,41 @@ export const Writer = styled.textarea`
   :focus {
     background-color: ${(props) => props.theme.colors.focus};
   }
+`;
+
+export const ListWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const AnswerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const AnswerDescription = styled.div`
+  white-space: pre-line;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 1.5em;
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+  min-height: 20vh;
+`;
+
+export const AnswerDate = styled.div`
+  white-space: pre-line;
+  width: 100%;
+  padding-right: 1em;
+  text-align: end;
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1.5em;
 `;

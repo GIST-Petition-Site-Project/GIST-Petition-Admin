@@ -1,17 +1,14 @@
 import qs from 'qs';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-interface IPagination {
-  totalPages: number;
-  number: number;
-}
-
 const Flex = styled.div`
+  margin-top: auto;
   height: 5em;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: center;
   align-items: center;
   column-gap: 0.5em;
@@ -38,11 +35,14 @@ const CurrentButton = styled(PageButton)`
   color: white;
 `;
 
-const VPagination = ({ totalPages, number }: IPagination) => {
+interface vPaginationProps {
+  totalPages: number;
+  number: number;
+}
+const VPagination = ({ totalPages, number }: vPaginationProps) => {
   const offset = 2;
   const start = Math.max(0, number - offset);
   const end = Math.max(Math.min(totalPages - 1, number + offset), 0);
-
   const leftIndices = Array(number - start)
     .fill(0)
     .map((_v, i) => i + start);
@@ -79,4 +79,4 @@ const VPagination = ({ totalPages, number }: IPagination) => {
   );
 };
 
-export default VPagination;
+export default React.memo(VPagination);

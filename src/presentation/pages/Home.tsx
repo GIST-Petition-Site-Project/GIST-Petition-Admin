@@ -1,112 +1,57 @@
-import { getWaitingAnswerCount, getWaitingReleaseCount } from '@api/petitionAPI';
-import { StButton } from '@components/common';
+import { Title } from '@components/common';
+import PetitionList from '@components/PetitionList';
+import Sidebar from '@components/Sidebar';
+import UserList from '@components/User';
 import { useAppSelect } from '@hooks/useStore';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ContentsGrid = styled.div`
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
-  margin: auto;
+const Flex = styled.div`
+  display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   color: ${(props) => props.theme.colors.text};
   background-color: ${(props) => props.theme.colors.background};
+  max-width: 1350px;
+  min-height: calc(100vh - 50px);
+  height: 100%;
 `;
 
-const Dashboard = styled.div`
+const ContentItem = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  max-width: 1200px;
   width: 100%;
-  height: 100%;
-  padding: 0 5% 0 5%;
-  border-bottom: 1px solid ${(props) => props.theme.colors.line};
-  background-color: ${(props) => props.theme.colors.background};
-`;
-
-const DashboardText = styled.div`
-  font-size: 4vw;
-  font-weight: 900;
-`;
-
-const Buttons = styled.div`
-  height: 100%;
-  display: flexbox;
-  justify-content: center;
-  align-items: center;
-  column-gap: 2em;
-  row-gap: 2em;
-  border-bottom: 1px solid ${(props) => props.theme.colors.line};
-`;
-
-const HomeButton = styled(StButton)`
-  position: relative;
-  margin: 0.5em 1em;
-  font-size: 1em;
-  font-weight: 400;
-  cursor: pointer;
-  :hover #noti {
-    display: none;
+  padding: 0 2em;
+  @media screen and (max-width: 768px) {
+    padding: 40px 2em 0 2em;
   }
 `;
 
-// const Noti = styled.div`
-//   position: absolute;
-//   text-align: center;
-//   top: -5px;
-//   right: -5px;
-//   height: 16px;
-//   width: 16px;
-//   font-size: 12px;
-//   border-radius: 50%;
-//   background-color: ${(props) => props.theme.colors.gistRed};
-//   color: white;
-//   transition: 0.2s;
-// `;
+const locale: { [key in Menu]: string } = {
+  user: '유저 관리',
+  manage: '청원 관리',
+  approve: '청원 승인',
+  answer: '답변 등록',
+};
 
 const Home = (): JSX.Element => {
-  // useInterceptor();
-  const [release, setRelease] = useState(0);
-  const [answer, setAnswer] = useState(0);
-
-  const getCounts = async () => {
-    const response1 = await getWaitingReleaseCount();
-    const response2 = await getWaitingAnswerCount();
-    setRelease(response1.data);
-    setAnswer(response2.data);
-  };
-  useEffect(() => {
-    getCounts();
-    const interval = setInterval(() => getCounts(), 60000);
-    return () => clearInterval(interval);
-  }, []);
-  const role = useAppSelect((select) => select.auth.role);
-  const navigate = useNavigate();
-
+  const type = useAppSelect((select) => select.menu.type);
   return (
-    <>
-      <ContentsGrid>
-        <Dashboard>
-          <DashboardText>{`현재 승인을 기다리는 ${release}개의 청원과, `}</DashboardText>
-          <DashboardText>{`답변을 기다리는 ${answer}개의 청원이 있습니다.`}</DashboardText>
-        </Dashboard>
-        <Buttons>
-          {role === 'ADMIN' ? <HomeButton onClick={() => navigate('/role')}>역할 변경</HomeButton> : null}
-          <HomeButton onClick={() => navigate('/approve')}>청원 승인</HomeButton>
-          {/* <HomeButton onClick={() => navigate('/rejected')}>반려된 청원</HomeButton> */}
-          <HomeButton onClick={() => navigate('/answer')}>답변 등록</HomeButton>
-          <HomeButton onClick={() => navigate('/manage')}>청원 관리</HomeButton>
-        </Buttons>
-      </ContentsGrid>
-    </>
+    <div style={{ maxWidth: '1350px', width: '100%', margin: '0 auto', justifyContent: 'center' }}>
+      <Flex>
+        <Sidebar />
+        {type === 'user' ? (
+          <ContentItem>
+            <Title>유저 관리</Title>
+            <UserList />
+          </ContentItem>
+        ) : (
+          <ContentItem>
+            <Title>{locale[type]}</Title>
+            <PetitionList />
+          </ContentItem>
+        )}
+      </Flex>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
-import { getPetitionById, putPetition } from '@api/petitionAPI';
+import { putPetition } from '@api/petitionCommandAPI';
+import { getPetitionById } from '@api/petitionQueryAPI';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import VModifyPetition from './VModifyPetition';
@@ -23,12 +24,12 @@ const Category = [
   '기타',
 ];
 
-interface IModifyPetition {
+interface vModifyPetitionProps {
   petition?: Petition;
 }
 
 // temp인 경우 props 로 petition 정보를 넣어줌, 공개된 청원일 경우 정보 가져옴
-const ModifyPetition = ({ petition }: IModifyPetition): JSX.Element => {
+const ModifyPetition = ({ petition }: vModifyPetitionProps): JSX.Element => {
   useErrorInterceptor();
   const { petitionId } = useParams();
   const [description, setDescription] = useState(petition?.description || '');

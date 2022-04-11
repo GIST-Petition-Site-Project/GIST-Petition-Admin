@@ -1,4 +1,5 @@
 import { getUsers, putUserRole } from '@api/userAPI';
+import { ListWrapper } from '@components/common';
 import VPagination from '@components/Pagination/VPagination';
 import { useToast } from '@hooks/useToast';
 import { ChangeEvent, useEffect, useState } from 'react';
@@ -89,11 +90,11 @@ const UserList = (): JSX.Element => {
   }, [search]);
 
   return (
-    <>
+    <ListWrapper>
       <VCustomChange {...vCustomChangeProps} />
       <VUserList {...vUserListProps} />
       <VPagination {...vPaginationProps} />
-    </>
+    </ListWrapper>
   );
 };
 

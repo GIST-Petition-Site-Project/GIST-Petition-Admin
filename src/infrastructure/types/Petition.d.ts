@@ -13,6 +13,7 @@ interface Petition {
   released: boolean;
   rejected: boolean;
   rejection?: Rejection;
+  expired: boolean;
 }
 
 interface Rejection {
@@ -22,8 +23,7 @@ interface Rejection {
   updatedAt: number;
 }
 
-type PetitionStatus = '승인 대기중' | '청원 진행중' | '답변 대기중' | '답변 완료' | '승인 반려';
-
+type PetitionStatus = '승인 대기중' | '청원 진행중' | '답변 대기중' | '답변 완료됨' | '승인 반려됨' | '청원 만료됨';
 interface Answer {
   description: string;
   createdAt: number;

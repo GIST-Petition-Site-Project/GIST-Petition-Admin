@@ -1,5 +1,5 @@
 import { getAnswerRevisions } from '@api/answerAPI';
-import { getPetitionById, getPetitionRevisions } from '@api/petitionAPI';
+import { getPetitionById, getPetitionRevisions } from '@api/petitionQueryAPI';
 import { BottomPadder, Description, Wrapper } from '@components/common';
 import VChangeHighlight from '@components/common/VChangeHighlight';
 import { getDate } from '@utils/timeFormat';

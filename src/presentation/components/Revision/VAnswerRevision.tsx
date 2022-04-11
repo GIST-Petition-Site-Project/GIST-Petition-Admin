@@ -1,13 +1,13 @@
 import { Content, Description, StSelect, Title, TitleWrapper } from '@components/common';
 import { getDate } from '@utils/timeFormat';
 
-interface IAnswerRevision {
+interface vAnswerRevisionProps {
   answerRevisions: any;
   answerVersion: any;
   answerSelect: any;
 }
 
-const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: IAnswerRevision): JSX.Element => {
+const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: vAnswerRevisionProps): JSX.Element => {
   return (
     <>
       <TitleWrapper>

@@ -1,11 +1,6 @@
 import { Change } from 'diff';
 import styled from 'styled-components';
 
-interface vChangeHighlightProps {
-  titleChanges: Array<Change>;
-  descChanges: Array<Change>;
-}
-
 const TitleWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   border: 1px solid rgb(118, 118, 118);
@@ -54,6 +49,11 @@ const RemovedSpan = styled.span`
 const UnchangedSpan = styled.span`
   color: gray;
 `;
+
+interface vChangeHighlightProps {
+  titleChanges: Array<Change>;
+  descChanges: Array<Change>;
+}
 
 const VChangeHighlight = ({ titleChanges, descChanges }: vChangeHighlightProps): JSX.Element => {
   return (

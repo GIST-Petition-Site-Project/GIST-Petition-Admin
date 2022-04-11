@@ -1,22 +1,22 @@
-import { getWaitingRelease, getPetitions, getWaitingAnswer, getAnswered, getRejected } from '@api/petitionAPI';
+import { getWaitingRelease, getPetitions, getWaitingAnswer } from '@api/petitionQueryAPI';
+import { ListWrapper } from '@components/common';
 import VPagination from '@components/Pagination/VPagination';
 import { useErrorInterceptor, useLoadingInterceptor } from '@hooks/useInterceptor';
+import { useAppSelect } from '@hooks/useStore';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import VPetitionList from './VPetitionList';
 
-interface IPetitionList {
-  type?: any;
-}
-
-const PetitionList = ({ type }: IPetitionList): JSX.Element => {
+const PetitionList = (): JSX.Element => {
   useErrorInterceptor();
   const { search } = useLocation();
   const isLoading = useLoadingInterceptor();
   const [petitions, setPetitions] = useState<Array<Petition>>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [number, setNumber] = useState(0);
+
+  const type = useAppSelect((select) => select.menu.type);
 
   const fetchPetitions = async () => {
     const setListInfo = (response: AxiosResponse<any, any>) => {
@@ -32,7 +32,7 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
     };
 
     switch (type) {
-      case 'release':
+      case 'approve':
         const responseRelease = await getWaitingRelease();
         setListInfo(responseRelease);
         break;
@@ -40,24 +40,20 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
         const responseAnswer = await getWaitingAnswer();
         setListInfo(responseAnswer);
         break;
-      case 'answered':
-        const responseAnswered = await getAnswered();
-        setListInfo(responseAnswered);
-        break;
-      case 'rejected':
-        const responseRejected = await getRejected();
-        setListInfo(responseRejected);
-        break;
-      default:
+      case 'manage':
         const response = await getPetitions();
         setListInfo(response);
+        break;
+      default:
+        break;
     }
   };
 
   useEffect(() => {
+    setNumber(0);
     fetchPetitions();
     window.scrollTo(0, 0);
-  }, [search]);
+  }, [type, search]);
 
   const vPetitionListProps = {
     isLoading,
@@ -71,10 +67,10 @@ const PetitionList = ({ type }: IPetitionList): JSX.Element => {
   };
 
   return (
-    <>
+    <ListWrapper>
       <VPetitionList {...vPetitionListProps} />
       <VPagination {...vPaginationProps} />
-    </>
+    </ListWrapper>
   );
 };
 

@@ -1,11 +1,5 @@
 import { StButton } from '@components/common';
 import styled from 'styled-components';
-interface vLoginFormProps {
-  username: string;
-  password: string;
-  handleSubmit: any;
-  handleChange: any;
-}
 
 export const Title = styled.h1`
   color: ${(props) => props.theme.colors.text};
@@ -24,19 +18,22 @@ const SInput = styled.input`
   margin-bottom: 2em;
   outline: none;
   width: 100%;
-  /* transition: 0.2s; */
 `;
 
 const FormWrapper = styled.div`
   height: 80vh;
-  /* padding: 20vw; */
-  /* width: 400px; */
   max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 `;
+
+interface vLoginFormProps {
+  username: string;
+  password: string;
+  handleSubmit: any;
+  handleChange: any;
+}
 
 const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFormProps): JSX.Element => {
   return (

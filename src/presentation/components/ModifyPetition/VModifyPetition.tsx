@@ -1,9 +1,4 @@
 import styled from 'styled-components';
-interface vModifyPeitionProps {
-  title: string;
-  description: string;
-  handleChange: any;
-}
 
 const TitleEditer = styled.textarea`
   background-color: ${(props) => props.theme.colors.background};
@@ -39,6 +34,12 @@ const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+interface vModifyPeitionProps {
+  title: string;
+  description: string;
+  handleChange: any;
+}
 
 const VModifyPetition = ({ title, description, handleChange }: vModifyPeitionProps): JSX.Element => {
   return (
