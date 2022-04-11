@@ -3,6 +3,7 @@ import { getPetitionById } from '@api/petitionQueryAPI';
 import { BottomPadder, ButtonWrapper, StButton, Title, TitleWrapper, Wrapper } from '@components/common';
 import VAnswer from '@components/common/VAnswer';
 import VPetition from '@components/common/VPetition';
+import VRejection from '@components/common/VRejection';
 import { useToast } from '@hooks/useToast';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -48,6 +49,14 @@ const ManagePetition = (): JSX.Element => {
             <Title>답변 관리</Title>
           </TitleWrapper>
           <VAnswer answer={petition?.answer} />
+        </>
+      ) : null}
+      {petition?.rejection ? (
+        <>
+          <TitleWrapper>
+            <Title>반려 관리</Title>
+          </TitleWrapper>
+          <VRejection rejection={petition?.rejection} />
         </>
       ) : null}
       <ButtonWrapper>

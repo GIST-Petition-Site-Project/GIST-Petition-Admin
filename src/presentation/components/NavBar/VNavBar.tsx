@@ -16,6 +16,7 @@ const NavBarBlock = styled.div`
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 `;
 
 const NavWrapper = styled.div`

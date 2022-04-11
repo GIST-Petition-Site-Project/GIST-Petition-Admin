@@ -21,6 +21,9 @@ const ContentItem = styled.div`
   max-width: 1200px;
   width: 100%;
   padding: 0 2em;
+  @media screen and (max-width: 768px) {
+    padding: 40px 2em 0 2em;
+  }
 `;
 
 const locale: { [key in Menu]: string } = {
