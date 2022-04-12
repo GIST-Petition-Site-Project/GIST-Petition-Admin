@@ -22,6 +22,7 @@ const ManagePetition = (): JSX.Element => {
   }, []);
 
   const toast = useToast();
+
   const withdrawPetition = async () => {
     await deletePetitionRelease(petition?.id);
     navigate('/');
@@ -41,6 +42,7 @@ const ManagePetition = (): JSX.Element => {
   const navigateAnswer = () => {
     navigate(`/answer/${petitionId}`);
   };
+
   return (
     <Wrapper>
       <TitleWrapper>
