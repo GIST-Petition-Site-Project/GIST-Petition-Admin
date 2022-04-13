@@ -62,7 +62,7 @@ const LogoutBtn = styled.button`
   }
 `;
 interface vNavBarProps {
-  handleClick: any;
+  handleClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const VNavBar = ({ handleClick }: vNavBarProps): JSX.Element => {

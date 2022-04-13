@@ -1,4 +1,5 @@
 import { StButton } from '@components/common';
+import { FormEvent } from 'react';
 import styled from 'styled-components';
 
 export const Title = styled.h1`
@@ -31,8 +32,8 @@ const FormWrapper = styled.div`
 interface vLoginFormProps {
   username: string;
   password: string;
-  handleSubmit: any;
-  handleChange: any;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const VLoginForm = ({ username, password, handleSubmit, handleChange }: vLoginFormProps): JSX.Element => {

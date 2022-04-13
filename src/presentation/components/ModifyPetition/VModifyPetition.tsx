@@ -38,7 +38,7 @@ const FormWrapper = styled.div`
 interface vModifyPeitionProps {
   title: string;
   description: string;
-  handleChange: any;
+  handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 const VModifyPetition = ({ title, description, handleChange }: vModifyPeitionProps): JSX.Element => {

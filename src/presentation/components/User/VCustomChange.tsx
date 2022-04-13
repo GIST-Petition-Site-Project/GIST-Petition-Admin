@@ -64,8 +64,8 @@ const StRole = styled.p`
 interface vCustomChangeProps {
   email: string;
   customRole: string;
-  handleEmailChange: any;
-  handleRoleChange: any;
+  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
+  handleRoleChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 const VCustomChange = ({ email, customRole, handleEmailChange, handleRoleChange }: vCustomChangeProps): JSX.Element => {

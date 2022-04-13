@@ -2,9 +2,9 @@ import { Content, Description, StSelect, Title, TitleWrapper } from '@components
 import { getDate } from '@utils/timeFormat';
 
 interface vAnswerRevisionProps {
-  answerRevisions: any;
-  answerVersion: any;
-  answerSelect: any;
+  answerRevisions: Array<AnswerRevision>;
+  answerVersion: number;
+  answerSelect: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 const VAnswerRevision = ({ answerRevisions, answerVersion, answerSelect }: vAnswerRevisionProps): JSX.Element => {

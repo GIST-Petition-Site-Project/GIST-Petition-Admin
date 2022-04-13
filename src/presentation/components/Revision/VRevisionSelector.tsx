@@ -17,8 +17,8 @@ interface vRevisionSelectorProps {
   from: number;
   to: number;
   count: number;
-  fromChange: any;
-  toChange: any;
+  fromChange: React.ChangeEventHandler<HTMLSelectElement>;
+  toChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 const VRevisionSelector = ({ from, to, count, fromChange, toChange }: vRevisionSelectorProps): JSX.Element => {
