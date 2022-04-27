@@ -32,8 +32,8 @@ interface vWriteAnswerProps {
   answer: string;
   videoUrl: string;
   petition: Petition | undefined;
-  handleChange: any;
-  handleSubmit: any;
+  handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const VWriteAnswer = ({ answer, petition, videoUrl, handleChange, handleSubmit }: vWriteAnswerProps): JSX.Element => {

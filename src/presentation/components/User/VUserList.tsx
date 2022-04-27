@@ -22,7 +22,11 @@ const StP = styled.p`
 
 interface vUserListProps {
   users: Array<User>;
-  each: any;
+  each: (user: User) => {
+    username: string;
+    userRole: string;
+    handleChange: React.ChangeEventHandler<HTMLSelectElement>;
+  };
 }
 
 const VUserList = ({ users, each }: vUserListProps): JSX.Element => {

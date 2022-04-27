@@ -46,9 +46,6 @@ const SidebarButton = styled.button`
 `;
 
 const Count = styled.div`
-  @media screen and (max-width: 768px) {
-    /* display: none; */
-  }
   color: white;
   display: inline-block;
   height: 1rem;
@@ -119,24 +116,6 @@ const Sidebar = (): JSX.Element => {
           답변 등록 <Count>{waitingAnswerCount}</Count>
         </SidebarButton>
       </SidebarWrapper>
-      {/* <MobileWrapper>
-        {role === 'ADMIN' && (
-          <SidebarButton onClick={() => handleClick(setUser())}>
-            <MdManageAccounts />
-          </SidebarButton>
-        )}
-        <SidebarButton onClick={() => handleClick(setManage())}>
-          <MdViewList />
-        </SidebarButton>
-        <SidebarButton onClick={() => handleClick(setApprove())}>
-          <MdPlaylistAddCheck />
-          <Count>{waitingReleaseCount}</Count>
-        </SidebarButton>
-        <SidebarButton onClick={() => handleClick(setAnswer())}>
-          <MdOutlineBorderColor />
-          <Count>{waitingAnswerCount}</Count>
-        </SidebarButton>
-      </MobileWrapper> */}
     </>
   );
 };

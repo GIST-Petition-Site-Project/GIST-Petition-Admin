@@ -48,7 +48,7 @@ const SwitchCheckbox = styled.input`
 `;
 interface vToggleSwitchProps {
   isChecked: boolean;
-  handleChange: any;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 const ToggleSwitch = ({ isChecked, handleChange }: vToggleSwitchProps) => {
   return (

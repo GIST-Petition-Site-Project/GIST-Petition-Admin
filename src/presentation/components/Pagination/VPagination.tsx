@@ -16,13 +16,14 @@ const Flex = styled.div`
 `;
 
 const PageButton = styled.button`
+  text-align: center;
+  line-height: 2em;
   height: 2em;
   width: 2em;
   border-radius: 50%;
   border: none;
   color: ${(props) => props.theme.colors.text};
   background: transparent;
-  transition: 0.2s;
   :hover {
     background: ${(props) => props.theme.colors.gistRed};
     color: white;

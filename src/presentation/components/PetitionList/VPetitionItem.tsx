@@ -125,7 +125,11 @@ const VPetitionItem = ({
       <PetitionItem>
         <PetitionStatus style={{ backgroundColor: statusColor[status] }}>{status}</PetitionStatus>
         <PetitionDescription>{id}</PetitionDescription>
-        <PetitionDescription>{categoryName}</PetitionDescription>
+        <PetitionDescription
+          style={{ textOverflow: 'ellipsis', width: '80px', whiteSpace: 'nowrap', overflow: 'hidden' }}
+        >
+          {categoryName}
+        </PetitionDescription>
         <PetitionTitle href={`${type}/${type === 'approve' ? tempUrl : id}`}>{title}</PetitionTitle>
         <PetitionDescription>{getDay(createdAt)}</PetitionDescription>
       </PetitionItem>

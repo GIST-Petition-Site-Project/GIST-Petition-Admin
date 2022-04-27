@@ -1,15 +1,14 @@
 import { getWaitingRelease, getPetitions, getWaitingAnswer } from '@api/petitionQueryAPI';
 import { ListWrapper } from '@components/common';
 import VPagination from '@components/Pagination/VPagination';
-import { useErrorInterceptor, useLoadingInterceptor } from '@hooks/useInterceptor';
+import { useLoadingInterceptor } from '@hooks/useInterceptor';
 import { useAppSelect } from '@hooks/useStore';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import VPetitionList from './VPetitionList';
 
 const PetitionList = (): JSX.Element => {
-  useErrorInterceptor();
   const { search } = useLocation();
   const isLoading = useLoadingInterceptor();
   const [petitions, setPetitions] = useState<Array<Petition>>([]);
@@ -18,41 +17,47 @@ const PetitionList = (): JSX.Element => {
 
   const type = useAppSelect((select) => select.menu.type);
 
-  const fetchPetitions = async () => {
-    const setListInfo = (response: AxiosResponse<any, any>) => {
-      setPetitions(response?.data?.content);
-      setTotalPages(response?.data?.totalPages);
-      setNumber(
-        response?.data?.number > response?.data?.totalPages - 1
-          ? Math.max(response?.data?.totalPages - 1, 0)
-          : response?.data?.number < 0
-          ? 0
-          : response?.data?.number,
-      );
-    };
+  const setListInfo = (response: AxiosResponse<any, any>) => {
+    setPetitions(response?.data?.content);
+    setTotalPages(response?.data?.totalPages);
+    setNumber(
+      response?.data?.number > response?.data?.totalPages - 1
+        ? Math.max(response?.data?.totalPages - 1, 0)
+        : response?.data?.number < 0
+        ? 0
+        : response?.data?.number,
+    );
+  };
 
+  const fetchPetitions = async () => {
+    let response: AxiosResponse<any, any> | undefined;
     switch (type) {
       case 'approve':
-        const responseRelease = await getWaitingRelease();
-        setListInfo(responseRelease);
+        response = await getWaitingRelease({ source });
         break;
       case 'answer':
-        const responseAnswer = await getWaitingAnswer();
-        setListInfo(responseAnswer);
+        response = await getWaitingAnswer({ source });
         break;
       case 'manage':
-        const response = await getPetitions();
-        setListInfo(response);
+        response = await getPetitions({ source });
         break;
       default:
+        response = undefined;
         break;
     }
+    if (response) setListInfo(response);
   };
+
+  const CancelToken = axios.CancelToken;
+  const source = CancelToken.source();
 
   useEffect(() => {
     setNumber(0);
     fetchPetitions();
     window.scrollTo(0, 0);
+    return () => {
+      source.cancel();
+    };
   }, [type, search]);
 
   const vPetitionListProps = {
