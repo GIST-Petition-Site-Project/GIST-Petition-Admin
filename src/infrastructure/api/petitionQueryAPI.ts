@@ -1,3 +1,4 @@
+import { CancelToken, CancelTokenSource } from 'axios';
 import API from './baseAPI';
 
 /**
@@ -19,20 +20,27 @@ export const getTempPetition = async (tempURL: string | number | undefined) => {
   return response;
 };
 
+interface ISource {
+  source: CancelTokenSource;
+}
 /**
  * @description 게시된 청원들을 가져옵니다.
  * @pagination size, page
  */
-export const getPetitions = async () => {
-  const response = await API.get(`petitions${location.search}`);
+export const getPetitions = async ({ source }: ISource) => {
+  const response = await API.get(`petitions${location.search}`, {
+    cancelToken: source.token,
+  });
   return response;
 };
 
 /**
  * @description 승인을 대기중인 청원의 개수를 가져옵니다.
  */
-export const getWaitingRelease = async () => {
-  const response = await API.get(`petitions/waitingForRelease${location.search}`);
+export const getWaitingRelease = async ({ source }: ISource) => {
+  const response = await API.get(`petitions/waitingForRelease${location.search}`, {
+    cancelToken: source.token,
+  });
   return response;
 };
 
@@ -40,8 +48,10 @@ export const getWaitingRelease = async () => {
  * @description 답변을 기다리는 청원들을 가져옵니다.
  * @pagination size, page
  */
-export const getWaitingAnswer = async () => {
-  const response = await API.get(`petitions/waitingForAnswer${location.search}`);
+export const getWaitingAnswer = async ({ source }: ISource) => {
+  const response = await API.get(`petitions/waitingForAnswer${location.search}`, {
+    cancelToken: source.token,
+  });
   return response;
 };
 
@@ -49,8 +59,10 @@ export const getWaitingAnswer = async () => {
  * @description 답변이 등록된 청원들을 가져옵니다.
  * @pagination size, page
  */
-export const getAnswered = async () => {
-  const response = await API.get(`petitions/answered${location.search}`);
+export const getAnswered = async ({ source }: ISource) => {
+  const response = await API.get(`petitions/answered${location.search}`, {
+    cancelToken: source.token,
+  });
   return response;
 };
 
@@ -58,8 +70,10 @@ export const getAnswered = async () => {
  * @description 반려된 청원들을 가져옵니다.
  * @pagination size, page
  */
-export const getRejected = async () => {
-  const response = await API.get(`petitions/rejected${location.search}`);
+export const getRejected = async ({ source }: ISource) => {
+  const response = await API.get(`petitions/rejected${location.search}`, {
+    cancelToken: source.token,
+  });
   return response;
 };
 
