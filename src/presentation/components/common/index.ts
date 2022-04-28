@@ -37,7 +37,6 @@ export const StButton = styled.button<ButtonProps>`
   margin: auto 0 auto 0;
   color: ${(props) => props.theme.colors.text};
   white-space: nowrap;
-  transition: 0.2s linear;
   :hover {
     background-color: ${(props) => props.theme.colors.gistRed};
     border: 1px solid ${(props) => props.theme.colors.gistRed};
