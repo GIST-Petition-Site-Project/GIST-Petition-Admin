@@ -8,7 +8,7 @@ const checkPetitionStatus = (petition?: Petition): PetitionStatus => {
   if (petition.rejected) return '승인 반려됨';
   if (petition.answered) return '답변 완료됨';
   if (petition.expired) return '청원 만료됨';
-  return petition.agreeCount > REQUIRED_AGREEMENT_COUNTS ? '답변 대기중' : '청원 진행중';
+  return petition.agreeCount >= REQUIRED_AGREEMENT_COUNTS ? '답변 대기중' : '청원 진행중';
 };
 
 export default checkPetitionStatus;

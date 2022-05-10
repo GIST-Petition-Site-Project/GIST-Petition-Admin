@@ -43,6 +43,10 @@ const PetitionDate = styled.div`
   line-height: 1.5em;
 `;
 
+const AnswerDeadline = styled(PetitionDate)`
+  font-weight: 900;
+`;
+
 const PetitionStatus = styled.span`
   font-size: 1em;
   color: white;
@@ -79,6 +83,9 @@ const VPetition = ({ petition }: vPetitionProps): JSX.Element => {
         <PetitionDescription>{petition?.description}</PetitionDescription>
         <PetitionDate>최초 작성 {getDate(petition?.createdAt || 0)}</PetitionDate>
         <PetitionDate>마지막 수정 {getDate(petition?.updatedAt || 0)}</PetitionDate>
+        {petition?.waitingForAnswerAt && (
+          <AnswerDeadline>답변 기한 {getDate(petition?.waitingForAnswerAt + 24 * 60 * 60 * 1000 * 14)}</AnswerDeadline>
+        )}
       </PetitionWrapper>
       <MLine />
     </>

@@ -14,6 +14,7 @@ interface Petition {
   rejected: boolean;
   rejection?: Rejection;
   expired: boolean;
+  waitingForAnswerAt: number;
 }
 
 interface Rejection {
