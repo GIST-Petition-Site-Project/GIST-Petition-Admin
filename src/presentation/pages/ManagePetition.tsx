@@ -67,7 +67,7 @@ const ManagePetition = (): JSX.Element => {
       ) : null}
       <ButtonWrapper>
         <StButton onClick={navigateModify}>청원 수정</StButton>
-        {petition?.rejected ? (
+        {petition?.status === 'REJECTED' ? (
           <StButton onClick={navigateApprove}>반려 수정</StButton>
         ) : (
           <StButton onClick={withdrawPetition}>승인 취소</StButton>

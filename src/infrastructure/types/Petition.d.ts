@@ -10,11 +10,10 @@ interface Petition {
   updatedAt: number;
   userId: number;
   tempUrl: string;
-  released: boolean;
-  rejected: boolean;
   rejection?: Rejection;
   expired: boolean;
   waitingForAnswerAt: number;
+  status: 'TEMPORARY' | 'RELEASED' | 'REJECTED' | 'ANSWERED';
 }
 
 interface Rejection {
@@ -24,7 +23,15 @@ interface Rejection {
   updatedAt: number;
 }
 
-type PetitionStatus = '승인 대기중' | '청원 진행중' | '답변 대기중' | '답변 완료됨' | '승인 반려됨' | '청원 만료됨';
+type PetitionStatus =
+  | '승인 대기중'
+  | '청원 진행중'
+  | '답변 대기중'
+  | '답변 완료됨'
+  | '승인 반려됨'
+  | '청원 만료됨'
+  | '사전 동의중';
+
 interface Answer {
   description: string;
   createdAt: number;
