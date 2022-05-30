@@ -63,6 +63,7 @@ const statusColor = {
   '답변 완료됨': '#ad2e24',
   '승인 반려됨': '#DF3127',
   '청원 만료됨': '#7a1c0b',
+  '사전 동의중': '#a8714c',
 };
 
 const MLine = styled(StLine)`

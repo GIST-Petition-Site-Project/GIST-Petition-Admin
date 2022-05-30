@@ -14,6 +14,7 @@ const deprecatedCheckPetitionStatus = (petition?: Petition): PetitionStatus => {
 const checkPetitionStatus = (petition?: Petition): PetitionStatus => {
   const REQUIRED_AGREEMENT_COUNTS = 50;
   if (!petition) return '청원 진행중';
+  if (petition.status === 'TEMPORARY') return '사전 동의중';
   if (petition.status === 'RELEASED')
     return petition.agreeCount >= REQUIRED_AGREEMENT_COUNTS ? '답변 대기중' : '청원 진행중';
   if (petition.status === 'ANSWERED') return '답변 완료됨';
