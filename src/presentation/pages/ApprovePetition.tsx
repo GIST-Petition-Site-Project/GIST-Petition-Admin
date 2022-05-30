@@ -48,11 +48,15 @@ const ApprovePetition = (): JSX.Element => {
       return;
     }
 
-    const response = petition?.rejected
-      ? await putPetitionRejection(petition?.id, rejectDescription)
-      : await postPetitionRejection(petition?.id, rejectDescription);
+    const response =
+      petition?.status === 'REJECTED'
+        ? await putPetitionRejection(petition?.id, rejectDescription)
+        : await postPetitionRejection(petition?.id, rejectDescription);
     if (response.status === 201 || response.status === 200) {
-      toast({ message: `${petition?.rejected ? '반려 사유가 수정' : '청원이 반려'}되었습니다.`, type: 'warning' });
+      toast({
+        message: `${petition?.status === 'REJECTED' ? '반려 사유가 수정' : '청원이 반려'}되었습니다.`,
+        type: 'warning',
+      });
       navigate('/');
     } else {
       toast({ message: response.data?.message, type: 'warning' });
@@ -95,8 +99,10 @@ const ApprovePetition = (): JSX.Element => {
                   <Title>청원 반려</Title>
                   <ButtonWrapper>
                     <StButton onClick={handleCancel}>취소</StButton>
-                    {petition?.rejected ? <StButton onClick={cancelReject}>반려 취소</StButton> : null}
-                    <StButton onClick={handleReject}>{petition?.rejected ? '반려 수정' : '청원 반려'}</StButton>
+                    {petition?.status === 'REJECTED' ? <StButton onClick={cancelReject}>반려 취소</StButton> : null}
+                    <StButton onClick={handleReject}>
+                      {petition?.status === 'REJECTED' ? '반려 수정' : '청원 반려'}
+                    </StButton>
                   </ButtonWrapper>
                 </TitleWrapper>
                 <Writer value={rejectDescription} onChange={handleChange} />
@@ -104,8 +110,10 @@ const ApprovePetition = (): JSX.Element => {
             ) : (
               <ButtonWrapper>
                 <StButton onClick={handleModify}>청원 수정</StButton>
-                <StButton onClick={handleReject}>{petition?.rejected ? '반려 수정' : '청원 반려'}</StButton>
-                {petition?.rejected ? null : <StButton onClick={handleApprove}>청원 승인</StButton>}
+                <StButton onClick={handleReject}>
+                  {petition?.status === 'REJECTED' ? '반려 수정' : '청원 반려'}
+                </StButton>
+                {petition?.status === 'REJECTED' ? null : <StButton onClick={handleApprove}>청원 승인</StButton>}
               </ButtonWrapper>
             )}
           </>

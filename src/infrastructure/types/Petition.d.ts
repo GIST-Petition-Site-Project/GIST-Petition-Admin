@@ -10,11 +10,10 @@ interface Petition {
   updatedAt: number;
   userId: number;
   tempUrl: string;
-  released: boolean;
-  rejected: boolean;
   rejection?: Rejection;
   expired: boolean;
   waitingForAnswerAt: number;
+  status: 'TEMPORARY' | 'RELEASED' | 'REJECTED' | 'ANSWERED';
 }
 
 interface Rejection {
